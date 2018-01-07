@@ -1,0 +1,278 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        style="@style/PHA_ClcDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        
+        <ImageView 
+            android:id="@+id/phaClcDltBtn"
+	        android:src="@android:drawable/ic_input_delete"
+	        android:layout_centerInParent="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:contentDescription="@string/pha_Description_CalcDeleteBtn" />
+        <ViewSwitcher
+			android:id="@+id/phaClcDisplay"
+			android:inAnimation="@anim/slide_in_bottom"
+			android:outAnimation="@anim/slide_out_top"
+			android:layout_alignParentTop="true"
+			android:layout_toLeftOf="@id/phaClcDltBtn"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+            <TextView style="@style/PHA_ClcDisplayTxt"
+                android:id="@+id/phaClcDisplay1"
+				android:text="@string/phaClcDflt"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"/>
+            <TextView style="@style/PHA_ClcDisplayTxt"
+                android:id="@+id/phaClcDisplay2"
+				android:text="@string/phaClcDflt"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"/>
+        </ViewSwitcher>
+        <TextView
+	        android:id="@+id/PHA_ClcOperatorsDisplay"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentLeft="true"
+	        android:layout_width="5dp"
+	        android:layout_height="wrap_content"
+	        android:textIsSelectable="true"/>
+    	</RelativeLayout>
+    	<LinearLayout 
+    	    android:orientation="horizontal"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="fill_parent">
+        
+    	    <TableLayout
+	        android:id="@+id/PHA_ScnClcFunctions"
+	           android:layout_width="wrap_content"
+	           android:layout_height="fill_parent"
+	           android:layout_marginRight="10dip">			   
+			   <TableRow
+	               android:layout_margin="0px"
+	               android:layout_weight="1">
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcInverse"
+	                   android:text="@string/inverse">
+	               </Button>
+	               
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcY"
+	                   android:text="@string/calcY">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcX"
+	                   android:text="@string/calcX">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcOpenBracket"
+	                   android:text="@string/openBracket">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcCloseBracket"
+	                   android:text="@string/closeBracket"/>
+	           </TableRow>
+	           
+	           
+	           <TableRow
+	               android:layout_margin="0px"
+	               android:layout_weight="2">
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcCos"
+	                   android:text="@string/cos">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcSin"
+	                   android:text="@string/sin">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcTan"
+	                   android:text="@string/tan">
+	               </Button>
+	                <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcPercent"
+	                   android:text="@string/percent"/>
+	                 
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcSquare"
+	                   android:text="@string/square"/>
+	           </TableRow>
+	           
+	           <TableRow
+	               android:layout_margin="0px"
+	               android:layout_weight="3">
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcAcos"
+	                   android:text="@string/acos">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcAsin"
+	                   android:text="@string/asin">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcAtan"
+	                   android:text="@string/atan">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcLog"
+	                   android:text="@string/log"/>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcSqrt"
+	                   android:text="@string/sqrt">
+	               </Button>
+	              
+	           </TableRow>
+	           
+	           <TableRow
+	               android:layout_margin="0px"
+	               android:layout_weight="4">
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcE"
+	                   android:text="@string/e">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcPi"
+	                   android:text="@string/pi">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcRandom"
+	                   android:text="@string/random">
+	               </Button>
+	              
+	                <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcSetX"
+	                   android:text="@string/setX">
+	               </Button>
+	               <Button style="@style/PHA_ScnClcDisplay"
+	                   android:id="@+id/PHA_ScnClcSetY"
+	                   android:text="@string/setY">
+	               </Button>
+	           </TableRow>
+	      </TableLayout>
+        <TableLayout android:id="@+id/standard_functions"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="0px"
+					android:stretchColumns="0,1,2,3">
+            		<TableRow 
+	           			android:layout_weight="1"
+	            		android:layout_height="0px">
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcPlus"
+			                android:text="@string/phaClcPlus">
+			            </Button>
+	                    <Button
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcSeven"
+			                android:text="@string/phaClcSeven">
+			            </Button>
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcEight"
+			                android:text="@string/phaClcEight">
+			            </Button>
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcNine"
+			                android:text="@string/phaClcNine">
+			            </Button>  
+			            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcClearLast"
+		                android:text="@string/phaClcClearLast">
+		            </Button>  
+       				</TableRow>
+       				<TableRow 
+           		 android:layout_weight="2"
+           		 android:layout_height="0px">            
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcMinus"
+			                android:text="@string/phaClcMinus">
+			            </Button>
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcFour"
+			                android:text="@string/phaClcFour">
+			            </Button>
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcFive"
+			                android:text="@string/phaClcFive">
+			            </Button>
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcSix"
+			                android:text="@string/phaClcSix">
+			            </Button>
+			            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcClearAll"
+		                android:text="@string/phaClcClearAll">
+		            </Button>
+        		</TableRow>
+		        <TableRow 
+		            android:layout_weight="3"
+		            android:layout_height="0px">
+		            <Button 
+		                style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcMult"
+		                android:text="@string/phaClcMult">
+		            </Button>
+		            
+		             <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcOne"
+			                android:text="@string/phaClcOne">
+			            </Button>
+			            
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcTwo"
+			                android:text="@string/phaClcTwo">
+			            </Button>
+			            
+			            <Button 
+			                style="@style/PHA_ScnClcDisplay"
+			                android:id="@+id/phaClcThree"
+			                android:text="@string/phaClcThree">
+			            </Button>
+			            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcANS"
+		                android:text="@string/phaClcANS">
+		            </Button>
+		        </TableRow>
+        
+		        <TableRow 
+		            android:layout_weight="4"
+		            android:layout_height="0px"
+		            >
+		            <Button 
+		                style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcDiv"
+		                android:text="@string/phaClcDiv">
+		            </Button>
+		            
+		            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcZero"
+		                android:text="@string/phaClcZero">
+		            </Button>
+		            
+		            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcDP"
+		                android:text="@string/phaClcDP">
+		            </Button>
+		            <Button style="@style/PHA_ScnClcDisplay"
+		                android:id="@+id/phaClcEqls"
+		                android:layout_span="2"
+		                android:text="@string/phaClcEqls"
+		                android:layout_width="fill_parent">
+		            </Button>
+       			 </TableRow>
+	        </TableLayout>
+	      </LinearLayout>               				
+</LinearLayout>

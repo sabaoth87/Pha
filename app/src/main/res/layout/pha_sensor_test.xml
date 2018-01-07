@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PHA_SensorTest" >
+<LinearLayout 
+    android:id="@+id/sensorinfo"
+   android:layout_alignParentTop="true"
+   android:layout_width="match_parent"
+   android:layout_height="100dip"
+   android:orientation="horizontal" >
+		    <TextView
+		        android:id="@+id/gyro"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp" />
+		    <TextView
+		        android:id="@+id/locationTV"
+		        android:textSize="12sp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/PHA_Test_Zeros" />
+		    <TextView
+		        android:id="@+id/locationTV1"
+		        android:textSize="12sp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/PHA_Test_Zeros" />
+     </LinearLayout>
+     <LinearLayout 
+         android:layout_below="@+id/sensorinfo"
+         android:orientation="horizontal"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content">
+         <TextView
+		        android:id="@+id/locationGeocode"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:text="@string/PHA_Test_Values" />
+         <TextView
+		        android:id="@+id/locationGeocode1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:text="@string/PHA_Test_Values" />
+     </LinearLayout>
+     
+
+</RelativeLayout>

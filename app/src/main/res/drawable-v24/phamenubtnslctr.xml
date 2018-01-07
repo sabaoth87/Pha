@@ -1,0 +1,11 @@
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:constantSize="true"
+    android:variablePadding="false">
+
+    <item android:state_pressed="true"
+        android:drawable="@drawable/btn_proto_white_blue_click"/>
+    <item android:state_focused="true"
+        android:drawable="@drawable/btn_proto_white_blue_glow"/>
+    <item android:drawable="@drawable/btn_proto_white_blue"/>
+</selector>

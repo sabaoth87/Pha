@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="difficulty">
+		<item>@string/sudokuEasyLbl</item>
+		<item>@string/sudokuMediumLbl</item>
+		<item>@string/sudokuHardLbl</item>
+	</array>
+	
+	<array name="mass">
+	    <item>LB</item>
+	    <item>GRAM</item>
+	    <item>STN</item>
+	    <item>KG</item>
+	    <item>OZ</item>
+	</array>
+	
+	<array name="pressure">
+	    <item>Pascals</item>
+	    <item>BM</item>
+	</array>
+	
+	<array name="elec">
+	    <item>EV</item>
+	    <item>Cu</item>
+	    <item>e</item>
+	</array>
+	
+	<array name="speed">
+	    <item>mph</item>
+	    <item>kph</item>
+	    <item>mps</item>
+	    <item>fps</item>
+	    <item>m/d</item>
+	</array>
+	
+	<array name="light">
+	    <item>lumens</item>
+	    <item>rad</item>
+	</array>
+	<array name="heat">
+	    <item>btu</item>
+	    <item>kips</item>
+	</array>
+	
+	<array name="volume">
+	    <item>ounce</item>
+	    <item>quart</item>
+	    <item>cup</item>
+	    <item>ml</item>
+	    <item>l</item>
+	</array>
+	
+	<array name="converterCats">
+	    <item>MASS</item>
+	    <item>PRESSURE</item>
+	    <item>VOLUME</item>
+	    <item>HEAT</item>
+	    <item>LIGHT</item>
+	    <item>SPEED</item>
+	    <item>ELEC</item>
+	</array>
+	
+	<array name="conversionCats">
+	    <item>Acceleration</item>
+	    <item>Angles</item>
+	    <item>Area</item>
+	    <item>Astronomical</item>
+	    <item>Clothing</item>
+	    <item>Cooking</item>
+	    <item>Date/Time</item>
+	    <item>Density</item>
+	    <item>Digitals</item>
+	    <item>Energy</item>
+	    <item>Finance</item>
+	    <item>Flow Rate</item>
+	    <item>Force</item>
+	    <item>Frequency</item>
+	    <item>Fun?</item>
+	    <item>Length/Distance</item>
+	    <item>Light</item>
+	    <item>Mapping</item>
+	    <item>Misc.</item>
+	    <item>Numbers</item>
+	    <item>Objects/Shapes</item>
+	    <item>Power</item>
+	    <item>Pressure</item>
+	    <item>Speed</item>
+	    <item>Temperature</item>
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	
+	<array name = "catAcceleration">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catAngles">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catArea">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catAstronomical">
+	    <item>Astromical Unit</item>
+	    <item>KM</item>
+	    <item>Light Second</item>
+	    <item>Light Minute</item>
+	    <item>Light Hour</item>
+	    <item>Light Day</item>
+	    <item>Light Year</item>
+	    <item>Parsec</item>
+	    <item>Mile</item>
+	    <item>Meter</item>
+	</array>
+	<array name = "catClothing">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catCooking">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catTime">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catDensity">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catDigitals">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catEnergy">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catFlow">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catForce">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catFreq">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catFun">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catLength">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catLight">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catMapping">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catMisc">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catNumbers">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catShapes">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catPower">
+	    <item>Cal/hr</item>
+	    <item>Cal/min</item>
+	    <item>Cal/sec</item>
+	    <item>H.P.</item>
+	    <item>Newton Meter/hr</item>
+	    <item>Watt</item>
+	</array>
+	<array name = "catPressure">
+	    <item>Atmosphere</item>
+	    <item>Bar</item>
+	    <item>Pascal</item>
+	    <item>lb per foot square</item>
+	    <item>lb per inch square</item>
+	</array>
+	<array name = "catSpeed">
+	    <item>Fpm</item>
+	    <item>Fps</item>
+	    <item>Knot</item>
+	    <item>Kpm</item>
+	    <item>Kph</item>
+	    <item>Kps</item>
+	    <item>Mach</item>
+	    <item>mpm</item>
+	    <item>mps</item>
+	    <item>mph</item>
+	    <item>Miph</item>
+	    <item>Mipm</item>
+	    <item>Mips</item>
+	    
+	</array>
+	<array name = "catTemp">
+	    <item>C</item>
+	    <item>F</item>
+	    <item>Rankine</item>
+	    <item>Reaumur</item>
+	    <item>K</item>
+	</array>
+	<array name = "catTorque">
+	    <item>Kg cm</item>
+	    <item>Kg m</item>
+	    <item>KN m</item>
+	    <item>Pound Foot</item>
+	    <item>Pound Inch</item>
+	</array>
+	<array name = "catViscosity">
+	    <item>Torque</item>
+	    <item>Viscosity</item>
+	    <item>Volume</item>
+	    <item>Weight/Mass</item>
+	</array>
+	<array name = "catVolume">
+	    <item>Cubic Foot</item>
+	    <item>Cubic Inch</item>
+	    <item>Cubic Mile</item>
+	    <item>Cubic Meter</item>
+	    <item>Gallon UK</item>
+	    <item>Gallon USD</item>
+	    <item>Gallon USW</item>
+	    <item>liter</item>
+	    <item>Ounce UK</item>
+	    <item>Ounce US</item>
+	    <item>Pint UK</item>
+	    <item>Pint US</item>
+	    <item>Tablespoon UK</item>
+	    <item>Tablespoon US</item>
+	    <item>Tablespoon M</item>
+	    <item>Teaspoon UK</item>
+	    <item>Teaspoon US</item>
+	    <item>Teaspoon M</item>
+	</array>
+	<array name = "catWeight">
+	    <item>Avogram</item>
+	    <item>Carat</item>
+	    <item>Centigram</item>
+	    <item>Electron</item>
+	    <item>ElectronVolt</item>
+	    <item>Grain</item>
+	    <item>g</item>
+	    <item>Kg</item>
+	    <item>lb</item>
+	    <item>Metric Ton</item>
+	    <item>mg</item>
+	    <item>ng</item>
+	    <item>Newton</item>
+	    <item>Ounce</item>
+	    <item>Pound-force</item>
+	    <item>Pound(metric)</item>
+	    <item>Slug</item>
+	    <item>Stone</item>
+	    <item>Tonne</item>
+	</array>
+	
+	<array name="vDbCommandsSingles">
+	    <item>find</item>
+	    <item>launch</item>
+	    <item>note</item>
+	    <item>open</item>
+	    <item>search</item>
+	    <item>time</item>
+	    <item>who</item>
+	    <item>what</item>
+	    <item>where</item>
+	    <item>when</item>
+	</array>
+	
+	<array name="vDbCommandsComplex">
+	    <item>remind me</item>
+	    <item>set reminder</item>
+	    <item>take note</item>
+	    <item>find me</item>
+	    <item>find us</item>
+	</array>
+	
+	<array name="vDbCommandsConfirm">
+	    <item>finish</item>
+	</array>
+</resources>

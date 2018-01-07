@@ -1,0 +1,166 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PHA_MainScreen"
+    android:background="@color/floralwhite" >
+
+    <TextView
+        android:id="@+id/mainScreenTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:text="@string/PHA_MM_Title"
+        android:textStyle="bold"
+        android:typeface="monospace" >
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/mainScreenLLs"
+        android:layout_below="@+id/mainScreenTV"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/mainScreenLLL"
+            android:layout_width="250dip"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mainScreenTV1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/PHA_MM_Title"
+                android:gravity="center">
+            </TextView>
+            <ListView
+                android:id="@+id/reminderListView"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+            </ListView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/mainScreenLLR"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:orientation="vertical">
+            <ScrollView
+                android:id="@+id/mainScreenScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_gravity="right"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_gravity="right">
+                    <TextView
+                        android:id="@+id/mainScreenTitleText"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/mainScreenTitle"
+                        android:textColor="#009999"
+                        android:nextFocusDown="@+id/button1" />
+
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_below="@+id/mainScreenTitleText"
+                        style="@style/PHAY_MainMenuBtnWhite"
+                        android:nextFocusDown="@+id/button2"
+                        android:text="@string/button1Text"
+                        android:nextFocusUp="@+id/mainScreenTitleText"
+                        >
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/button2"
+                        style="@style/PHAY_MainMenuBtnWhite"
+                        android:nextFocusDown="@+id/button3"
+                        android:nextFocusUp="@+id/button1"
+                        android:layout_below="@+id/button1"
+                        android:text="@string/button2Text" >
+
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button3"
+                        android:text="@string/button3Text"
+                        android:nextFocusUp="@+id/button2"
+                        android:layout_below="@+id/button2"
+                        android:nextFocusDown="@+id/button4"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button4"
+                        android:text="@string/button4Text"
+                        android:layout_below="@+id/button3"
+                        android:nextFocusUp="@+id/button3"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button5"
+                        android:text="@string/button5Text"
+                        android:layout_below="@+id/button4"
+                        android:nextFocusUp="@+id/button4"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button6"
+                        android:text="@string/button6Text"
+                        android:layout_below="@+id/button5"
+                        android:nextFocusUp="@+id/button5"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button7"
+                        android:text="@string/button7Text"
+                        android:nextFocusUp="@+id/button6"
+                        android:layout_below="@+id/button6"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button8"
+                        android:text="@string/button8Text"
+                        android:nextFocusUp="@+id/button7"
+                        android:layout_below="@+id/button7"
+                        >
+                    </Button>
+
+                    <Button style="@style/PHAY_MainMenuBtnWhite"
+                        android:id="@+id/button9"
+                        android:text="@string/button9Text"
+                        android:nextFocusUp="@+id/button8"
+                        android:layout_below="@+id/button8"
+                        >
+                    </Button>
+                </RelativeLayout>
+            </ScrollView>
+            <TextView
+                android:id="@+id/mainScreenTV2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/PHA_MM_Title"
+                android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+

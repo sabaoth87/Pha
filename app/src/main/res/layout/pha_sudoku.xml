@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PHA_Sudoku" 
+    android:paddingLeft="60dip"
+    android:paddingRight="60dip"
+    android:background="@color/sudokuBG">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sudokuMainTitle"
+        android:textSize="24.5sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="5dip"/>
+     <Button
+        android:id="@+id/sudokuButtonContinue"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sudokuContBtnTxt" />
+	<Button
+	    android:id="@+id/sudokuButtonNewGame"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sudokuNGBtnTxt" />
+	<Button
+	    android:id="@+id/sudokuButtonAbout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sudokuAboutBtnTxt" />
+	<Button
+	    android:id="@+id/sudokuButtonExit"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sudokuExitBtnTxt" />
+
+</LinearLayout>

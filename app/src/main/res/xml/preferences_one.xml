@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="@string/pref_category_task_defaults_key"
+        android:title="@string/pref_category_task_defaults_title">
+        <EditTextPreference
+            android:key="@string/pref_task_title_key"
+            android:dialogTitle="@string/pref_task_title_dialog_title"
+            android:dialogMessage="@string/pref_task_title_message"
+            android:summary="@string/pref_task_title_summary"
+            android:title="@string/pref_task_title_title"/>
+        <CheckBoxPreference
+            android:key="@string/prefs_dev_mode_key"
+            android:dialogTitle="@string/prefs_dev_mode_dialog_title"
+            android:dialogMessage="@string/prefs_dev_mode_message"
+            android:summary="@string/prefs_dev_mode_summary"
+            android:title="@string/prefs_dev_mode_title" />
+        <CheckBoxPreference
+            android:key="@string/prefs_tilt_scroll_key"
+            android:dialogTitle="@string/prefs_tilt_scroll_dialog_title"
+            android:dialogMessage="@string/prefs_tilt_scroll_message"
+            android:summary="@string/prefs_tilt_scroll_summary"
+            android:title="@string/prefs_tilt_scroll_title" />
+        <EditTextPreference
+            android:key="@string/prefs_tilt_scroll_up_key"
+            android:dialogTitle="@string/prefs_tilt_scroll_up_dialog_title"
+            android:dialogMessage="@string/prefs_tilt_scroll_up_message"
+            android:summary="@string/prefs_tilt_scroll_up_summary"
+            android:title="@string/prefs_tilt_scroll_up_title" />
+        <EditTextPreference
+            android:key="@string/prefs_tilt_scroll_down_key"
+            android:dialogTitle="@string/prefs_tilt_scroll_down_dialog_title"
+            android:dialogMessage="@string/prefs_tilt_scroll_down_message"
+            android:summary="@string/prefs_tilt_scroll_down_summary"
+            android:title="@string/prefs_tilt_scroll_down_title" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="@string/pref_category_datetime_key"
+        android:title="@string/pref_category_datetime_title">
+        <EditTextPreference
+            android:key="@string/pref_default_time_from_now_key"
+            android:dialogTitle="@string/pref_default_time_from_now_title"
+            android:dialogMessage="@string/pref_default_time_from_now_message"
+            android:summary="@string/pref_default_time_from_now_summary"
+            android:title="@string/pref_default_time_from_now_title"/>
+    </PreferenceCategory>
+</PreferenceScreen>

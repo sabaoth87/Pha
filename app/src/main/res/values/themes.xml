@@ -1,0 +1,103 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="PHAY_MainMenuBtn">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">575dp</item>
+        <item name="android:layout_height">175dp</item>
+        <item name="android:background">@drawable/protobtnteal</item>
+        <item name="android:textColor">#606060</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
+    </style>
+    
+    
+    <style name="PHAY_MainMenuBtnWhite">
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_width">325dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:background">@drawable/phamenubtnslctr</item>
+        <item name="android:textColor">@color/darkturquoise</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
+    </style>
+    
+    <style name="PHAY_MainMenuBtnWhiteSlider">
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:background">@drawable/panel_slider_panel_open</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    
+    <style name="PHA_ClcBtn" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/phaclcbtn</item>
+        <item name="android:textColor">#ffcacaca</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:layout_height">fill_parent</item>
+        
+    </style>
+    
+    <style name="PHA_MemoBtn" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/phaclcbtn</item>
+        <item name="android:textColor">#ff909090</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_height">fill_parent</item>
+        
+    </style>
+    
+    <style name="PHA_MemoEdit" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/rounded_corners_white</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">#ff909090</item>
+        <item name="android:layout_height">fill_parent</item>
+        
+    </style>
+    
+    <style name="PHA_MemoBody" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/memobdybg</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">5dip</item>
+        <item name="android:textColor">#ff707070</item>
+        <item name="android:layout_height">fill_parent</item>
+        
+    </style>
+    
+    <style name="PHA_ClcDisplay">
+        <item name="android:background">@drawable/clcdisplaybg</item>
+        <item name="android:layout_marginBottom">10sp</item>
+        <item name="android:layout_marginTop">10sp</item>
+    </style>
+    
+    <style name="PHA_ScnClcDisplay" parent="@style/PHA_ClcBtn">
+        <item name="android:textSize">12sp</item>
+    </style>
+    
+    <style name="PHA_ClcDisplayTxt" parent="@android:style/TextAppearance">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">45sp</item>
+        <item name="android:textColor">#ff009900</item>
+        <item name="android:gravity">right</item>
+    </style>
+    
+    <style name="PHA_ConverterTV">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ff00CC66</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/simple_green_button</item>
+        <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="PHA_ConverterET">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#ff00CC66</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/simple_green_button</item>
+        <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+    </style>  
+</resources>

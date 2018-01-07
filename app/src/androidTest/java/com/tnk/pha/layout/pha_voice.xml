@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".PHA_Voice" >
+
+    <TextView
+        android:id="@+id/textSaidTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:text="@string/hello_world" />
+    <TextView
+        android:id="@+id/SSYNTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textSaidTV"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/voiceBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SSYNTV"
+        android:layout_centerInParent="true"
+        android:onClick="recordSpeech"
+        android:text="@string/PHA_VoiceRecord" />
+
+    <TextView
+        android:id="@+id/SSYNTV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TTSBtn"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>
