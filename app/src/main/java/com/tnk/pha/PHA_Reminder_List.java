@@ -13,6 +13,8 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.tnk.db.dbAdapter;
+
 public class PHA_Reminder_List extends ListActivity {
 	
 	private static final int ACTIVITY_CREATE=0;

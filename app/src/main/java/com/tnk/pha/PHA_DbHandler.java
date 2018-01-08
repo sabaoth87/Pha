@@ -23,15 +23,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import static android.provider.BaseColumns._ID;
-import static com.tnk.pha.dbConstants.AUTHOR;
-import static com.tnk.pha.dbConstants.COMMENT;
-import static com.tnk.pha.dbConstants.MEMO;
-import static com.tnk.pha.dbConstants.TABLE_NAME;
-import static com.tnk.pha.dbConstants.TIME;
-import static com.tnk.pha.dbConstants.TITLE;
-import static com.tnk.pha.dbConstants.DATE;
-import static com.tnk.pha.dbConstants.TAGS;
-import static com.tnk.pha.dbConstants.CATEGORY;
+import static com.tnk.db.dbConstants.AUTHOR;
+import static com.tnk.db.dbConstants.COMMENT;
+import static com.tnk.db.dbConstants.MEMO;
+import static com.tnk.db.dbConstants.TABLE_NAME;
+import static com.tnk.db.dbConstants.TIME;
+import static com.tnk.db.dbConstants.TITLE;
+import static com.tnk.db.dbConstants.DATE;
+import static com.tnk.db.dbConstants.TAGS;
+import static com.tnk.db.dbConstants.CATEGORY;
 
 public class PHA_DbHandler extends Activity {
 

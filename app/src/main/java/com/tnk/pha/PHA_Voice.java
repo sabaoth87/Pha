@@ -17,8 +17,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import static com.tnk.pha.dbConstants.vdbCommands1;
-import static com.tnk.pha.dbConstants.vdbDateKWs;
+import static com.tnk.db.dbConstants.vdbCommands1;
+import static com.tnk.db.dbConstants.vdbDateKWs;
 
 public class PHA_Voice extends Activity {
 	

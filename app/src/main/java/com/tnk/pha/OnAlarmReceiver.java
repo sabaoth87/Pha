@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.tnk.db.dbAdapter;
+
 public class OnAlarmReceiver extends BroadcastReceiver {
 
 	@Override

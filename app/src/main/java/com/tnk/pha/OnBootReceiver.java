@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.tnk.db.dbAdapter;
+
 public class OnBootReceiver extends BroadcastReceiver {
 
 	@Override

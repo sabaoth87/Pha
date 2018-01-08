@@ -26,6 +26,7 @@
         android:orientation="vertical"
         android:background="@color/slate"
         >
+
         <TextView
            style="@style/PHA_ConverterTV"
 	       android:text="From:"

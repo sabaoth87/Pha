@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 
+import com.tnk.db.dbAdapter;
+
 
 //@TODO
 // These reminders and alarms will have to be stripped once we get this up and running

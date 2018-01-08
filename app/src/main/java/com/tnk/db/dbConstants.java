@@ -1,4 +1,4 @@
-package com.tnk.pha;
+package com.tnk.db;
 
 import android.provider.BaseColumns;
 

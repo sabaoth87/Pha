@@ -21,7 +21,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import com.tnk.pha.dbAdapter;
+import com.tnk.db.dbAdapter;
 
 public class PHA_Reminder_Entry extends Activity implements OnClickListener {
 

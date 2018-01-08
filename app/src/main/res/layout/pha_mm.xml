@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PHA_MainScreen"
+    tools:context="com.tnk.pha.PHA_MM"
     android:background="@color/floralwhite" >
     
     <TextView

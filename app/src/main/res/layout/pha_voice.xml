@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PHA_Voice" >
+    tools:context=".PHA_Voice">
 
     <TextView
         android:id="@+id/textSaidTV"
@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:text="@string/hello_world" />
+
     <TextView
         android:id="@+id/SSYNTV"
         android:layout_width="wrap_content"
@@ -30,12 +31,12 @@
         android:layout_centerInParent="true"
         android:onClick="recordSpeech"
         android:text="@string/PHA_VoiceRecord" />
-   
+
     <TextView
         android:id="@+id/SSYNTV1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TTSBtn"
+        android:layout_below="@+id/voiceBtn"
         android:layout_centerInParent="true" />
 
 </RelativeLayout>

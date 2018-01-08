@@ -51,12 +51,13 @@ public class PHA_SensorTest extends Activity {
     private ArrayList<String> geo2;
     private int addIdx;
     private int addressIdx;
+    private Context context;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pha_sensor_test);
-		
+		context = getApplicationContext();
 		Log.v(TAG, "onCreate");
 		PHAgeoCoder = new Geocoder(this);
 		gyro = (TextView) findViewById(R.id.gyro);
@@ -111,8 +112,15 @@ public class PHA_SensorTest extends Activity {
         PHASM.registerListener(sensorListener, msensor, SensorManager.SENSOR_DELAY_NORMAL);
         PHASM.registerListener(sensorListener, asensor, SensorManager.SENSOR_DELAY_NORMAL);
         //PHASM.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME);
-        
-        PHALM.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, locationListener);
+
+
+		//@FIXME Location is no longer working!!!!
+		//Time to put the sextant to use and plot those coords!
+
+        //PHALM.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, locationListener);
+
+		PHA_Location locationManager = PHA_Location.getLocationManager(context);
+
     }
 	
 	@Override
@@ -173,7 +181,7 @@ public class PHA_SensorTest extends Activity {
 			Log.v(TAG, "location changed");
 			 locationTV.setText
 			 		(  "Latitude: " + location.getLatitude() + "\n"
-				 + "Longitude: " + location.getLongitude() + "\n"
+				     + "Longitude: " + location.getLongitude() + "\n"
 					 + "Elevation: " + location.getAltitude() + "\n");
 			
 //			 locationTV.setText(String.format("" +
