@@ -8,13 +8,12 @@ import com.tnk.db.dbAdapter;
 
 public class OnAlarmReceiver extends BroadcastReceiver {
 
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		long rowid = intent.getExtras().getLong(dbAdapter.REM_ROWID);
-		WakeReminderIntentService.acquireStaticLock(context);
-		Intent i = new Intent(context, ReminderService.class);
-		i.putExtra(dbAdapter.REM_ROWID, rowid);
-		context.startService(i);
-	}
-
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        long rowid = intent.getExtras().getLong(dbAdapter.REM_ROWID);
+        WakeReminderIntentService.acquireStaticLock(context);
+        Intent i = new Intent(context, ReminderService.class);
+        i.putExtra(dbAdapter.REM_ROWID, rowid);
+        context.startService(i);
+    }
 }

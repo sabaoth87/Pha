@@ -17,12 +17,13 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    
+
     <style name="CalculatorDisplay">
-		<item name="android:background">@drawable/clcdisplaybg</item>
-	</style>
-	<style name="ScientificButton" parent="@style/PHA_ClcDisplay">
-		<item name="android:textSize">12sp</item>
-	</style>
-	
+        <item name="android:background">@drawable/clcdisplaybg</item>
+    </style>
+
+    <style name="ScientificButton" parent="@style/PHA_ClcDisplay">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

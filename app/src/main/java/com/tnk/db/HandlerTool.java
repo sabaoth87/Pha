@@ -16,7 +16,7 @@ import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.tnk.database.ToolContract;
+import com.tnk.db.ToolContract;
 
 public class HandlerTool extends SQLiteOpenHelper  {
 

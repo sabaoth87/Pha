@@ -1,5 +1,4 @@
-<RelativeLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,98 +7,98 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <RelativeLayout 
+    <RelativeLayout
         android:id="@+id/memoAttribsRel"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-        
-       
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+
         <LinearLayout
             android:id="@+id/memoAttrLinear"
-            android:layout_alignParentTop="true"
-        	android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-		    android:layout_width="wrap_content"
-		    android:orientation="horizontal">
-		    <LinearLayout 
-	            android:layout_height="wrap_content"
-			    android:layout_width="wrap_content"
-			    android:orientation="vertical">
-    
-				    <EditText
-				        android:id="@+id/memoTitleEntry"
-				        android:layout_width="225dip"
-				        android:layout_height="wrap_content"
-				        android:hint="@string/dbEntryTitle"
-				        android:inputType="textCapWords" >
-				        
-				    </EditText>
-		
-				    <EditText
-				        android:id="@+id/memoAuthorEntry"
-				        android:layout_width="225dip"
-				        android:layout_height="wrap_content"
-				        android:hint="@string/dbEntryName"
-				        android:inputType="textCapWords" >
-				        
-				</EditText>
-		</LinearLayout>
-		<LinearLayout
-	            android:layout_height="wrap_content"
-			    android:layout_width="wrap_content"
-			    android:orientation="vertical">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
 
-		    <Spinner
-		        android:id="@+id/memoSpinner"
-		        android:layout_width="wrap_content"
-		        android:layout_height="match_parent" 
-		        android:entries="@array/PHAY_DbCategories"
-		        android:prompt="@string/dbSpinnerPrompt"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-		</LinearLayout>
-	    </LinearLayout>
-    
+                <EditText
+                    android:id="@+id/memoTitleEntry"
+                    android:layout_width="225dip"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dbEntryTitle"
+                    android:inputType="textCapWords">
+
+                </EditText>
+
+                <EditText
+                    android:id="@+id/memoAuthorEntry"
+                    android:layout_width="225dip"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dbEntryName"
+                    android:inputType="textCapWords">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/memoSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:entries="@array/PHAY_DbCategories"
+                    android:prompt="@string/dbSpinnerPrompt" />
+
+            </LinearLayout>
+        </LinearLayout>
+
     </RelativeLayout>
-    
-    <RelativeLayout 
+
+    <RelativeLayout
         android:id="@+id/memoBodyRel"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/memoAttribsRel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
-	    
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/memoAttribsRel">
+
         <EditText
             android:id="@+id/memoEntry"
             android:layout_width="fill_parent"
             android:layout_height="75dip"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:hint="@string/dbEntryMemo"
             android:inputType="textCapSentences"
             android:shadowColor="@color/puzzle_light"
             android:shadowDx="5"
             android:shadowDy="5"
-            android:shadowRadius="10" >
-        </EditText>
-        
-		<EditText
-		    android:layout_below="@+id/memoEntry"
-		    android:id="@+id/memoCommentEntry"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:hint="@string/dbEntryComment"
-		    android:inputType="textCapSentences" >
-		</EditText>
-		<EditText
-		    android:layout_below="@+id/memoCommentEntry"
-		    android:id="@+id/memoTagsEntry"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:hint="@string/dbEntryTags"
-		    android:inputType="textCapWords" >
-		</EditText>
+            android:shadowRadius="10"></EditText>
+
+        <EditText
+            android:id="@+id/memoCommentEntry"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/memoEntry"
+            android:hint="@string/dbEntryComment"
+            android:inputType="textCapSentences"></EditText>
+
+        <EditText
+            android:id="@+id/memoTagsEntry"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/memoCommentEntry"
+            android:hint="@string/dbEntryTags"
+            android:inputType="textCapWords"></EditText>
 
 
     </RelativeLayout>

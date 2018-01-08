@@ -35,6 +35,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
+import com.tnk.R;
+
 public class PHA_Db extends Activity implements OnClickListener, OnItemSelectedListener {
 
 	public PHA_DbData memos;

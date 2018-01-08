@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-			<EditText 
-			    android:id="@+id/remsTitleET"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:hint="@string/remsTitle"/>
-			<EditText android:id="@+id/remsBodyET"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:minLines="5"
-				android:scrollbars="vertical"
-				android:gravity="top"
-				android:hint="@string/remsBody"/>
-			<TextView 
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/remsDate" />
-			<Button
-			    android:id="@+id/remsDateBtn"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"/>
-			<TextView 
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/remsTime" />
-			<Button
-				android:id="@+id/remsTimeBtn"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content" />
-			<Button 
-			    android:id="@+id/remsConfirmBtn"
-				android:text="@string/remsConfirm"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-	</LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/remsTitleET"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/remsTitle" />
+
+        <EditText
+            android:id="@+id/remsBodyET"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/remsBody"
+            android:minLines="5"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remsDate" />
+
+        <Button
+            android:id="@+id/remsDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remsTime" />
+
+        <Button
+            android:id="@+id/remsTimeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/remsConfirmBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remsConfirm" />
+    </LinearLayout>
 
 </ScrollView>

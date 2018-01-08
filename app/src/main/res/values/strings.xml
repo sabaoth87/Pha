@@ -34,6 +34,7 @@
     <string name="actTitle_PHA_Search">PHA:LANX(Se)</string>
     <string name="actTitle_PHA_Search_Display">PHA:LANX(Se)</string>
     <string name="actTitle_PHA_Sudoku_About">PHA:LANX(Su)</string>
+    <string name="actTitle_Workbench">Workbench</string>
     <string name="empty">Empty</string>
     <string name="notifyNewTaskMessage">You Have a New Reminder</string>
     <string name="notifyNewTaskTitle">Reminders</string>

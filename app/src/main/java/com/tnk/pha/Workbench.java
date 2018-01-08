@@ -1,5 +1,6 @@
 package com.tnk.pha;
 
+
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -21,10 +22,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tnk.R;
 import com.tnk.db.ToolContract;
 import com.tnk.db.ToolCursorAdapter;
 import com.tnk.db.ToolDbHelper;
 import com.tnk.db.ItemTool;
+
 
 public class Workbench extends AppCompatActivity {
 
@@ -62,8 +65,8 @@ public class Workbench extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workbench);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         /**
          * START

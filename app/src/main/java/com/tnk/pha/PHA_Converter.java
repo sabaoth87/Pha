@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.tnk.R;
+
 public class PHA_Converter extends Activity implements OnClickListener, OnItemSelectedListener {
 
 	private String TAG = "Converter";

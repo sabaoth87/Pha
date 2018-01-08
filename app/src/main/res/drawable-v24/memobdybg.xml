@@ -1,18 +1,16 @@
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    
+
     <padding
-        android:top="2sp"
         android:bottom="2sp"
         android:left="10sp"
-        android:right="10sp"/>
-    <solid
-        android:color="#ff202020"/>
+        android:right="10sp"
+        android:top="2sp" />
+    <solid android:color="#ff202020" />
     <stroke
-        android:dashWidth="2px"
-        android:dashGap="2px"
         android:width="2px"
-        android:color="#ff396FC0"/>
-    
+        android:color="#ff396FC0"
+        android:dashGap="2px"
+        android:dashWidth="2px" />
+
 </shape>

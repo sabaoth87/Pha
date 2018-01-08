@@ -3,11 +3,11 @@
 
     <!-- Bottom 2dp Shadow -->
     <item
-        android:left="45dp"
         android:bottom="0dp"
-        android:top="22dp"
-        android:right="0dp" >
-        <shape  android:shape="rectangle">
+        android:left="45dp"
+        android:right="0dp"
+        android:top="22dp">
+        <shape android:shape="rectangle">
 
             <solid android:color="#90000000" />
             <corners android:radius="5dp" />
@@ -18,44 +18,45 @@
     <item
         android:bottom="8dp"
         android:left="13dp"
-        android:right="23dp" >
-        <shape  android:shape="rectangle">
+        android:right="23dp">
+        <shape android:shape="rectangle">
             <solid android:color="#6600FF00" />
             <corners android:radius="5dp" />
         </shape>
     </item>
-    
+
     <!-- Body colour backdrop-->
-    <item android:bottom="10dp"
-        android:top="2dp"
+    <item
+        android:bottom="10dp"
         android:left="15dp"
-        android:right="25dp" >
-        <shape  android:shape="rectangle">
-        <solid android:color="#55000000" />
-        <corners android:radius="5dp" />
-    </shape>
+        android:right="25dp"
+        android:top="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#55000000" />
+            <corners android:radius="5dp" />
+        </shape>
     </item>
 
     <!-- Body colour -->
-    <item android:bottom="10dp"
-        android:top="2dp"
+    <item
+        android:bottom="10dp"
         android:left="15dp"
-        android:right="25dp" >
-        <shape  android:shape="rectangle">
-        <solid android:color="#50000000" />
-        <corners android:radius="5dp" />
+        android:right="25dp"
+        android:top="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#50000000" />
+            <corners android:radius="5dp" />
         </shape>
     </item>
-    
-    
-    
+
+
     <!-- See-thru effect -->
     <item
-        android:left="45dp"
         android:bottom="10dp"
-        android:top="22dp"
-        android:right="25dp" >
-        <shape  android:shape="rectangle">
+        android:left="45dp"
+        android:right="25dp"
+        android:top="22dp">
+        <shape android:shape="rectangle">
 
             <solid android:color="#08000000" />
             <corners android:radius="5dp" />

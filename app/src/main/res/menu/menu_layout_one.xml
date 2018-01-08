@@ -1,21 +1,26 @@
-<menu xmlns:android=
-      "http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_opt_1"
-          android:icon="@android:drawable/ic_menu_add"
-          android:title="@string/menu_opt_1" />
-    <item android:id="@+id/menu_opt_2"
-          android:icon="@android:drawable/ic_menu_search"
-          android:title="@string/menu_opt_2" />
-    <item android:id="@+id/menu_opt_3"
-          android:icon="@android:drawable/ic_popup_reminder"
-          android:title="@string/menu_opt_3" />
-    <item android:id="@+id/menu_opt_4"
-          android:icon="@android:drawable/ic_lock_idle_charging"
-          android:title="@string/menu_opt_4" />
-    <item android:id="@+id/menu_opt_5"
-          android:icon="@android:drawable/ic_menu_preferences"
-          android:title="@string/menu_opt_5" />
-    <item android:id="@+id/menu_opt_6"
-          android:icon="@android:drawable/alert_dark_frame"
-          android:title="@string/menu_opt_6" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_opt_1"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menu_opt_1" />
+    <item
+        android:id="@+id/menu_opt_2"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/menu_opt_2" />
+    <item
+        android:id="@+id/menu_opt_3"
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:title="@string/menu_opt_3" />
+    <item
+        android:id="@+id/menu_opt_4"
+        android:icon="@android:drawable/ic_lock_idle_charging"
+        android:title="@string/menu_opt_4" />
+    <item
+        android:id="@+id/menu_opt_5"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="@string/menu_opt_5" />
+    <item
+        android:id="@+id/menu_opt_6"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="@string/menu_opt_6" />
 </menu>

@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-import com.tnk.myworkshop.R;
+
+import com.tnk.R;
 
 import org.w3c.dom.Text;
 

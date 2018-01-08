@@ -6,31 +6,31 @@
     android:paddingLeft="30dip"
     android:paddingRight="30dip">
 
-     <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-     <TextView
-         android:layout_gravity="center"
-         android:id="@+id/PHAY_SearchTitleTxt"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="@string/phaySearchTxt" />
-     
-     <EditText 
-         android:layout_gravity="center"
-         android:id="@+id/phaySearchETxt"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:hint="@string/phaySearchETxtHint"/>
+        <TextView
+            android:id="@+id/PHAY_SearchTitleTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/phaySearchTxt" />
 
-     <Button
-         android:layout_gravity="center"
-         android:id="@+id/searchBtn"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="@string/phaySearchBtnTxt" />
-     </LinearLayout>
-    
+        <EditText
+            android:id="@+id/phaySearchETxt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/phaySearchETxtHint" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/phaySearchBtnTxt" />
+    </LinearLayout>
+
 </ScrollView>

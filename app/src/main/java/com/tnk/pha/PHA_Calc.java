@@ -18,6 +18,8 @@ import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.content.Context;
 
+import com.tnk.R;
+
 public class PHA_Calc extends Activity implements OnClickListener{
 
 	private static String ACTIVITYNAME = "PHA_Calc";

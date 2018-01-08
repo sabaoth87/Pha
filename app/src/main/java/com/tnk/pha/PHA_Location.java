@@ -48,17 +48,17 @@ public class PHA_Location implements LocationListener {
     /**
      * Local Constructor
      */
-    private PHA_Location( Context context) {
+    private PHA_Location(Context context) {
         initLocationService(context);
         Log.v(TAG, "PHA_Location created");
     }
 
     // Sets up location service after permissions is granted
     @TargetApi(23)
-    private void initLocationService(Context context){
+    private void initLocationService(Context context) {
         if (Build.VERSION.SDK_INT >= 23 &&
-                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission( context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
 
@@ -73,7 +73,7 @@ public class PHA_Location implements LocationListener {
 
             if (forceNetwork) isGPSEnabled = false;
 
-            if(!isNetworkEnabled && !isGPSEnabled) {
+            if (!isNetworkEnabled && !isGPSEnabled) {
                 // Unable to find location
                 this.locationServiceAvailable = false;
             }
@@ -115,14 +115,16 @@ public class PHA_Location implements LocationListener {
     }
 
     @Override
-    public void onStatusChanged(String string, int i, Bundle bundle){
+    public void onStatusChanged(String string, int i, Bundle bundle) {
         //
     }
 
     @Override
-    public void onProviderEnabled(String provider){}
+    public void onProviderEnabled(String provider) {
+    }
 
     @Override
-    public void onProviderDisabled(String provider) {}
+    public void onProviderDisabled(String provider) {
+    }
 
 }

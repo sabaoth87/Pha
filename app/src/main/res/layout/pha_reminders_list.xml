@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".PHA_Reminder_List" >
+    tools:context=".pha.PHA_Reminder_List">
 
     <ListView
         android:id="@+id/android:list"
@@ -17,6 +17,6 @@
         android:id="@+id/android:empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/phaRemindersNoRems"/>
+        android:text="@string/phaRemindersNoRems" />
 
 </LinearLayout>
