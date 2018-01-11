@@ -47,7 +47,6 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
     private float[] inclineMatrix = new float[9];
     private float[] orientationValues = new float[3];
     private float[] prefValues = new float[3];
-    private float mAzimuth;
     //private double mInclination;
     private int counter;
     //private int mRotation;
@@ -60,14 +59,8 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
     //private Button button5;
     //private Button button6;
 
-    private String defaultUpScrollKey;
-    private String defaultDownScrollKey;
-    private String defaultUpScroll;
-    private String defaultDownScroll;
     private boolean scrollTiltEnabled;
     private SharedPreferences mmPrefs;
-
-    public Animation slideAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,28 +101,30 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         /*
          * set the onClickListener up for the menu
          */
-        ((Button) findViewById(R.id.button1)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button2)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button3)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button4)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button5)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button6)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button7)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button8)).setOnClickListener(this);
-        ((Button) findViewById(R.id.button9)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_00)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_01)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_02)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_03)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_04)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_05)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_06)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_07)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_08)).setOnClickListener(this);
+        ((Button) findViewById(R.id.btn_mm_09)).setOnClickListener(this);
         /*
          * Initialize the scroller so the tilt will scroll the page
          */
 
-        Button MMBtn1 = (Button) findViewById(R.id.button1);
-        Button MMBtn2 = (Button) findViewById(R.id.button2);
-        Button MMBtn3 = (Button) findViewById(R.id.button3);
-        Button MMBtn4 = (Button) findViewById(R.id.button4);
-        Button MMBtn5 = (Button) findViewById(R.id.button5);
-        Button MMBtn6 = (Button) findViewById(R.id.button6);
-        Button MMBtn7 = (Button) findViewById(R.id.button7);
-        Button MMBtn8 = (Button) findViewById(R.id.button8);
-        Button MMBtn9 = (Button) findViewById(R.id.button9);
+        Button MMBtn1 = (Button) findViewById(R.id.btn_mm_00);
+        Button MMBtn2 = (Button) findViewById(R.id.btn_mm_01);
+        Button MMBtn3 = (Button) findViewById(R.id.btn_mm_02);
+        Button MMBtn4 = (Button) findViewById(R.id.btn_mm_03);
+        Button MMBtn5 = (Button) findViewById(R.id.btn_mm_04);
+        Button MMBtn6 = (Button) findViewById(R.id.btn_mm_05);
+        Button MMBtn7 = (Button) findViewById(R.id.btn_mm_06);
+        Button MMBtn8 = (Button) findViewById(R.id.btn_mm_07);
+        Button MMBtn9 = (Button) findViewById(R.id.btn_mm_08);
+        Button MMBtn10 = (Button) findViewById(R.id.btn_mm_09);
         //MMET1 = (EditText)findViewById(R.id.mainScreenTV1);
         //MMET2 = (EditText)findViewById(R.id.mainScreenTV2);
 
@@ -151,8 +146,13 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         registerForContextMenu(reminderLV);
         reminderLV.setAdapter(adapter);
 
+        MMBtn1.setAlpha(0);
+
         Animation rotateIn = AnimationUtils.loadAnimation(this, R.anim.mm_btn_rotate_in);
-        MMBtn1.startAnimation(rotateIn);
+        if (MMBtn1.hasFocus()) {
+
+            MMBtn1.startAnimation(rotateIn);
+        }
         MMBtn2.startAnimation(rotateIn);
         MMBtn3.startAnimation(rotateIn);
         MMBtn4.startAnimation(rotateIn);
@@ -161,6 +161,7 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         MMBtn7.startAnimation(rotateIn);
         MMBtn8.startAnimation(rotateIn);
         MMBtn9.startAnimation(rotateIn);
+        MMBtn10.startAnimation(rotateIn);
     }
 
     @Override
@@ -200,48 +201,48 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
+            case R.id.btn_mm_00:
                 Intent i = new Intent(this, PHA_Sudoku.class);
                 Log.v(TAG, "Option1");
                 startActivity(i);
                 break;
-            case R.id.button2:
+            case R.id.btn_mm_01:
                 Intent j = new Intent(this, PHA_Reminder_List.class);
                 Log.v(TAG, "Option2");
                 startActivity(j);
                 break;
-            case R.id.button3:
+            case R.id.btn_mm_02:
                 Intent k = new Intent(this, PHA_SensorTest.class);
                 Log.v(TAG, "Option3");
                 startActivity(k);
                 break;
-            case R.id.button4:
+            case R.id.btn_mm_03:
                 Intent l = new Intent(this, PHA_Calc.class);
                 Log.v(TAG, "Option4");
                 startActivity(l);
                 break;
-            case R.id.button5:
+            case R.id.btn_mm_04:
                 Intent h = new Intent(this, PHA_TiltTest.class);
                 Log.v(TAG, "Option5");
                 startActivity(h);
                 break;
-            case R.id.button6:
+            case R.id.btn_mm_05:
                 Intent a = new Intent(this, PHA_TiltScrollTest.class);
                 Log.v(TAG, "Option6");
                 startActivity(a);
                 break;
 
-            case R.id.button7:
+            case R.id.btn_mm_06:
                 Intent b = new Intent(this, PHA_Db.class);
                 Log.v(TAG, "Option7");
                 startActivity(b);
                 break;
-            case R.id.button8:
+            case R.id.btn_mm_07:
                 Intent c = new Intent(this, PHA_Voice.class);
                 Log.v(TAG, "Option8");
                 startActivity(c);
                 break;
-            case R.id.button9:
+            case R.id.btn_mm_08:
                 Intent d = new Intent(this, PHA_Converter.class);
                 Log.v(TAG, "Option9");
                 startActivity(d);
@@ -301,6 +302,7 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
     }
 
     public void doUpdate(View view) {
+        float mAzimuth;
         if (!ready)
             return;
         mAzimuth = (float) Math.toDegrees(prefValues[0]);
@@ -315,41 +317,44 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
 		 * considered "scrolling-enabled"
 		 * These values are for a landscape activity, top->left
 		 */
-//		if (rollValue < -(R.string.prefs_tilt_scroll_up_key));
-//		{
-//			scrollingUp = true;
-//			scroller.pageScroll(View.FOCUS_UP);
-//			Log.v(TAG,"Scroll up");
-//		}if(rollValue > R.string.prefs_tilt_scroll_up_key){
-//			scrollingDown = true;
-//			scroller.pageScroll(View.FOCUS_DOWN);
-//			Log.v(TAG,"Scroll down");
-//		}
-//		else{
-//			scrollingUp = false;
-//			scrollingDown = false;
-//		}
 
-//		String defaultScrollUpKey = getString(R.string.prefs_tilt_scroll_up_key);
-//		String defaultScrollDownKey = getString(R.string.prefs_tilt_scroll_down_key);
-//		float defaultScrollUp = prefs.getFloat(defaultScrollUpKey, 0);
-//		if("".equals(defaultScrollUp)==false){
-//			MMET1.setText(defaultScrollUp);
-//				if (rollValue < -(Integer.valueOf(defaultScrollUp)));
-//					{
-//						scrollingUp = true;
-//						scroller.pageScroll(View.FOCUS_UP);
-//						Log.v(TAG,"Scroll up");
-//		}}
-//		if("".equals(defaultScrollDown)==false)
-//			MMET1.setText(defaultScrollDown);
-//				if (rollValue < -(Integer.valueOf(defaultScrollDown)));
-//				{
-//					scrollingDown = true;
-//					scroller.pageScroll(View.FOCUS_DOWN);
-//					Log.v(TAG,"Scroll Down");
-//				}
+        //@FIXME TiltScrolling is NOT working!
+        /*
+		if (rollValue < -(R.string.prefs_tilt_scroll_up_key));
+		{
+			scrollingUp = true;
+			scroller.pageScroll(View.FOCUS_UP);
+			Log.v(TAG,"Scroll up");
+		}if(rollValue > R.string.prefs_tilt_scroll_up_key){
+			scrollingDown = true;
+			scroller.pageScroll(View.FOCUS_DOWN);
+			Log.v(TAG,"Scroll down");
+		}
+		else{
+			scrollingUp = false;
+			scrollingDown = false;
+		}
 
+		String defaultScrollUpKey = getString(R.string.prefs_tilt_scroll_up_key);
+		String defaultScrollDownKey = getString(R.string.prefs_tilt_scroll_down_key);
+		float defaultScrollUp = prefs.getFloat(defaultScrollUpKey, 0);
+		if("".equals(defaultScrollUp)==false){
+			MMET1.setText(defaultScrollUp);
+				if (rollValue < -(Integer.valueOf(defaultScrollUp)));
+					{
+						scrollingUp = true;
+						scroller.pageScroll(View.FOCUS_UP);
+						Log.v(TAG,"Scroll up");
+		}}
+		if("".equals(defaultScrollDown)==false)
+			MMET1.setText(defaultScrollDown);
+				if (rollValue < -(Integer.valueOf(defaultScrollDown)));
+				{
+					scrollingDown = true;
+					scroller.pageScroll(View.FOCUS_DOWN);
+					Log.v(TAG,"Scroll Down");
+				}
+				*/
     }
 
 
@@ -412,6 +417,10 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        String defaultUpScrollKey;
+        String defaultDownScrollKey;
+        String defaultUpScroll;
+        String defaultDownScroll;
         mmPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         defaultUpScrollKey = getString(R.string.prefs_tilt_scroll_up_key);

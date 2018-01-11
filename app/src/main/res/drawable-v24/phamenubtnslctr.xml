@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" android:constantSize="true" android:variablePadding="false">
 
-    <item android:drawable="@drawable/btn_proto_white_blue_click" android:state_pressed="true" />
+    <item android:drawable="@drawable/btn_proto_white_blue_confirm" android:state_pressed="true" />
     <item android:drawable="@drawable/btn_proto_white_blue_glow" android:state_focused="true" />
-    <item android:drawable="@drawable/btn_proto_white_blue" />
+    <item android:drawable="@drawable/btn_proto_white_blue" android:state_enabled="true" />
 </selector>

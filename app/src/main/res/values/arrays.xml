@@ -21,6 +21,15 @@
         <item>Sander</item>
     </string-array>
 
+    <string-array name="PHAY_DbCategories">
+        <item>C.K.</item>
+        <item>Memo</item>
+        <item>ToDO</item>
+        <item>Formula</item>
+        <item>Ideas</item>
+        <item>Prototypes</item>
+        <item>Improvements</item>
+    </string-array>
 
     <array name="difficulty">
         <item>@string/sudokuEasyLbl</item>

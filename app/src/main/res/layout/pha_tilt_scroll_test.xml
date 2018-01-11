@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/scrollUpCheckTxt"
             android:layout_centerHorizontal="true"
-            android:nextFocusDown="@+id/button1"
+            android:nextFocusDown="@+id/btn_mm_00"
             android:nextFocusUp="@+id/scrollUpCheckTxt"
             android:text="@string/PHA_Test_Zeros" />
     </RelativeLayout>
@@ -56,70 +56,70 @@
                 android:textColor="#009999" />
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/btn_mm_00"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusDown="@+id/button2"
+                android:nextFocusDown="@+id/btn_mm_01"
                 android:nextFocusUp="@+id/scrollDownCheckTxt"
-                android:text="@string/button1Text">
+                android:text="@string/btn_mm_00_text">
 
             </Button>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_mm_01"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusDown="@+id/button3"
-                android:nextFocusUp="@+id/button1"
-                android:text="@string/button2Text">
+                android:nextFocusDown="@+id/btn_mm_02"
+                android:nextFocusUp="@+id/btn_mm_00"
+                android:text="@string/btn_mm_01_text">
 
             </Button>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btn_mm_02"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusDown="@+id/button4"
-                android:nextFocusUp="@+id/button2"
-                android:text="@string/button3Text"></Button>
+                android:nextFocusDown="@+id/btn_mm_03"
+                android:nextFocusUp="@+id/btn_mm_01"
+                android:text="@string/btn_mm_02_text"></Button>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btn_mm_03"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button3"
-                android:text="@string/button4Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_02"
+                android:text="@string/btn_mm_03_text"></Button>
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btn_mm_04"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button4"
-                android:text="@string/button5Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_03"
+                android:text="@string/btn_mm_04_text"></Button>
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btn_mm_05"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button5"
-                android:text="@string/button6Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_04"
+                android:text="@string/btn_mm_05_text"></Button>
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/btn_mm_06"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button6"
-                android:text="@string/button7Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_05"
+                android:text="@string/btn_mm_06_text"></Button>
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/btn_mm_07"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button7"
-                android:text="@string/button8Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_06"
+                android:text="@string/btn_mm_07_text"></Button>
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/btn_mm_08"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button8"
-                android:text="@string/button9Text"></Button>
+                android:nextFocusUp="@+id/btn_mm_07"
+                android:text="@string/btn_mm_08_text"></Button>
 
             <Button
                 android:id="@+id/button10"
                 style="@style/PHAY_MainMenuBtn"
-                android:nextFocusUp="@+id/button9"
+                android:nextFocusUp="@+id/btn_mm_08"
                 android:text="@string/button10Text"></Button>
 
             <Button
