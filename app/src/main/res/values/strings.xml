@@ -14,7 +14,7 @@
     <string name="actTitle_PHA_Search_Display">PHA:LANX(Se)</string>
     <string name="actTitle_PHA_Sudoku_About">PHA:LANX(Su)</string>
     <string name="actTitle_Workbench">Workbench</string>
-    <string name="mainScreenTitle">PHA:LANX v1</string>
+    <string name="mainScreenTitle">PHA:LANX</string>
     <string name="title_activity_pha__sudoku_main">PHA:LANX(Su)</string>
     <string name="title_activity_sudoku_about">PHA:LANX(Su) - About</string>
     <string name="title_activity_phay__search_main">PHA:LANX(Se)</string>

@@ -130,6 +130,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.Workbench"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="@string/actTitle_Workbench">
         </activity>
     </application>

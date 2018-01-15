@@ -239,13 +239,18 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
                 break;
             case R.id.btn_mm_07:
                 Intent c = new Intent(this, PHA_Voice.class);
-                Log.v(TAG, "Option8");
+                Log.v(TAG, "Launching Voice...");
                 startActivity(c);
                 break;
             case R.id.btn_mm_08:
                 Intent d = new Intent(this, PHA_Converter.class);
-                Log.v(TAG, "Option9");
+                Log.v(TAG, "Launching the Converter...");
                 startActivity(d);
+                break;
+            case R.id.btn_mm_09:
+                Intent wbIntent = new Intent(this, Workbench.class);
+                Log.v(TAG, "Launching the Workbench...");
+                startActivity(wbIntent);
                 break;
             // more butons go here later
         }

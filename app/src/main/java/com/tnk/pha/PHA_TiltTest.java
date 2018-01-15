@@ -131,7 +131,6 @@ public class PHA_TiltTest extends Activity implements SensorEventListener {
                 doUpdate(null);
                 counter = 1;
             }
-
         }
     }
 
@@ -171,6 +170,3 @@ public class PHA_TiltTest extends Activity implements SensorEventListener {
         return;
     }
 }
-
-
-
