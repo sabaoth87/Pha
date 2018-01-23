@@ -65,10 +65,10 @@ public class Workbench extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workbench);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_Workbench);
+        Toolbar toolbar = findViewById(R.id.tb_Workbench);
         setSupportActionBar(toolbar);
 
-        /**
+        /*
          * START
          *  #DatabaseHandler
          *  #DB
@@ -76,18 +76,18 @@ public class Workbench extends AppCompatActivity {
          *  START
          */
 
-        dbAdd = (Button) findViewById(R.id.btn_AddTool);
-        dbDelete = (Button) findViewById(R.id.btn_DeleteTool);
-        dbFind = (Button) findViewById(R.id.btn_FindTool);
-        dbLoad = (Button) findViewById(R.id.btn_LoadToolList);
-        dbUpdate = (Button) findViewById(R.id.btn_UpdateTool);
-        et_ToolName = (EditText) findViewById(R.id.et_ToolName);
-        et_ToolSize = (EditText) findViewById(R.id.et_ToolSize);
-        et_ToolID = (EditText) findViewById(R.id.et_ToolID);
-        tv_Main = (TextView) findViewById(R.id.tv_Main);
-        lv_Main = (ListView) findViewById(R.id.lv_Main);
-        sp_ToolBrand = (Spinner) findViewById(R.id.sp_ToolBrand);
-        sp_ToolType = (Spinner) findViewById(R.id.sp_ToolType);
+        dbAdd = findViewById(R.id.btn_AddTool);
+        dbDelete = findViewById(R.id.btn_DeleteTool);
+        dbFind = findViewById(R.id.btn_FindTool);
+        dbLoad = findViewById(R.id.btn_LoadToolList);
+        dbUpdate = findViewById(R.id.btn_UpdateTool);
+        et_ToolName = findViewById(R.id.et_ToolName);
+        et_ToolSize = findViewById(R.id.et_ToolSize);
+        et_ToolID = findViewById(R.id.et_ToolID);
+        tv_Main = findViewById(R.id.tv_Main);
+        lv_Main = findViewById(R.id.lv_Main);
+        sp_ToolBrand = findViewById(R.id.sp_ToolBrand);
+        sp_ToolType = findViewById(R.id.sp_ToolType);
 
         dbAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +141,7 @@ public class Workbench extends AppCompatActivity {
         sp_ToolType.setAdapter(typeAdapter);
         sp_ToolBrand.setAdapter(brandAdapter);
 
-        /**
+        /*
          * END
          * #DatabaseHandler
          * #DB
@@ -174,14 +174,34 @@ public class Workbench extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        switch (item.getItemId()){
+            case R.id.menuAction_settings:
+            //User chose the "Settings" item, show the app settings UI...
             return true;
-        }
 
-        return super.onOptionsItemSelected(item);
+            case R.id.menuAction_addTool:
+                /*
+                @TODO Add Tool UI
+                 */
+                //User chose the "Add Tool" item, show the "Add Tool" UI...
+                return true;
+
+            case R.id.menuAction_listTools:
+                /*
+                @TODO
+                 */
+                //User has chosen to list all owned tools in the main display
+                return true;
+
+            case R.id.meanAction_searchTool:
+                //User would like to search for a tool
+                return true;
+
+            default:
+                // If we got here, the user's actions was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
@@ -255,7 +275,7 @@ public class Workbench extends AppCompatActivity {
         Long newEntryID = dbHandler.addToolHandler(new_tool);
 
         Toast toast = Toast.makeText(context, "Entry " + newEntryID + " added to Db!", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.TOP|Gravity.RIGHT,0,0);
+        toast.setGravity(Gravity.TOP|Gravity.END,0,0);
         toast.show();
         //Clear the inputs
         clearInputs();
@@ -269,17 +289,17 @@ public class Workbench extends AppCompatActivity {
 
         if (result) {
             clearInputs();
-            tv_Main.setText("Record Deleted");
+            tv_Main.setText(R.string.tvMain_toolDeleted);
         } else
             clearInputs();
-            tv_Main.setText("No Match Found");
+            tv_Main.setText(R.string.tvMain_noSuchEntry);
     }
 
     public void clearInputs() {
         et_ToolName.setText("");
         et_ToolSize.setText("");
     }
-    /**
+    /*
      * END
      * #DatabaseHandler
      * #DB

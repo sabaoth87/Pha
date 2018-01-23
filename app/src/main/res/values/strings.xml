@@ -56,6 +56,8 @@
     <string name="button16Text">TEST</string>
 
     <string name="tv_mm_00">Main Menu Text View</string>
+    <string name="tvMain_toolDeleted">Tool Deleted!</string>
+    <string name="tvMain_noSuchEntry">xx No Entry Exists xx</string>
 
     <string name="prefs_dev_mode_key">dev_mode</string>
     <string name="prefs_dev_mode_message">Check to enable developer mode.</string>
@@ -98,6 +100,11 @@
     <string name="menu_opt_4">Search</string>
     <string name="menu_opt_5">Search</string>
     <string name="menu_opt_6">Search</string>
+    <string name="menu_action_settings">SETTINGS</string>
+    <string name="menu_action_listTools">Show All</string>
+    <string name="menu_action_addTool">+Tool</string>
+    <string name="menu_action_searchTool">Search</string>
+
 
     <string name="lp_menu_search">Search item</string>
     <string name="lp_menu_delete">Delete item</string>

@@ -63,7 +63,7 @@ public class PHA_Reminder_List extends ListActivity {
                 Intent j = new Intent(this, PHA_Reminder_Entry.class);
                 startActivityForResult(j, ACTIVITY_CREATE);
                 return true;
-            case R.id.action_settings:
+            case R.id.menuAction_settings:
                 Intent i = new Intent(this, PHA_RemTaskPrefs.class);
                 startActivity(i);
                 return true;
@@ -110,6 +110,10 @@ public class PHA_Reminder_List extends ListActivity {
 		 * Cursors are closed automatically.
 		 */
         Cursor remindersCursor = phaDbHlpr.getReminders();
+        /*
+        @FIXME startManagingCursor ??
+        SimpleCursorAdapter as well
+         */
         startManagingCursor(remindersCursor);
         //Create and array to specify the fields we want, only the title
         String[] FROM = new String[]{dbAdapter.REM_TITLE};

@@ -3,8 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tnk.myworkshop.Workbench">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/meanAction_searchTool"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/menu_action_searchTool"
+        android:icon="@drawable/phaclcbttn"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menuAction_addTool"
+        android:orderInCategory="100"
+        android:title="@string/menu_action_addTool"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuAction_listTools"
+        android:orderInCategory="100"
+        android:title="@string/menu_action_listTools"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuAction_settings"
+        android:orderInCategory="100"
+        android:title="@string/menu_action_settings"
         app:showAsAction="never" />
 </menu>
