@@ -6,10 +6,10 @@ import android.provider.BaseColumns;
  * Created by Tom on 2018-01-03.
  */
 
-public final class ToolContract {
+public final class Contract_Tool {
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
-    private ToolContract() {}
+    private Contract_Tool() {}
 
     /* Inner Class that defines the table contents */
     public static class ToolEntry implements BaseColumns {

@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.tnk.R;
 
-import org.w3c.dom.Text;
-
 /**
  * Created by Tom on 2018-01-06.
  */
@@ -38,9 +36,9 @@ public class ToolCursorAdapter extends CursorAdapter {
         TextView tvName = (TextView) view.findViewById(R.id.item_tv_ToolName);
         TextView tvSize  = (TextView) view.findViewById(R.id.item_tv_ToolSize);
         // Extract properties from cursor
-        String brand = cursor.getString(cursor.getColumnIndexOrThrow(ToolContract.ToolEntry.COLUMN_NAME_BRAND));
-        String name = cursor.getString(cursor.getColumnIndexOrThrow(ToolContract.ToolEntry.COLUMN_NAME_NAME));
-        String size = cursor.getString(cursor.getColumnIndexOrThrow(ToolContract.ToolEntry.COLUMN_NAME_SIZE));
+        String brand = cursor.getString(cursor.getColumnIndexOrThrow(Contract_Tool.ToolEntry.COLUMN_NAME_BRAND));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow(Contract_Tool.ToolEntry.COLUMN_NAME_NAME));
+        String size = cursor.getString(cursor.getColumnIndexOrThrow(Contract_Tool.ToolEntry.COLUMN_NAME_SIZE));
         //Populate fields with extracted properties
         tvBrand.setText(brand);
         tvName.setText(name);

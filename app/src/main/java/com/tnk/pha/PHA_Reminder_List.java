@@ -111,7 +111,7 @@ public class PHA_Reminder_List extends ListActivity {
 		 */
         Cursor remindersCursor = phaDbHlpr.getReminders();
         /*
-        @FIXME startManagingCursor ??
+        @FIXME 00 startManagingCursor ??
         SimpleCursorAdapter as well
          */
         startManagingCursor(remindersCursor);

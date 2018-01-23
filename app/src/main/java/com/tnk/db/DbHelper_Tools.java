@@ -14,33 +14,33 @@ import static java.lang.Boolean.TRUE;
  * Created by Tom on 2018-01-03.
  */
 
-public class ToolDbHelper extends SQLiteOpenHelper {
-    public static final String TAG = "ToolDbHelper";
+public class DbHelper_Tools extends SQLiteOpenHelper {
+    public static final String TAG = "DbHelper_Tools";
     //If you change the database scheme, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "WorkBenchTools.db";
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + ToolContract.ToolEntry.TABLE_NAME + " (" +
-                    ToolContract.ToolEntry._ID + " INTEGER PRIMARY KEY," +
-                    ToolContract.ToolEntry.COLUMN_NAME_TYPE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_NAME + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_BRAND + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_QUANTITY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_QUALITY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_LOCATION + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_NOTE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_LINK + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_PIC + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_SIZE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_USES + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_AMMO + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_CATEGORY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_STATUS + " TEXT)";
+            "CREATE TABLE " + Contract_Tool.ToolEntry.TABLE_NAME + " (" +
+                    Contract_Tool.ToolEntry._ID + " INTEGER PRIMARY KEY," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_TYPE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_NAME + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_BRAND + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_QUANTITY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_QUALITY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_LOCATION + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_NOTE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_LINK + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_PIC + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_SIZE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_USES + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_AMMO + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_CATEGORY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_STATUS + " TEXT)";
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + ToolContract.ToolEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + Contract_Tool.ToolEntry.TABLE_NAME;
 
 
-    public ToolDbHelper(Context context){
+    public DbHelper_Tools(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db){
@@ -56,29 +56,29 @@ public class ToolDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public long addToolHandler(ItemTool tool) {
+    public long addToolHandler(Item_Tool tool) {
         Log.v(TAG, "Opening the Local Db for writing...");
         SQLiteDatabase db = this.getWritableDatabase();
         Log.v(TAG, "Db open!");
         ContentValues values = new ContentValues();
 
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_TYPE, tool.getToolType());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_NAME, tool.getToolName());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_BRAND, tool.getToolBrand());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_QUANTITY, tool.getToolQuantity());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_QUALITY, tool.getToolQuality());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_LOCATION, tool.getToolLocation());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_NOTE, tool.getToolNote());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_LINK, tool.getToolLink());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_PIC, tool.getToolPic());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_SIZE, tool.getToolSize());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_USES, tool.getToolUses());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_AMMO, tool.getToolAmmo());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_CATEGORY, tool.getToolCat());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_STATUS, tool.getToolStatus());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_TYPE, tool.getToolType());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_NAME, tool.getToolName());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_BRAND, tool.getToolBrand());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_QUANTITY, tool.getToolQuantity());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_QUALITY, tool.getToolQuality());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_LOCATION, tool.getToolLocation());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_NOTE, tool.getToolNote());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_LINK, tool.getToolLink());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_PIC, tool.getToolPic());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_SIZE, tool.getToolSize());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_USES, tool.getToolUses());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_AMMO, tool.getToolAmmo());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_CATEGORY, tool.getToolCat());
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_STATUS, tool.getToolStatus());
 
         Log.v(TAG, "Adding tool entry to Db...");
-        long newRowId = db.insert(ToolContract.ToolEntry.TABLE_NAME, null, values);
+        long newRowId = db.insert(Contract_Tool.ToolEntry.TABLE_NAME, null, values);
         Log.v(TAG, "Entry " + newRowId + " added to Db");
         db.close();
         return(newRowId);
@@ -90,22 +90,22 @@ public class ToolDbHelper extends SQLiteOpenHelper {
         //Define a projection that specifies which columns from the database
         // you wll actually use after this query.
         String[] projection = {
-                ToolContract.ToolEntry._ID,
-                ToolContract.ToolEntry.COLUMN_NAME_TYPE,
-                ToolContract.ToolEntry.COLUMN_NAME_NAME,
-                ToolContract.ToolEntry.COLUMN_NAME_BRAND,
-                ToolContract.ToolEntry.COLUMN_NAME_SIZE
+                Contract_Tool.ToolEntry._ID,
+                Contract_Tool.ToolEntry.COLUMN_NAME_TYPE,
+                Contract_Tool.ToolEntry.COLUMN_NAME_NAME,
+                Contract_Tool.ToolEntry.COLUMN_NAME_BRAND,
+                Contract_Tool.ToolEntry.COLUMN_NAME_SIZE
         };
         // Filter results WHERE "type" = et_ToolType entry
-        String selection = ToolContract.ToolEntry.COLUMN_NAME_TYPE + " = ?";
+        String selection = Contract_Tool.ToolEntry.COLUMN_NAME_TYPE + " = ?";
         String[] selectionArgs = { toolType };
 
         // How you want the results sorted int he resulting Cursor
 
-        String sortOrder = ToolContract.ToolEntry.COLUMN_NAME_BRAND + " DESC";
+        String sortOrder = Contract_Tool.ToolEntry.COLUMN_NAME_BRAND + " DESC";
 
         Cursor cursor = db.query(
-                ToolContract.ToolEntry.TABLE_NAME,  // The table you want to query
+                Contract_Tool.ToolEntry.TABLE_NAME,  // The table you want to query
                 projection,                         // The columns you want to return
                 selection,                          // the columns you want to return
                 selectionArgs,                     // the columns for the WHERE clause
@@ -122,23 +122,23 @@ public class ToolDbHelper extends SQLiteOpenHelper {
         //Define a projection that specifies which columns from the database
         // you wll actually use after this query.
         String[] projection = {
-                ToolContract.ToolEntry._ID,
-                ToolContract.ToolEntry.COLUMN_NAME_TYPE,
-                ToolContract.ToolEntry.COLUMN_NAME_NAME,
-                ToolContract.ToolEntry.COLUMN_NAME_BRAND,
-                ToolContract.ToolEntry.COLUMN_NAME_SIZE
+                Contract_Tool.ToolEntry._ID,
+                Contract_Tool.ToolEntry.COLUMN_NAME_TYPE,
+                Contract_Tool.ToolEntry.COLUMN_NAME_NAME,
+                Contract_Tool.ToolEntry.COLUMN_NAME_BRAND,
+                Contract_Tool.ToolEntry.COLUMN_NAME_SIZE
         };
         // Filter results WHERE "type" = et_ToolType entry
-        //String selection = ToolContract.ToolEntry._ID + " = ?";
-        String selection = ToolContract.ToolEntry._ID + " = ?";
+        //String selection = Contract_Tool.ToolEntry._ID + " = ?";
+        String selection = Contract_Tool.ToolEntry._ID + " = ?";
         String[] selectionArgs = { toolId };
 
         // How you want the results sorted int he resulting Cursor
 
-        String sortOrder = ToolContract.ToolEntry._ID + " DESC";
+        String sortOrder = Contract_Tool.ToolEntry._ID + " DESC";
 
         Cursor cursor = db.query(
-                ToolContract.ToolEntry.TABLE_NAME,  // The table you want to query
+                Contract_Tool.ToolEntry.TABLE_NAME,  // The table you want to query
                 projection,                         // The columns you want to return
                 selection,                          // the columns for the WHERE clause
                 selectionArgs,                     // the values for the WHERE clause
@@ -155,22 +155,22 @@ public class ToolDbHelper extends SQLiteOpenHelper {
         //Define a projection that specifies which columns from the database
         // you wll actually use after this query.
         String[] projection = {
-                ToolContract.ToolEntry._ID,
-                ToolContract.ToolEntry.COLUMN_NAME_TYPE,
-                ToolContract.ToolEntry.COLUMN_NAME_NAME,
-                ToolContract.ToolEntry.COLUMN_NAME_BRAND,
-                ToolContract.ToolEntry.COLUMN_NAME_SIZE
+                Contract_Tool.ToolEntry._ID,
+                Contract_Tool.ToolEntry.COLUMN_NAME_TYPE,
+                Contract_Tool.ToolEntry.COLUMN_NAME_NAME,
+                Contract_Tool.ToolEntry.COLUMN_NAME_BRAND,
+                Contract_Tool.ToolEntry.COLUMN_NAME_SIZE
         };
         // Filter results WHERE "type" = et_ToolType entry
-        String selection = ToolContract.ToolEntry._ID + " = ?";
+        String selection = Contract_Tool.ToolEntry._ID + " = ?";
         String[] selectionArgs = {};
 
         // How you want the results sorted int he resulting Cursor
 
-        String sortOrder = ToolContract.ToolEntry.COLUMN_NAME_BRAND + " DESC";
+        String sortOrder = Contract_Tool.ToolEntry.COLUMN_NAME_BRAND + " DESC";
 
         Cursor cursor = db.query(
-                ToolContract.ToolEntry.TABLE_NAME,  // The table you want to query
+                Contract_Tool.ToolEntry.TABLE_NAME,  // The table you want to query
                 projection,                         // The columns you want to return
                 null,                          // the columns you want to return
                 null,                     // the columns for the WHERE clause
@@ -185,11 +185,11 @@ public class ToolDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         //Define 'where' part of the query.
-        String selection = ToolContract.ToolEntry._ID + " LIKE ?";
+        String selection = Contract_Tool.ToolEntry._ID + " LIKE ?";
         //Specify arguments in placeholder order.
         String[] selectionArgs = { toolId };
         //Issue the SQL statement.
-        db.delete(ToolContract.ToolEntry.TABLE_NAME, selection, selectionArgs);
+        db.delete(Contract_Tool.ToolEntry.TABLE_NAME, selection, selectionArgs);
         return TRUE;
     }
 
@@ -199,26 +199,26 @@ public class ToolDbHelper extends SQLiteOpenHelper {
     // information display so that the user can have all the pertinent information
     // on one view, and the _ID has come from whatever launched such viewer
     // activities
-    public boolean updateToolById(ItemTool targetTool){
+    public boolean updateToolById(Item_Tool targetTool){
         SQLiteDatabase db = getWritableDatabase();
 
         //New value(s) for the column(s)
         ContentValues values = new ContentValues();
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_TYPE,
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_TYPE,
                 targetTool.getToolType());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_NAME,
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_NAME,
                 targetTool.getToolName());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_BRAND,
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_BRAND,
                 targetTool.getToolBrand());
-        values.put(ToolContract.ToolEntry.COLUMN_NAME_SIZE,
+        values.put(Contract_Tool.ToolEntry.COLUMN_NAME_SIZE,
                 targetTool.getToolSize());
 
         //Which row to update, based on the targetTool passed from caller
-        String selection = ToolContract.ToolEntry._ID + " LIKE ?";
+        String selection = Contract_Tool.ToolEntry._ID + " LIKE ?";
         String[] selectionArgs = { String.valueOf(targetTool.getID()) };
 
         int count = db.update(
-                ToolContract.ToolEntry.TABLE_NAME,
+                Contract_Tool.ToolEntry.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

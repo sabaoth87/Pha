@@ -23,10 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tnk.R;
-import com.tnk.db.ToolContract;
+import com.tnk.db.Contract_Tool;
+import com.tnk.db.DbHelper_Tools;
+import com.tnk.db.Item_Tool;
 import com.tnk.db.ToolCursorAdapter;
-import com.tnk.db.ToolDbHelper;
-import com.tnk.db.ItemTool;
 
 
 public class Workbench extends AppCompatActivity {
@@ -181,20 +181,23 @@ public class Workbench extends AppCompatActivity {
 
             case R.id.menuAction_addTool:
                 /*
-                @TODO Add Tool UI
+                @TODO 00 Add 'Add Tool' UI
                  */
                 //User chose the "Add Tool" item, show the "Add Tool" UI...
                 return true;
 
             case R.id.menuAction_listTools:
                 /*
-                @TODO
+                @TODO 01 Add 'List Tools' Method
                  */
                 //User has chosen to list all owned tools in the main display
                 return true;
 
             case R.id.meanAction_searchTool:
                 //User would like to search for a tool
+                /*
+                @TODO 02 Add 'Search Tool' UI
+                 */
                 return true;
 
             default:
@@ -217,7 +220,7 @@ public class Workbench extends AppCompatActivity {
     // pass the COLUMN with which you would like to search
     public void luToolType(View view) {
         Context context = getApplicationContext();
-        ToolDbHelper dbHandler = new ToolDbHelper(context);
+        DbHelper_Tools dbHandler = new DbHelper_Tools(context);
 
         //@TODO
         //Test to make sure the spinner call toString is grabbing what I need
@@ -234,17 +237,17 @@ public class Workbench extends AppCompatActivity {
 
     public void luToolId(View view) {
         Context context = getApplicationContext();
-        ToolDbHelper dbHelper = new ToolDbHelper(context);
+        DbHelper_Tools dbHelper = new DbHelper_Tools(context);
 
         Cursor queryResult = dbHelper.findToolsByID(et_ToolID.toString());
         ToolCursorAdapter toolCursorAdapter = new ToolCursorAdapter(this, queryResult);
         lv_Main.setAdapter(toolCursorAdapter);
-        tv_Main.setText(queryResult.getString(queryResult.getColumnIndex(ToolContract.ToolEntry.COLUMN_NAME_NAME)));
+        tv_Main.setText(queryResult.getString(queryResult.getColumnIndex(Contract_Tool.ToolEntry.COLUMN_NAME_NAME)));
     }
 
     public void luAllTools(View view){
         Context context = getApplicationContext();
-        ToolDbHelper dbHandler = new ToolDbHelper(context);
+        DbHelper_Tools dbHandler = new DbHelper_Tools(context);
 
         Cursor queryResult = dbHandler.findAllTools();
         //Setup cursor adapter using cursor from the last step
@@ -259,13 +262,13 @@ public class Workbench extends AppCompatActivity {
 
     public void addTool(View view) {
         Context context = getApplicationContext();
-        ToolDbHelper dbHandler = new ToolDbHelper(context);
+        DbHelper_Tools dbHandler = new DbHelper_Tools(context);
         String tool_name = et_ToolName.getText().toString();
         String tool_type = sp_ToolType.getSelectedItem().toString();
         String tool_brand = sp_ToolBrand.getSelectedItem().toString();
         String tool_size = et_ToolSize.getText().toString();
 
-        ItemTool new_tool = new ItemTool();
+        Item_Tool new_tool = new Item_Tool();
 
         new_tool.setToolName(tool_name);
         new_tool.setToolType(tool_type);
@@ -284,7 +287,7 @@ public class Workbench extends AppCompatActivity {
 
     public void deleteToolByID(View view) {
         Context context = getApplicationContext();
-        ToolDbHelper dbHandler = new ToolDbHelper(context);
+        DbHelper_Tools dbHandler = new DbHelper_Tools(context);
         boolean result = dbHandler.deleteToolById(et_ToolID.getText().toString());
 
         if (result) {
