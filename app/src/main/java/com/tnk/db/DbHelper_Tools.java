@@ -171,11 +171,11 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(
                 Contract_Tool.ToolEntry.TABLE_NAME,  // The table you want to query
-                projection,                         // The columns you want to return
-                null,                          // the columns you want to return
-                null,                     // the columns for the WHERE clause
-                null,                      // the values for the WHERE clause
-                null,                       // do not group the rows
+                projection,                          // The columns you want to return
+                null,                       // the columns for the WHERE clause
+                null,                    // the values for the WHERE clause
+                null,                       // do not group the findings
+                null,
                 sortOrder
         );
         return cursor;
@@ -193,7 +193,7 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         return TRUE;
     }
 
-    //@NOTE
+    //@NOTE - ToolView UI Required
     // This may be useless in the case of our interface for the time being.
     // Would have to have another set of activities that handle the per-tool
     // information display so that the user can have all the pertinent information

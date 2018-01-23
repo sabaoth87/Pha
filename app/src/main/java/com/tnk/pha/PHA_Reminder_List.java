@@ -14,22 +14,18 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.tnk.R;
+import com.tnk.db.DbHelper_Reminders;
 import com.tnk.db.dbAdapter;
 
 public class PHA_Reminder_List extends ListActivity {
 
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
-    private dbAdapter phaDbHlpr;
-    public String[] FROM;
-    public int[] TO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pha_reminders_list);
-        phaDbHlpr = new dbAdapter(this);
-        phaDbHlpr.open();
         fillData();
         registerForContextMenu(getListView());
 
@@ -85,11 +81,17 @@ public class PHA_Reminder_List extends ListActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        DbHelper_Reminders dbHandler = new DbHelper_Reminders(this);
+
+        /*
+        @TRY 01 - Get Item Ids from List View entries
+         */
+        int itemId = item.getItemId();
+
         switch (item.getItemId()) {
             case R.id.lp_menu_delete:
                 //delete the selected task
-                AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-                phaDbHlpr.deleteReminder(info.id);
+                dbHandler.deleteReminderById(getString(itemId));
                 fillData();
                 return true;
         }
@@ -109,13 +111,14 @@ public class PHA_Reminder_List extends ListActivity {
 		 * requery() for you. When the activity is destroyed, all managed
 		 * Cursors are closed automatically.
 		 */
-        Cursor remindersCursor = phaDbHlpr.getReminders();
+        DbHelper_Reminders dbHandler = new DbHelper_Reminders(this);
+        Cursor remindersCursor = dbHandler.findAllReminders();
         /*
         @FIXME 00 startManagingCursor ??
         SimpleCursorAdapter as well
          */
-        startManagingCursor(remindersCursor);
-        //Create and array to specify the fields we want, only the title
+        //startManagingCursor(remindersCursor);
+        //Create an array to specify the fields we want, only the title
         String[] FROM = new String[]{dbAdapter.REM_TITLE};
         //and an array of the fields we want to bind to the view
         int[] TO = new int[]{R.id.text1};
