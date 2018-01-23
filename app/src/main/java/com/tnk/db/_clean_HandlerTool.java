@@ -1,50 +1,26 @@
 package com.tnk.db;
 
-/**
+/*
  * Created by Tom on 2017-12-29.
  *
- * @TRY
+ * @TRY AsyncTask with SQL Handlers?
  * I think I have to make this into a AsyncTask in order to prevent hangups
  */
 
 
 
-import android.content.ClipData;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.tnk.db.ToolContract;
+public class _clean_HandlerTool extends SQLiteOpenHelper  {
 
-public class HandlerTool extends SQLiteOpenHelper  {
-
-    //NEW TO TRY
-    private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + ToolContract.ToolEntry.TABLE_NAME + " (" +
-                    ToolContract.ToolEntry._ID + " INTEGER PRIMARY KEY," +
-                    ToolContract.ToolEntry.COLUMN_NAME_TYPE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_NAME + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_BRAND + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_QUANTITY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_QUALITY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_LOCATION + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_NOTE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_LINK + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_PIC + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_SIZE + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_USES + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_AMMO + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_CATEGORY + " TEXT," +
-                    ToolContract.ToolEntry.COLUMN_NAME_STATUS + " TEXT)";
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + ToolContract.ToolEntry.TABLE_NAME;
-
-    //information of database
+        //information of database
     private static final int DATABASE_VERSION = 0;
     private static final String DATABASE_NAME = "toolsDB.db";
-    public static final String TABLE_NAME = "ItemTool";
+    public static final String TABLE_NAME = "Item_Tool";
     public static final String COLUMN_ID = "ToolID";
     public static final String COLUMN_TYPE = "ToolType";
     public static final String COLUMN_NAME = "ToolName";
@@ -61,9 +37,29 @@ public class HandlerTool extends SQLiteOpenHelper  {
     public static final String COLUMN_CAT = "ToolCategory";
     public static final String COLUMN_STATUS = "ToolStatus";
 
+    private static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE " + Contract_Tool.ToolEntry.TABLE_NAME + " (" +
+                    Contract_Tool.ToolEntry._ID + " INTEGER PRIMARY KEY," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_TYPE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_NAME + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_BRAND + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_QUANTITY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_QUALITY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_LOCATION + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_NOTE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_LINK + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_PIC + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_SIZE + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_USES + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_AMMO + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_CATEGORY + " TEXT," +
+                    Contract_Tool.ToolEntry.COLUMN_NAME_STATUS + " TEXT)";
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + Contract_Tool.ToolEntry.TABLE_NAME;
+
     //initialize the database
 
-    public HandlerTool(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public _clean_HandlerTool(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
@@ -94,6 +90,14 @@ public class HandlerTool extends SQLiteOpenHelper  {
     @Override
 
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
+
+    /*
+    @TODO 05 - What does loadHandler do?
+    Call for a String and find out...
+     */
+    /*
+    I believe I call for this when I want all results in a String format?
+     */
     public String loadHandler() {
         String result = "";
         String query = "Select*FROM" + TABLE_NAME;
@@ -111,7 +115,7 @@ public class HandlerTool extends SQLiteOpenHelper  {
         return result;
     }
 
-    public void addHandler(ItemTool tool) {
+    public void addHandler(Item_Tool tool) {
         ContentValues values = new ContentValues();
         //values.put(COLUMN_ID, tool.getID());
         values.put(COLUMN_TYPE, tool.getToolType());
@@ -134,12 +138,12 @@ public class HandlerTool extends SQLiteOpenHelper  {
 
     }
 
-    public ItemTool findByNameHandler(String toolName) {
+    public Item_Tool findByNameHandler(String toolName) {
 
         String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + toolName + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        ItemTool tool = new ItemTool();
+        Item_Tool tool = new Item_Tool();
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
@@ -158,7 +162,7 @@ public class HandlerTool extends SQLiteOpenHelper  {
         String query = "Select*FROM" + TABLE_NAME + "WHERE" + COLUMN_ID + "= '" + String.valueOf(ID) + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        ItemTool tool = new ItemTool();
+        Item_Tool tool = new Item_Tool();
         if (cursor.moveToFirst()) {
             tool.setID(Integer.parseInt(cursor.getString(0)));
             db.delete(TABLE_NAME, COLUMN_ID + "=?",
@@ -177,7 +181,7 @@ public class HandlerTool extends SQLiteOpenHelper  {
         String query = "Select*FROM" + TABLE_NAME + "WHERE" + COLUMN_NAME + "= '" + entryName + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        ItemTool tool = new ItemTool();
+        Item_Tool tool = new Item_Tool();
         if (cursor.moveToFirst()) {
             tool.setToolName(entryName);
             db.delete(TABLE_NAME, COLUMN_NAME + "=?",
@@ -201,10 +205,10 @@ public class HandlerTool extends SQLiteOpenHelper  {
 
     /*
     @TODO
-    Will work, would like to find a way to just was the ItemTool class around and have the handlers
+    Will work, would like to find a way to just was the Item_Tool class around and have the handlers
     figure everything else out
 
-    Have a main handler, with a boolean or INT tag that sorts the info of the ItemTool class after
+    Have a main handler, with a boolean or INT tag that sorts the info of the Item_Tool class after
     the caller sends it here
      */
 

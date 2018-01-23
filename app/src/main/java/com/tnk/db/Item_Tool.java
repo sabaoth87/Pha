@@ -4,7 +4,7 @@ package com.tnk.db;
  * Created by Tom on 2017-12-29.
  */
 
-public class ItemTool {
+public class Item_Tool {
 
     // fields
     private int toolID;
@@ -24,24 +24,24 @@ public class ItemTool {
     private String toolStatus;
 
     // constructors
-    public ItemTool() {
+    public Item_Tool() {
     }
 
-    public ItemTool(int id,
-                    String toolType,
-                    String toolName,
-                    String toolBrand,
-                    String toolQuantity,
-                    String toolQuality,
-                    String toolLocation,
-                    String toolNote,
-                    String toolLink,
-                    String toolPic,
-                    String toolSize,
-                    String toolUses,
-                    String toolAmmo,
-                    String toolCat,
-                    String toolStatus
+    public Item_Tool(int id,
+                     String toolType,
+                     String toolName,
+                     String toolBrand,
+                     String toolQuantity,
+                     String toolQuality,
+                     String toolLocation,
+                     String toolNote,
+                     String toolLink,
+                     String toolPic,
+                     String toolSize,
+                     String toolUses,
+                     String toolAmmo,
+                     String toolCat,
+                     String toolStatus
                     ) {
         this.toolID = id;
         this.toolType = toolType;

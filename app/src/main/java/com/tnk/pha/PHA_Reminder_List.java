@@ -27,7 +27,7 @@ public class PHA_Reminder_List extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pha_reminders_list);
+        setContentView(R.layout.content_pha_reminders_list);
         phaDbHlpr = new dbAdapter(this);
         phaDbHlpr.open();
         fillData();
@@ -111,7 +111,7 @@ public class PHA_Reminder_List extends ListActivity {
 		 */
         Cursor remindersCursor = phaDbHlpr.getReminders();
         /*
-        @FIXME startManagingCursor ??
+        @FIXME 00 startManagingCursor ??
         SimpleCursorAdapter as well
          */
         startManagingCursor(remindersCursor);
