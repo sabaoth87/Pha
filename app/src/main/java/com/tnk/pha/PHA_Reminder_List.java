@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -16,23 +18,26 @@ import android.widget.SimpleCursorAdapter;
 import com.tnk.R;
 import com.tnk.db.dbAdapter;
 
-public class PHA_Reminder_List extends ListActivity {
+public class PHA_Reminder_List extends AppCompatActivity {
 
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     private dbAdapter phaDbHlpr;
+    private ListView lvReminders;
     public String[] FROM;
     public int[] TO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_pha_reminders_list);
+        setContentView(R.layout.activity_pha_reminders_list);
+        Toolbar toolbar = findViewById(R.id.tb_Workbench);
+        //setSupportActionBar(toolbar);
         phaDbHlpr = new dbAdapter(this);
         phaDbHlpr.open();
         fillData();
-        registerForContextMenu(getListView());
-
+        lvReminders = (ListView) findViewById(R.id.list_pha_reminders);
+        registerForContextMenu(lvReminders);
     }
 
     @Override
@@ -42,6 +47,8 @@ public class PHA_Reminder_List extends ListActivity {
         return true;
     }
 
+    /*
+    @FIXME
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -49,12 +56,16 @@ public class PHA_Reminder_List extends ListActivity {
         i.putExtra(dbAdapter.REM_ROWID, id);
         startActivityForResult(i, ACTIVITY_EDIT);
     }
+    */
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.list_menu_item_longpress, menu);
     }
+
+    /*
+    @FIXME
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
@@ -70,6 +81,7 @@ public class PHA_Reminder_List extends ListActivity {
         }
         return super.onMenuItemSelected(featureId, item);
     }
+    */
 
     private void createReminder() {
         Intent j = new Intent(this, PHA_Reminder_Entry.class);
@@ -113,6 +125,7 @@ public class PHA_Reminder_List extends ListActivity {
         /*
         @FIXME 00 startManagingCursor ??
         SimpleCursorAdapter as well
+        setListAdapter
          */
         startManagingCursor(remindersCursor);
         //Create and array to specify the fields we want, only the title
@@ -122,7 +135,7 @@ public class PHA_Reminder_List extends ListActivity {
         //Create a simple cursor adapter and set it to display
         SimpleCursorAdapter reminders = new SimpleCursorAdapter(this, R.layout.reminder_entry,
                 remindersCursor, FROM, TO);
-        setListAdapter(reminders);
+        //setListAdapter(reminders);
     }
 
 }

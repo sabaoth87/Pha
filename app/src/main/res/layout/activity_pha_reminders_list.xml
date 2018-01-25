@@ -16,6 +16,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         />
 
-    <include layout="@layout/content_pha_reminders" />
+    <include layout="@layout/content_pha_reminders_list" />
 
 </LinearLayout>

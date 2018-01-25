@@ -9,7 +9,7 @@
     tools:context=".pha.PHA_Reminder_List">
 
     <ListView
-        android:id="@+id/android:list"
+        android:id="@+id/list_pha_reminders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
