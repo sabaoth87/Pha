@@ -113,6 +113,7 @@
         <activity
             android:name="com.tnk.pha.PHA_Reminder_List"
             android:label="@string/title_activity_pha__reminder__list"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="landscape">
         </activity>
         <activity
