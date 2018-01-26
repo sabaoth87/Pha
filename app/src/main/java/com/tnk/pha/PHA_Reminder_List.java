@@ -1,29 +1,39 @@
 package com.tnk.pha;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.tnk.R;
+import com.tnk.db.Contract_Reminder;
 import com.tnk.db.dbAdapter;
+
+import java.util.List;
 
 public class PHA_Reminder_List extends AppCompatActivity {
 
+    private static final String TAG = "Reminder List";
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     private dbAdapter phaDbHlpr;
-    private ListView lvReminders;
+    private Button dbAdd;
+    public ListView lvReminders;
     public String[] FROM;
     public int[] TO;
 
@@ -31,13 +41,18 @@ public class PHA_Reminder_List extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pha_reminders_list);
-        Toolbar toolbar = findViewById(R.id.tb_Workbench);
-        //setSupportActionBar(toolbar);
+
+        Toolbar toolbar = findViewById(R.id.tb_PHA_Reminders);
+
+        setSupportActionBar(toolbar);
         phaDbHlpr = new dbAdapter(this);
         phaDbHlpr.open();
-        fillData();
-        lvReminders = (ListView) findViewById(R.id.list_pha_reminders);
+        lvReminders = findViewById(R.id.list_pha_reminders);
         registerForContextMenu(lvReminders);
+
+        //call fill data after the LV and other objects have
+        //been instantiated
+        fillData();
     }
 
     @Override
@@ -127,15 +142,49 @@ public class PHA_Reminder_List extends AppCompatActivity {
         SimpleCursorAdapter as well
         setListAdapter
          */
+
+        String[] fromColumns = {Contract_Reminder.ReminderEntry.COLUMN_TITLE};
+        int[] toViews = {R.id.remindView};
+
+        /*
         startManagingCursor(remindersCursor);
         //Create and array to specify the fields we want, only the title
         String[] FROM = new String[]{dbAdapter.REM_TITLE};
         //and an array of the fields we want to bind to the view
         int[] TO = new int[]{R.id.text1};
-        //Create a simple cursor adapter and set it to display
-        SimpleCursorAdapter reminders = new SimpleCursorAdapter(this, R.layout.reminder_entry,
-                remindersCursor, FROM, TO);
-        //setListAdapter(reminders);
+        */
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+                R.layout.reminder_list_layout, remindersCursor, fromColumns, toViews, 0);
+        lvReminders.setAdapter(adapter);
+        lvReminders.setOnItemClickListener(mMessageClickHandler);
+    }
+
+    private AdapterView.OnItemClickListener mMessageClickHandler = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Context context = getApplicationContext();
+            Toast.makeText(context,
+                    "view " + view.getId() + " int " + i + " long " + l,
+                    Toast.LENGTH_LONG).show();
+        }
+    };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()){
+            case R.id.menu_insert:
+                //User chose the "+Reminder" item, show the app settings UI...
+                createReminder();
+                return true;
+            default:
+                // If we got here, the user's actions was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

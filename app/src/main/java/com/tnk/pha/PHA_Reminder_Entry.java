@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -23,7 +24,10 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.tnk.R;
-import com.tnk.db.dbAdapter;
+import com.tnk.db.Contract_Reminder;
+import com.tnk.db.DbHelper_Reminders;
+import com.tnk.db.Item_Reminder;
+//import com.tnk.db.dbAdapter;
 
 public class PHA_Reminder_Entry extends Activity implements OnClickListener {
 
@@ -48,7 +52,7 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "kk:mm";
     static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
-    private dbAdapter PHA_dbhelper;
+    private DbHelper_Reminders PHA_dbhelper;
     private Long RowId;
     private boolean incomingReminder = false;
 
@@ -90,8 +94,8 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
             newMinute = (Integer) savedInstanceState.getSerializable("minute");
         }
 
-        RowId = savedInstanceState != null ? savedInstanceState.getLong(dbAdapter.REM_ROWID) : null;
-        PHA_dbhelper = new dbAdapter(this);
+        RowId = savedInstanceState != null ? savedInstanceState.getLong(Contract_Reminder.ReminderEntry._ID) : null;
+        PHA_dbhelper = new DbHelper_Reminders(this);
         mDateButton = (Button) findViewById(R.id.remsDateBtn);
         mTimeButton = (Button) findViewById(R.id.remsTimeBtn);
         confirmBttn = (Button) findViewById(R.id.remsConfirmBtn);
@@ -199,16 +203,25 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
         String title = titleText.getText().toString();
         String body = bodyText.getText().toString();
 
+        Context context = getApplicationContext();
+
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
         String reminderDateTime = dateTimeFormat.format(mCalendar.getTime());
 
+        Item_Reminder newRem = new Item_Reminder();
+        newRem.setRem_title(title);
+        newRem.setRem_body(body);
+        newRem.setRem_date(reminderDateTime);
+        newRem.setRem_time("h.m.s");
+
         if (RowId == null) {
-            long id = PHA_dbhelper.createReminder(title, body, reminderDateTime);
+            long id = PHA_dbhelper.addReminderHandler(newRem);
             if (id > 0) {
                 RowId = id;
             }
         } else {
-            PHA_dbhelper.updateReminder(RowId, title, body, reminderDateTime);
+            Toast.makeText(context, "Tried to Update", Toast.LENGTH_LONG);
+            // PHA_dbhelper.updateReminder(RowId, title, body, reminderDateTime);
         }
 
         new PHA_ReminderManager(this).setReminder(RowId, mCalendar);
@@ -217,7 +230,11 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
     private void setRowIdFromIntent() {
         if (RowId == null) {
             Bundle extras = getIntent().getExtras();
-            RowId = extras != null ? extras.getLong(dbAdapter.REM_ROWID) : null;
+            /*
+            @TRY 02 - Bundle _ROWIDs, if neccesary
+
+             */
+            //RowId = extras != null ? extras.getLong(dbAdapter.REM_ROWID) : null;
         }
     }
 
@@ -230,28 +247,33 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        PHA_dbhelper.open();
         setRowIdFromIntent();
         populateFields();
     }
 
     private void populateFields() {
         if (RowId != null) {
-            Cursor reminder = PHA_dbhelper.getRem(RowId);
-            startManagingCursor(reminder);
-            titleText.setText(reminder.getString(
-                    reminder.getColumnIndexOrThrow(dbAdapter.REM_TITLE)));
-            bodyText.setText(reminder.getString(
-                    reminder.getColumnIndexOrThrow(dbAdapter.REM_BODY)));
+            /*
+            @FIXME
+             */
+            //Cursor reminder = PHA_dbhelper(RowId);
+            //startManagingCursor(reminder);
+            //titleText.setText(reminder.getString(
+            //        reminder.getColumnIndexOrThrow(dbAdapter.REM_TITLE)));
+            //bodyText.setText(reminder.getString(
+            //        reminder.getColumnIndexOrThrow(dbAdapter.REM_BODY)));
             SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
             Date date = null;
+            /*
             try {
                 String dateString = reminder.getString(reminder.getColumnIndexOrThrow(dbAdapter.REM_DATE_TIME));
                 date = dateTimeFormat.parse(dateString);
                 mCalendar.setTime(date);
-            } catch (ParseException e) {
-                Log.e("ReminderEntry", e.getMessage(), e);
             }
+            catch () {
+              Log.e("ReminderEntry", e.getMessage(), e);
+            }
+            */
         } else if (incomingReminder) {
             titleText.setText(newString);
             mCalendar.add(Calendar.MINUTE, newMinute);
@@ -277,7 +299,9 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong(dbAdapter.REM_ROWID, RowId);
+        /*@FIXME
+        //outState.putLong(dbAdapter.REM_ROWID, RowId);
+         */
     }
 
     public void beginEntry(String memo, String date) {
