@@ -8,6 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".pha.PHA_Reminder_List">
 
+    <TextView
+        android:id="@+id/tv_RemindersTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TV" />
+
     <ListView
         android:id="@+id/list_pha_reminders"
         android:layout_width="wrap_content"

@@ -4,16 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,9 +29,8 @@ import com.tnk.R;
 import com.tnk.db.Contract_Reminder;
 import com.tnk.db.DbHelper_Reminders;
 import com.tnk.db.Item_Reminder;
-//import com.tnk.db.dbAdapter;
 
-public class PHA_Reminder_Entry extends Activity implements OnClickListener {
+public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListener {
 
     private String TAG = "PHA_RemEntry";
     private boolean beginEntrySet = false;
@@ -61,6 +62,18 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pha_reminders_entry);
 
+        RowId = savedInstanceState != null ? savedInstanceState.getLong(Contract_Reminder.ReminderEntry._ID) : null;
+        PHA_dbhelper = new DbHelper_Reminders(this);
+        mDateButton = findViewById(R.id.remsDateBtn);
+        mTimeButton = findViewById(R.id.remsTimeBtn);
+        confirmBttn = findViewById(R.id.remsConfirmBtn);
+        titleText = findViewById(R.id.remsTitleET);
+        bodyText = findViewById(R.id.remsBodyET);
+        mCalendar = Calendar.getInstance();
+        mDateButton.setOnClickListener(this);
+        mTimeButton.setOnClickListener(this);
+        confirmBttn.setOnClickListener(this);
+
         if (savedInstanceState == null) {
             extras = getIntent().getExtras();
             if (extras == null) {
@@ -73,15 +86,23 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
                 newMinute = 0;
             } else {
                 Log.v(TAG, "Setting intent values");
-                newString = extras.getString("want");
-                newDate = extras.getString("date");
-                newDay = extras.getInt("day");
-                newMonth = extras.getInt("month");
-                newYear = extras.getInt("year");
-                newHour = extras.getInt("hour");
-                newMinute = extras.getInt("minute");
+                //findEntryForEdit(extras.getString(Contract_Reminder.ReminderEntry._ID));
+                //<editor-fold desc="old extras">
+                //newString = extras.getString("want");
+                //newDate = extras.getString("date");
+                //newDay = extras.getInt("day");
+                //newMonth = extras.getInt("month");
+                //newYear = extras.getInt("year");
+                //newHour = extras.getInt("hour");
+                //newMinute = extras.getInt("minute");
+                //</editor-fold>
                 incomingReminder = true;
-                beginEntry(newString, newDate);
+                Cursor cReminder = findEntryForEdit(extras.getString(Contract_Reminder.ReminderEntry._ID));
+                if (cReminder != null) {
+                    Log.v(TAG, "<Success> Db entry location valid! /n Returning information");
+                    beginEntry(cReminder);
+                }
+                Log.v(TAG, "<Error> Reminder Cursor was invalid!");
             }
         } else {
             Log.v(TAG, "Setting default values");
@@ -94,17 +115,6 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
             newMinute = (Integer) savedInstanceState.getSerializable("minute");
         }
 
-        RowId = savedInstanceState != null ? savedInstanceState.getLong(Contract_Reminder.ReminderEntry._ID) : null;
-        PHA_dbhelper = new DbHelper_Reminders(this);
-        mDateButton = (Button) findViewById(R.id.remsDateBtn);
-        mTimeButton = (Button) findViewById(R.id.remsTimeBtn);
-        confirmBttn = (Button) findViewById(R.id.remsConfirmBtn);
-        titleText = (EditText) findViewById(R.id.remsTitleET);
-        bodyText = (EditText) findViewById(R.id.remsBodyET);
-        mCalendar = Calendar.getInstance();
-        mDateButton.setOnClickListener(this);
-        mTimeButton.setOnClickListener(this);
-        confirmBttn.setOnClickListener(this);
         if (getIntent() != null) {
             Bundle extras = getIntent().getExtras();
             int rowId = extras != null ? extras.getInt("RowId") : -1;
@@ -200,6 +210,7 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
     }
 
     private void saveState() {
+        Log.v(TAG, ":: Saving State");
         String title = titleText.getText().toString();
         String body = bodyText.getText().toString();
 
@@ -212,7 +223,6 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
         newRem.setRem_title(title);
         newRem.setRem_body(body);
         newRem.setRem_date(reminderDateTime);
-        newRem.setRem_time("h.m.s");
 
         if (RowId == null) {
             long id = PHA_dbhelper.addReminderHandler(newRem);
@@ -232,7 +242,6 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
             Bundle extras = getIntent().getExtras();
             /*
             @TRY 02 - Bundle _ROWIDs, if neccesary
-
              */
             //RowId = extras != null ? extras.getLong(dbAdapter.REM_ROWID) : null;
         }
@@ -304,24 +313,57 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
          */
     }
 
-    public void beginEntry(String memo, String date) {
-        mCalendar.set(Calendar.YEAR, newYear);
-        mCalendar.set(Calendar.MONTH, newMonth);
-        mCalendar.set(Calendar.DAY_OF_MONTH, newDay);
-        mCalendar.set(Calendar.HOUR, newHour);
-        mCalendar.set(Calendar.MINUTE, newMinute);
-        bodyText.setText(newString);
-        beginEntrySet = true;
+    public void beginEntry(Cursor reminder) {
+        //load the reminder information into the UI here
+        Log.v(TAG, "Trying to load Editable reminder...");
+        if (reminder==null) {
+            Log.v(TAG, "Cursor with the Editable reminder was found to be null!");
+            titleText.setText(" @null! ");
+            bodyText.setText(" This entry has been found to be null ");
+            beginEntrySet = false;
+        }
+        else {
+            Log.v(TAG, "Cursor is valid! Populating UI");
+            //int entryIdId = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry._ID);
+
+            while(reminder.moveToNext()) {
+                int index;
+
+                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_TITLE);
+                String entryTitle = reminder.getString(index);
+
+                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_BODY);
+                String entryBody = reminder.getString(index);
+
+                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_DATE);
+                String entryDateTime = reminder.getString(index);
+                String entryDateFormatted = formatDateTime(entryDateTime);
+
+                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry._ID);
+                long id = reminder.getLong(index);
+
+                Log.v(TAG, "Editable Reminder entry ID: " + id);
+                titleText.setText(entryTitle);
+                bodyText.setText(entryBody);
+                beginEntrySet = true;
+            }
+
+            beginEntrySet = false;
+        }
     }
 
     @Override
     public void onClick(View arg0) {
         switch (arg0.getId()) {
             case (R.id.remsDateBtn):
-                showDialog(DATE_PICKER_DIALOG);
+                //showDialog(DATE_PICKER_DIALOG);
+                DialogFragment dateFragment = new PHA_Util_DatePicker();
+                dateFragment.show(getFragmentManager(), "datePicker");
                 break;
             case (R.id.remsTimeBtn):
-                showDialog(TIME_PICKER_DIALOG);
+                //showDialog(TIME_PICKER_DIALOG);
+                DialogFragment timeFragment = new PHA_Util_TimePicker();
+                timeFragment.show(getFragmentManager(), "timePicker");
                 break;
             case (R.id.remsConfirmBtn):
                 saveState();
@@ -331,6 +373,53 @@ public class PHA_Reminder_Entry extends Activity implements OnClickListener {
                 finish();
                 break;
         }
-
     }
+
+    public Cursor findEntryForEdit(String id){
+        Context context = getApplicationContext();
+        DbHelper_Reminders dbHelper = new DbHelper_Reminders(context);
+
+        Cursor forEdit = dbHelper.findById(id);
+        //forEdit.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.)
+        return forEdit;
+    }
+
+
+    // @TRY Date/Time Format
+    // This is probably not required here
+    // I should incorporate this into the entry values themselves
+    // So just   <title>, <body>, <timeDate> are the variables for the object
+    // format/convert using Calendar or android.text.format.DateUtils.formatDateTime
+    public String formatDateTime(String timeToFormat) {
+
+        Context context = getApplicationContext();
+
+        String finalDateTime = "";
+
+        SimpleDateFormat iso8601Format = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss");
+
+        Date date = null;
+        if (timeToFormat !=null){
+            try {
+                date = iso8601Format.parse(timeToFormat);
+            } catch (ParseException e){
+                date = null;
+            }
+
+            if (date != null) {
+                long when = date.getTime();
+                int flags = 0;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_TIME;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_DATE;
+                flags |= android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
+                flags |= android.text.format.DateUtils.FORMAT_SHOW_YEAR;
+
+                finalDateTime = android.text.format.DateUtils.formatDateTime(context,
+                        when + TimeZone.getDefault().getOffset(when), flags);
+            }
+        }
+        return finalDateTime;
+    }
+
 }
