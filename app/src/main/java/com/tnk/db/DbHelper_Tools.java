@@ -106,12 +106,12 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(
                 Contract_Tool.ToolEntry.TABLE_NAME,  // The table you want to query
-                projection,                         // The columns you want to return
-                selection,                          // the columns you want to return
-                selectionArgs,                     // the columns for the WHERE clause
-                null,                      // the values for the WHERE clause
-                null,                       // do not group the rows
-                sortOrder
+                projection,                          // The columns you want returned
+                selection,                           // the columns for the WHERE clause
+                selectionArgs,                      // the values for the WHERE clause
+                null,                      // do not group the rows
+                null,                       // dont filter by row groups
+                sortOrder                           // the sort order
         );
         return cursor;
     }

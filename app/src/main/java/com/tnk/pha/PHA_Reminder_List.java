@@ -18,10 +18,13 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tnk.R;
 import com.tnk.db.Contract_Reminder;
+import com.tnk.db.DbHelper_Reminders;
+import com.tnk.db.ReminderCursorAdapter;
 import com.tnk.db.dbAdapter;
 
 import java.util.List;
@@ -31,9 +34,10 @@ public class PHA_Reminder_List extends AppCompatActivity {
     private static final String TAG = "Reminder List";
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
-    private dbAdapter phaDbHlpr;
+    private DbHelper_Reminders phaDbHlpr;
     private Button dbAdd;
     public ListView lvReminders;
+    public TextView tvReminders;
     public String[] FROM;
     public int[] TO;
 
@@ -45,11 +49,13 @@ public class PHA_Reminder_List extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tb_PHA_Reminders);
 
         setSupportActionBar(toolbar);
-        phaDbHlpr = new dbAdapter(this);
-        phaDbHlpr.open();
+        //phaDbHlpr = new DB(this);
+        //phaDbHlpr.open();
         lvReminders = findViewById(R.id.list_pha_reminders);
+        tvReminders = findViewById(R.id.tv_RemindersTV);
         registerForContextMenu(lvReminders);
 
+        lvReminders.setOnItemClickListener(mMessageClickHandler);
         //call fill data after the LV and other objects have
         //been instantiated
         fillData();
@@ -116,7 +122,7 @@ public class PHA_Reminder_List extends AppCompatActivity {
             case R.id.lp_menu_delete:
                 //delete the selected task
                 AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-                phaDbHlpr.deleteReminder(info.id);
+                //phaDbHlpr.deleteReminder(info.id);
                 fillData();
                 return true;
         }
@@ -125,39 +131,20 @@ public class PHA_Reminder_List extends AppCompatActivity {
 
     private void fillData() {
         /*
-		 * When I�m inside the fillData() method, I fetch all the reminders
-		 * from the database
-		 * uses the manage startManagingCursor() method,
-		 * which is present on the Activity class. This method allows the
-		 * activity to take care of managing the given Cursor�s life cycle
-		 * based on the activity�s life cycle. For example, when the activity
-		 * is stopped, the activity automatically calls deactivate()
-		 * on the Cursor, and when the activity is later restarted, it calls
-		 * requery() for you. When the activity is destroyed, all managed
-		 * Cursors are closed automatically.
-		 */
-        Cursor remindersCursor = phaDbHlpr.getReminders();
-        /*
-        @FIXME 00 startManagingCursor ??
+        @FIXME 00 - startManagingCursor ??
         SimpleCursorAdapter as well
         setListAdapter
          */
 
-        String[] fromColumns = {Contract_Reminder.ReminderEntry.COLUMN_TITLE};
-        int[] toViews = {R.id.remindView};
+        Context context = getApplicationContext();
+        DbHelper_Reminders dbHelper = new DbHelper_Reminders(context);
 
-        /*
-        startManagingCursor(remindersCursor);
-        //Create and array to specify the fields we want, only the title
-        String[] FROM = new String[]{dbAdapter.REM_TITLE};
-        //and an array of the fields we want to bind to the view
-        int[] TO = new int[]{R.id.text1};
-        */
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                R.layout.reminder_list_layout, remindersCursor, fromColumns, toViews, 0);
-        lvReminders.setAdapter(adapter);
-        lvReminders.setOnItemClickListener(mMessageClickHandler);
+        Cursor queryResult = dbHelper.findAllReminders();
+        //Setup Cursor adapter using the Cursor from the last step
+        ReminderCursorAdapter reminderAdapter = new ReminderCursorAdapter(this, queryResult);
+        //Attach Cursor adapter to the ListView
+        lvReminders.setAdapter(reminderAdapter);
+        tvReminders.setText("Count =" + queryResult.getCount());
     }
 
     private AdapterView.OnItemClickListener mMessageClickHandler = new AdapterView.OnItemClickListener() {
