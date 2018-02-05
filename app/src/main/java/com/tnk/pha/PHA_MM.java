@@ -323,7 +323,10 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
 		 * These values are for a landscape activity, top->left
 		 */
 
-        //@FIXME TiltScrolling is NOT working!
+        /*
+        FIXME 01 - MM TiltScrolling
+         */
+
         /*
 		if (rollValue < -(R.string.prefs_tilt_scroll_up_key));
 		{

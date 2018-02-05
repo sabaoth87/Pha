@@ -230,8 +230,9 @@ public class PHA_Db extends Activity implements OnClickListener, OnItemSelectedL
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
+		/*
+		TODO 06 - onNothingSelected Auto-generated
+		 */
 	}
 	
 

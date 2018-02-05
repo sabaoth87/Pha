@@ -281,7 +281,10 @@ public class PHA_Calc extends Activity implements OnClickListener{
 			numberBuilder.append("("+varY+")");
 			break;
 		case R.id.PHA_ScnClcSetX:
-			//possibly try sending it to the string math jar to ensure its a viable variable
+			/*
+			TRY 03 - Calculator Variable StringMath
+			 */
+			//possibly send it to the string math jar to ensure its a viable variable
 			if (displayBuilder.length()>0){
 				varX = Double.valueOf(numberBuilder.toString());
 				displayBuilder.delete(0, displayBuilder.length());	

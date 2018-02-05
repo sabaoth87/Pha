@@ -54,7 +54,10 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
         values.put(Contract_Reminder.ReminderEntry.COLUMN_TIME, reminder.getRem_time());
 
         Log.v(TAG,"Adding reminder tot he Db...");
-        long newRowId = db.insert(Contract_Reminder.ReminderEntry.TABLE_NAME, null, values);
+        long newRowId = db.insert(
+                Contract_Reminder.ReminderEntry.TABLE_NAME,
+                null, 
+                values);
         Log.v(TAG, "Entry " + newRowId + " added to Db");
         db.close();
         return(newRowId);

@@ -45,8 +45,6 @@ public class Workbench extends AppCompatActivity {
     private Button dbUpdate;
     private TextView tv_Main;
     private ListView lv_Main;
-    // @NOTE
-    // some of these EditText should be spinners or drop-downs
     private EditText et_ToolName;
     private Spinner sp_ToolType;
     private Spinner sp_ToolBrand;

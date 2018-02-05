@@ -109,9 +109,9 @@ public class PHA_Location implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        //Use this to do tasks with the location object
-        //@TODO
-        //Look into what to do with this location object!
+        /*
+        @TODO 07 - onLocationChanged
+         */
     }
 
     @Override

@@ -170,7 +170,10 @@ public class PHA_SudokuGame extends Activity {
      */
     private int[] getPuzzle(int diff) {
         String puz;
-        // TODO: Continue last game
+        /*
+        TRYME 04 - Continue last game
+         */
+
         switch (diff) {
             case DIFFICULTY_HARD:
                 puz = hardPuzzle;

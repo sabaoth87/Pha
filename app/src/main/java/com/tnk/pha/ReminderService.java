@@ -8,10 +8,9 @@ import android.content.Intent;
 import com.tnk.R;
 import com.tnk.db.dbAdapter;
 
-
-//@TODO
-// These reminders and alarms will have to be stripped once we get this up and running
-// I have no use for them, and it seems that this method of implementation is antiquated
+/*
+TODO 09 - Remove reminders and alarms
+ */
 public class ReminderService extends WakeReminderIntentService {
     public ReminderService() {
         super("ReminderService");

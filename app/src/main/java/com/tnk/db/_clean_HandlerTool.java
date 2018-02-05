@@ -3,7 +3,7 @@ package com.tnk.db;
 /*
  * Created by Tom on 2017-12-29.
  *
- * @TRY AsyncTask with SQL Handlers?
+ * TRYME 00 - AsyncTask with SQL Handlers?
  * I think I have to make this into a AsyncTask in order to prevent hangups
  */
 

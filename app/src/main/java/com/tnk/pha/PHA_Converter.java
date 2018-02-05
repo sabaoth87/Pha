@@ -150,7 +150,9 @@ public class PHA_Converter extends Activity implements OnClickListener, OnItemSe
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
+		/*
+		TODO 06 - onNothingSelected Auto-generated
+		 */
 		
 	}
 

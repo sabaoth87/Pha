@@ -116,7 +116,9 @@ public class PHA_SensorTest extends Activity {
         //PHASM.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME);
 
 
-        //@FIXME Location is no longer working!!!!
+        /*
+        FIXME 02 - Location is no longer working!!!
+         */
         //Time to put the sextant to use and plot those coords!
 
         //PHALM.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0, locationListener);

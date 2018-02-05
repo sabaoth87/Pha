@@ -347,7 +347,7 @@ public class PHA_Voice extends Activity {
 		/*
 		 * 0=find
 		 * 1=launch
-		 * 2=note
+		 * 2=notes
 		 * 3=open
 		 * 4=search
 		 * 5=time
@@ -369,7 +369,7 @@ public class PHA_Voice extends Activity {
                 uninitToast.show();
                 break;
             case 2:
-                //note
+                //notes
                 Intent noteIntent = new Intent(this, PHA_Db.class);
                 noteIntent.putExtra("want", wants);
                 startActivity(noteIntent);

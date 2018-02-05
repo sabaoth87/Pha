@@ -30,7 +30,7 @@ public class PHA_Util_DatePicker extends DialogFragment implements
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         /*
-        @TODO
+        TODO 08 - onDateSet do something...
          */
         // Do something with the date chosen by the user
     }
