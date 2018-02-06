@@ -63,6 +63,16 @@ public class PHA_PuzzleView extends View {
         return true;
     }
 
+    @Override
+    public boolean performClick() {
+        /*
+        WHYME 00 - performClick
+        I was required to add this to overcome an Android Lint: Accessibility warning
+        Look into it WYHT
+         */
+        return super.performClick();
+    }
+
     public void setSelectedTile(int tile) {
         if (game.setTileIfValid(selX, selY, tile)) {
             invalidate();// may change hints

@@ -9,28 +9,29 @@
     <string name="actTitle_PHA_Db_Handler">PHA:LANX(Db)</string>
     <string name="actTitle_PHA_Db">PHA:LANX(Db)</string>
     <string name="actTitle_PHA_Voice">PHA:LANX(Vo)</string>
-    <string name="actTitle_PHA_Db_Data">PHA:LANX(Db)</string>
+    <string name="actTitle_PHA_Db_Data">PHA:LANX(Db:Data)</string>
     <string name="actTitle_PHA_Search">PHA:LANX(Se)</string>
-    <string name="actTitle_PHA_Search_Display">PHA:LANX(Se)</string>
-    <string name="actTitle_PHA_Sudoku_About">PHA:LANX(Su)</string>
+    <string name="actTitle_PHA_Search_Display">PHA:LANX(Se:Display)</string>
+    <string name="actTitle_PHA_Sudoku_About">PHA:LANX(Su:About)</string>
     <string name="actTitle_Workbench">Workbench</string>
+    <string name="actTitle_PHA_Sudoku_Settings">PHA:LANX(Su:Settings)</string>
     <string name="mainScreenTitle">PHA:LANX</string>
-    <string name="title_activity_pha__sudoku_main">PHA:LANX(Su)</string>
+    <string name="title_activity_pha_sudoku_main">PHA:LANX(Su)</string>
     <string name="title_activity_sudoku_about">PHA:LANX(Su) - About</string>
-    <string name="title_activity_phay__search_main">PHA:LANX(Se)</string>
-    <string name="title_activity_phay__search_display">PHA:LANX(Se)</string>
-    <string name="title_activity_pha__sudoku_settings">PHA_SudokuSettings</string>
-    <string name="title_activity_pha__sudoku_game">PHA:LANX(Su)</string>
-    <string name="title_activity_pha__tilt_test">PHA_TiltTest</string>
-    <string name="title_activity_pha__tilt_scroll_test">PHA_TiltScrollTest</string>
-    <string name="title_activity_pha__memo_main">PHA_MemoMain</string>
-    <string name="title_activity_pha__memo_entry_main">PHA_MemoEntryMain</string>
-    <string name="title_activity_pha__reminder">PHA_Reminder</string>
-    <string name="title_activity_pha__voice">PHA_Voice</string>
-    <string name="title_activity_pha__converter">PHA_Converter</string>
-    <string name="title_activity_pha__sensor_test">PHA_SensorTest</string>
-    <string name="title_activity_pha__map">PHA_Map</string>
-    <string name="title_activity_pha__reminder__list">PHA_Reminder_List</string>
+    <string name="title_activity_phay_search_main">PHA:LANX(Se)</string>
+    <string name="title_activity_phay_search_display">PHA:LANX(Se)</string>
+    <string name="title_activity_pha_sudoku_settings">PHA_SudokuSettings</string>
+    <string name="title_activity_pha_sudoku_game">PHA:LANX(Su)</string>
+    <string name="title_activity_pha_tilt_test">PHA_TiltTest</string>
+    <string name="title_activity_pha_tilt_scroll_test">PHA_TiltScrollTest</string>
+    <string name="title_activity_pha_memo_main">PHA_MemoMain</string>
+    <string name="title_activity_pha_memo_entry_main">PHA_MemoEntryMain</string>
+    <string name="title_activity_pha_reminder">PHA_Reminder</string>
+    <string name="title_activity_pha_voice">PHA_Voice</string>
+    <string name="actTitle_PHA_Converter">PHA_Converter</string>
+    <string name="title_activity_pha_sensor_test">PHA_SensorTest</string>
+    <string name="title_activity_pha_map">PHA_Map</string>
+    <string name="actTitle_PHA_Reminder_List">PHA_Reminder_List</string>
 
     <string name="btn_lbl_LoadToolList">LOAD TOOLS</string>
     <string name="btn_lbl_AddTool">ADD</string>
@@ -54,6 +55,9 @@
     <string name="button14Text">TEST</string>
     <string name="button15Text">TEST</string>
     <string name="button16Text">TEST</string>
+
+    <string name="et_entry_null">null ¯\_(ツ)_/¯</string>
+    <string name="et_entry_null_body">This entry has been found to be null.</string>
 
     <string name="tv_mm_00">Main Menu Text View</string>
     <string name="tvMain_toolDeleted">Tool Deleted!</string>
