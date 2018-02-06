@@ -230,18 +230,19 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
                 RowId = id;
             }
         } else {
-            Toast.makeText(context, "Tried to Update", Toast.LENGTH_LONG);
+            Toast.makeText(context, "Tried to Update", Toast.LENGTH_LONG).show();
             // PHA_dbhelper.updateReminder(RowId, title, body, reminderDateTime);
         }
 
-        new PHA_ReminderManager(this).setReminder(RowId, mCalendar);
+        //old call to make a Reminder Event
+        //new PHA_ReminderManager(this).setReminder(RowId, mCalendar);
     }
 
     private void setRowIdFromIntent() {
         if (RowId == null) {
             Bundle extras = getIntent().getExtras();
             /*
-            @TRY 02 - Bundle _ROWIDs, if neccesary
+            @TRYME 02 - Bundle _ROWIDs, if neccesary
              */
             //RowId = extras != null ? extras.getLong(dbAdapter.REM_ROWID) : null;
         }
@@ -308,22 +309,24 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        /*@FIXME
+        /*
+        FIXME 03 - onSaveInstance
+
         //outState.putLong(dbAdapter.REM_ROWID, RowId);
          */
     }
 
     public void beginEntry(Cursor reminder) {
         //load the reminder information into the UI here
-        Log.v(TAG, "Trying to load Editable reminder...");
+        if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Trying to load Editable reminder...");}
         if (reminder==null) {
-            Log.v(TAG, "Cursor with the Editable reminder was found to be null!");
-            titleText.setText(" @null! ");
-            bodyText.setText(" This entry has been found to be null ");
+            if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Cursor with the Editable reminder was found to be null!");}
+            titleText.setText(R.string.et_entry_null);
+            bodyText.setText(R.string.et_entry_null_body);
             beginEntrySet = false;
         }
         else {
-            Log.v(TAG, "Cursor is valid! Populating UI");
+            if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Cursor is valid! Populating UI");}
             //int entryIdId = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry._ID);
 
             while(reminder.moveToNext()) {

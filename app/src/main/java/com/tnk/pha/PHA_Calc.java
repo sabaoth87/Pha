@@ -24,8 +24,8 @@ public class PHA_Calc extends Activity implements OnClickListener{
 
 	private static String ACTIVITYNAME = "PHA_Calc";
 
-	public static TextView CalcDisplay;
-	public static TextView OperatorDisplay;
+	public TextView CalcDisplay;
+	public TextView OperatorDisplay;
 	public StringBuilder number1Builder;
 	public StringBuilder number2Builder;
 	public StringBuilder numberBuilder;
@@ -78,17 +78,6 @@ public class PHA_Calc extends Activity implements OnClickListener{
 	public Toast setXToast;
 	public Toast setYToast;
 	public Toast clearToast;
-	public Toast setXFailToast;
-	public Toast setYFailToast;
-	private int durationShort = Toast.LENGTH_SHORT;
-	private int durationLong = Toast.LENGTH_LONG;
-	private String setYText = "Set Y to ";
-	private String setXText = "Set X to ";
-	private String setXFailText = "Nothing to Assign to X";
-	private String setYFailText = "Nothing to Assign to Y";
-	private String setXConfirmText = "X set to";
-	private String setYConfirmText = "Y set to";
-	private String clearText = "Cleared";
 	private Context context;
 
 	private double[] calcMems;
@@ -103,8 +92,8 @@ public class PHA_Calc extends Activity implements OnClickListener{
 		/*
 		 * Initiate the TextView to show the calculations
 		 */
-		CalcDisplay = (TextView) findViewById(R.id.phaClcDisplay1);
-		OperatorDisplay = (TextView) findViewById(R.id.PHA_ClcOperatorsDisplay);
+		CalcDisplay = findViewById(R.id.phaClcDisplay1);
+		OperatorDisplay = findViewById(R.id.PHA_ClcOperatorsDisplay);
 		/*
 		 * Initiate the StringBuilder to handle the button inputs
 		 */
@@ -114,8 +103,7 @@ public class PHA_Calc extends Activity implements OnClickListener{
 		numberBuilder = new StringBuilder();
 		calcBttnStart();
 		context = getApplicationContext();
-		setXFailToast = Toast.makeText(context, setXFailText, durationShort);
-		setYFailToast = Toast.makeText(context, setYFailText, durationShort);
+
 		if (!calcMemsInitiated){
 			memInitiate();
 		}
@@ -147,9 +135,13 @@ public class PHA_Calc extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		//setXToast = Toast.makeText(context, setXText, durationShort);
-		//setYToast = Toast.makeText(context, setYText, durationShort);
-		clearToast = Toast.makeText(context, clearText, durationLong);
+		String setYText = "Set Y to ";
+		String setXText = "Set X to ";
+		String setXFailText = "Nothing to Assign to X";
+		String setYFailText = "Nothing to Assign to Y";
+		String clearText = "Cleared";
+
+		clearToast = Toast.makeText(context, clearText, Toast.LENGTH_SHORT);
 		switch (v.getId()){
 		case R.id.phaClcZero:
 			displayBuilder.append(0);
@@ -268,17 +260,29 @@ public class PHA_Calc extends Activity implements OnClickListener{
 			displayBuilder.append("PI");
 			break;
 		case R.id.phaClcANS:
-			numberBuilder.append("("+answerMem0+")");
-			displayBuilder.append("("+answerMem0+")");
+			numberBuilder.append("(");
+			numberBuilder.append(answerMem0);
+			numberBuilder.append(")");
+			displayBuilder.append("(");
+			displayBuilder.append(answerMem0);
+			displayBuilder.append(")");
 			memLocale++;
 			break;
 		case R.id.PHA_ScnClcX:
-			displayBuilder.append("("+varX+")");
-			numberBuilder.append("("+varX+")");
+			numberBuilder.append("(");
+			numberBuilder.append(varX);
+			numberBuilder.append(")");
+			displayBuilder.append("(");
+			displayBuilder.append(varX);
+			displayBuilder.append(")");
 			break;
 		case R.id.PHA_ScnClcY:
-			displayBuilder.append("("+varY+")");
-			numberBuilder.append("("+varY+")");
+			numberBuilder.append("(");
+			numberBuilder.append(varY);
+			numberBuilder.append(")");
+			displayBuilder.append("(");
+			displayBuilder.append(varY);
+			displayBuilder.append(")");
 			break;
 		case R.id.PHA_ScnClcSetX:
 			/*
@@ -289,12 +293,12 @@ public class PHA_Calc extends Activity implements OnClickListener{
 				varX = Double.valueOf(numberBuilder.toString());
 				displayBuilder.delete(0, displayBuilder.length());	
 				numberBuilder.delete(0, numberBuilder.length());
-				setXToast = Toast.makeText(context, (setXText + varX), durationShort);
+				setXToast = Toast.makeText(context, (setXText + varX), Toast.LENGTH_SHORT);
 				setXToast.show();
 				break;
 			}
 			else {
-				setXFailToast.show();
+				Toast.makeText(context, setXFailText, Toast.LENGTH_SHORT).show();
 				break;
 			}
 		case R.id.PHA_ScnClcSetY:
@@ -302,12 +306,12 @@ public class PHA_Calc extends Activity implements OnClickListener{
 				varY = Double.valueOf(numberBuilder.toString());
 				displayBuilder.delete(0, displayBuilder.length());	
 				numberBuilder.delete(0, numberBuilder.length());
-				setYToast = Toast.makeText(context, (setYText + varY), durationShort);
+				setYToast = Toast.makeText(context, (setYText + varY), Toast.LENGTH_SHORT);
 				setYToast.show();
 				break;
 			}
 			else {
-				setYFailToast.show();
+				Toast.makeText(context, setYFailText, Toast.LENGTH_SHORT).show();
 				break;
 			}
 
@@ -377,92 +381,96 @@ public class PHA_Calc extends Activity implements OnClickListener{
 		/*
 		 * Right Side, Normal Function Buttons
 		 */
-		((Button) findViewById(R.id.phaClcZero)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcOne)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcTwo)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcThree)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcFour)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcFive)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcSix)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcSeven)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcEight)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcNine)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcMinus)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcPlus)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcMult)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcDiv)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcDP)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcEqls)).setOnClickListener(this);
+		findViewById(R.id.phaClcZero).setOnClickListener(this);
+		findViewById(R.id.phaClcOne).setOnClickListener(this);
+		findViewById(R.id.phaClcTwo).setOnClickListener(this);
+		findViewById(R.id.phaClcThree).setOnClickListener(this);
+		findViewById(R.id.phaClcFour).setOnClickListener(this);
+		findViewById(R.id.phaClcFive).setOnClickListener(this);
+		findViewById(R.id.phaClcSix).setOnClickListener(this);
+		findViewById(R.id.phaClcSeven).setOnClickListener(this);
+		findViewById(R.id.phaClcEight).setOnClickListener(this);
+		findViewById(R.id.phaClcNine).setOnClickListener(this);
+		findViewById(R.id.phaClcMinus).setOnClickListener(this);
+		findViewById(R.id.phaClcPlus).setOnClickListener(this);
+		findViewById(R.id.phaClcMult).setOnClickListener(this);
+		findViewById(R.id.phaClcDiv).setOnClickListener(this);
+		findViewById(R.id.phaClcDP).setOnClickListener(this);
+		findViewById(R.id.phaClcEqls).setOnClickListener(this);
 
 		/*
 		 * Left Side, Advanced Math Function Buttons
 		 */		
-		((Button) findViewById(R.id.PHA_ScnClcAcos)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcAsin)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcAtan)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcCos)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcTan)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcSin)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcInverse)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcSquare)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcSqrt)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcClearAll)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcE)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcPercent)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcClearLast)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcLog)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcOpenBracket)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcCloseBracket)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcPi)).setOnClickListener(this);
-		((Button) findViewById(R.id.phaClcANS)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcRandom)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcY)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcX)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcSetY)).setOnClickListener(this);
-		((Button) findViewById(R.id.PHA_ScnClcSetX)).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcAcos).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcAsin).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcAtan).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcCos).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcTan).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcSin).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcInverse).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcSquare).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcSqrt).setOnClickListener(this);
+		findViewById(R.id.phaClcClearAll).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcE).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcPercent).setOnClickListener(this);
+		findViewById(R.id.phaClcClearLast).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcLog).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcOpenBracket).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcCloseBracket).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcPi).setOnClickListener(this);
+		findViewById(R.id.phaClcANS).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcRandom).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcY).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcX).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcSetY).setOnClickListener(this);
+		findViewById(R.id.PHA_ScnClcSetX).setOnClickListener(this);
 
 		((ImageView) findViewById(R.id.phaClcDltBtn)).setOnClickListener(this);		
 
 	}	
 
 	public void displayUpdate(){
-
-		if (mathDone == false){
-			displayEqn = displayBuilder.toString();
-			CalcDisplay.setText(displayEqn);
-		}
-		if (mathDone == true){
+		if (mathDone){
 			displayBuilder.delete(0, displayBuilder.length());	
 			numberBuilder.delete(0, numberBuilder.length());
 			displayEqn = Double.toString(mathAnswer);
 			CalcDisplay.setText(displayEqn);
 			mathDone=false;}
+			else {
+			displayEqn = displayBuilder.toString();
+			CalcDisplay.setText(displayEqn);
+		}
 	}
 
 	public void calcMem(double answerVal){
-		for (int i =0; i>5; i++){
+		for (int i = 0; i>5; i++){
 			calcMems[i]=answerVal;
 		}
-		//		if (valMem0){
-		//			if(valMem1){
-		//				if(valMem2){
-		//					if(valMem3){
-		//						if(valMem4){
-		//							answerMem4 = answer;
-		//							valMem4 = true;
-		//						}
-		//						answerMem3= answer;
-		//						valMem3 = true;
-		//					}
-		//					answerMem2 = answer;
-		//					valMem2 = true;
-		//				}
-		//				answerMem1 = answer;
-		//				valMem1 = true;
-		//			}
-		//			answerMem0 = answer;
-		//			valMem0 = true;
-		//		}
+				if (valMem0){
+					if(valMem1){
+						if(valMem2){
+							if(valMem3){
+								if(valMem4){
+									answerMem4 = answer;
+									Toast.makeText(this, "Mem 4 set: " + answerMem4, Toast.LENGTH_SHORT).show();
+									valMem4 = true;
+								}
+								answerMem3= answer;
+								Toast.makeText(this, "Mem 3 set: " + answerMem3, Toast.LENGTH_SHORT).show();
+								valMem3 = true;
+							}
+							answerMem2 = answer;
+							Toast.makeText(this, "Mem 2 set: " + answerMem2, Toast.LENGTH_SHORT).show();
+							valMem2 = true;
+						}
+						answerMem1 = answer;
+						Toast.makeText(this, "Mem 1 set: " + answerMem1, Toast.LENGTH_SHORT).show();
+						valMem1 = true;
+					}
+					answerMem0 = answer;
+					Toast.makeText(this, "Mem 0 set: " + answerMem0, Toast.LENGTH_SHORT).show();
+					valMem0 = true;
+				}
 
 	}
 

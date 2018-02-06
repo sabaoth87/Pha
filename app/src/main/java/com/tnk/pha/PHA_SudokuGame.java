@@ -249,7 +249,7 @@ public class PHA_SudokuGame extends Activity {
         Log.d(TAG, "onPause");
         // Save the current puzzle
         getPreferences(MODE_PRIVATE).edit().putString(PREF_PUZZLE,
-                toPuzzleString(puzzleGrid)).commit();
+                toPuzzleString(puzzleGrid)).apply();
     }
 
 

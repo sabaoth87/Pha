@@ -22,14 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name="com.tnk.pha.OnBootReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
 
-        <service android:name="com.tnk.pha.ReminderService" />
-        <receiver android:name="com.tnk.pha.OnAlarmReceiver" />
         <activity
             android:name="com.tnk.pha.PHA_MM"
             android:label="@string/app_name"
@@ -112,7 +105,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Reminder_List"
-            android:label="@string/title_activity_pha__reminder__list"
+            android:label="@string/actTitle_PHA_Reminder_List"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="landscape">
         </activity>
@@ -126,7 +119,7 @@
             android:screenOrientation="landscape"/>
         <activity
             android:name="com.tnk.pha.PHA_Converter"
-            android:label="@string/title_activity_pha__converter"
+            android:label="@string/actTitle_PHA_Converter"
             android:screenOrientation="landscape">
         </activity>
         <activity
@@ -134,6 +127,12 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="@string/actTitle_Workbench">
         </activity>
+        <activity
+            android:name="com.tnk.pha.PHA_SudokuSettings"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="@string/actTitle_PHA_Sudoku_Settings">
+        </activity>
+
     </application>
 
 </manifest>
