@@ -1,11 +1,5 @@
 package com.tnk.pha;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -22,17 +16,28 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.tnk.R;
+import com.tnk.db.Contract_Issue;
 import com.tnk.db.Contract_Reminder;
+import com.tnk.db.DbHelper_Issues;
 import com.tnk.db.DbHelper_Reminders;
+import com.tnk.db.Item_Issue;
 import com.tnk.db.Item_Reminder;
 
-public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListener {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
-    private String TAG = "PHA_RemEntry";
+public class PHA_Issue_Entry extends FragmentActivity implements OnClickListener {
+
+    private String TAG = "PHA_Issue Entry";
     private boolean beginEntrySet = false;
     private Bundle extras;
     private String newString;
@@ -45,34 +50,43 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
     private static final int DATE_PICKER_DIALOG = 0;
     private static final int TIME_PICKER_DIALOG = 1;
     private Calendar mCalendar;
-    private Button mDateButton;
-    private Button mTimeButton;
-    private Button confirmBttn;
-    private EditText titleText;
-    private EditText bodyText;
+    private ImageButton ib_edit;
+    private Button btn_add;
+    private TextView tv_datetime;
+    private TextView tv_id;
+    private EditText et_body;
+    private EditText et_tags;
+    private EditText et_title;
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "kk:mm";
     static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
-    private DbHelper_Reminders PHA_dbhelper;
+    private DbHelper_Issues PHA_dbhelper;
     private Long RowId;
-    private boolean incomingReminder = false;
+    private boolean incomingIssue = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pha_reminders_entry);
+        setContentView(R.layout.pha_issues_entry);
 
         RowId = savedInstanceState != null ? savedInstanceState.getLong(Contract_Reminder.ReminderEntry._ID) : null;
-        PHA_dbhelper = new DbHelper_Reminders(this);
-        mDateButton = findViewById(R.id.remsDateBtn);
-        mTimeButton = findViewById(R.id.remsTimeBtn);
-        confirmBttn = findViewById(R.id.remsConfirmBtn);
-        titleText = findViewById(R.id.remsTitleET);
-        bodyText = findViewById(R.id.remsBodyET);
+        PHA_dbhelper = new DbHelper_Issues(this);
+
+        et_title = findViewById(R.id.et_issue_title);
+        et_body = findViewById(R.id.et_issue_body);
+        et_tags = findViewById(R.id.et_issue_tags);
+        btn_add = findViewById(R.id.btn_issue_add);
+        ib_edit = findViewById(R.id.ib_issue_edit);
+        tv_datetime = findViewById(R.id.tv_issue_datetime);
+        tv_id = findViewById(R.id.tv_issue_id);
+
         mCalendar = Calendar.getInstance();
-        mDateButton.setOnClickListener(this);
-        mTimeButton.setOnClickListener(this);
-        confirmBttn.setOnClickListener(this);
+        btn_add.setOnClickListener(this);
+        ib_edit.setOnClickListener(this);
+
+        tv_datetime.setText(mCalendar.get(Calendar.DAY_OF_WEEK) + " " +
+        mCalendar.get(Calendar.HOUR_OF_DAY ) + " " +
+        mCalendar.get(Calendar.MINUTE) + ";");
 
         if (savedInstanceState == null) {
             extras = getIntent().getExtras();
@@ -96,13 +110,13 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
                 //newHour = extras.getInt("hour");
                 //newMinute = extras.getInt("minute");
                 //</editor-fold>
-                incomingReminder = true;
-                Cursor cReminder = findEntryForEdit(extras.getString(Contract_Reminder.ReminderEntry._ID));
-                if (cReminder != null) {
+                incomingIssue = true;
+                Cursor cIssue = findEntryForEdit(extras.getString(Contract_Issue.IssueEntry._ID));
+                if (cIssue != null) {
                     Log.v(TAG, "<Success> Db entry location valid! /n Returning information");
-                    beginEntry(cReminder);
+                    beginEntry(cIssue);
                 }
-                Log.v(TAG, "<Error> Reminder Cursor was invalid!");
+                Log.v(TAG, "<Error> Issue Cursor was invalid!");
             }
         } else {
             Log.v(TAG, "Setting default values");
@@ -113,6 +127,7 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
             newDay = (Integer) savedInstanceState.getSerializable("day");
             newHour = (Integer) savedInstanceState.getSerializable("hour");
             newMinute = (Integer) savedInstanceState.getSerializable("minute");
+
         }
 
         if (getIntent() != null) {
@@ -120,8 +135,6 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
             int rowId = extras != null ? extras.getInt("RowId") : -1;
             //Do things with the RowID here
         }
-        updateDateButtonText();
-        updateTimeButtonText();
 //		registerButtonListenersAndSetDefaultText();
     }
 
@@ -157,75 +170,37 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
 //		updateTimeButtonText();
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_PICKER_DIALOG:
-                return showDatePicker();
-            case TIME_PICKER_DIALOG:
-                return showTimePicker();
-        }
-        return super.onCreateDialog(id);
-    }
-
-    private DatePickerDialog showDatePicker() {
-        DatePickerDialog datePicker = new DatePickerDialog(PHA_Reminder_Entry.this, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                mCalendar.set(Calendar.YEAR, year);
-                mCalendar.set(Calendar.MONTH, monthOfYear);
-                mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateDateButtonText();
-
-            }
-        }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
-        return datePicker;
-    }
-
-    private void updateDateButtonText() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        String dateForButton = dateFormat.format(mCalendar.getTime());
-        mDateButton.setText(dateForButton);
-    }
-
-    private TimePickerDialog showTimePicker() {
-        TimePickerDialog timePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                mCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                mCalendar.set(Calendar.MINUTE, minute);
-                updateTimeButtonText();
-            }
-        }, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE), true);
-        return timePicker;
-    }
-
-    private void updateTimeButtonText() {
-        SimpleDateFormat timeFormat = new SimpleDateFormat(TIME_FORMAT);
-        String timeForButton = timeFormat.format(mCalendar.getTime());
-        mTimeButton.setText(timeForButton);
-    }
 
     private void saveState() {
         Log.v(TAG, ":: Saving State");
-        String title = titleText.getText().toString();
-        String body = bodyText.getText().toString();
+        String title = et_title.getText().toString();
+        String body = et_body.getText().toString();
+        String tags = et_tags.getText().toString();
 
         Context context = getApplicationContext();
 
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
         String reminderDateTime = dateTimeFormat.format(mCalendar.getTime());
 
-        Item_Reminder newRem = new Item_Reminder();
-        newRem.setRem_title(title);
-        newRem.setRem_body(body);
-        newRem.setRem_date(reminderDateTime);
+        Item_Issue newIssue = new Item_Issue();
+        newIssue.setIssueTitle(title);
+        newIssue.setIssueBody(body);
+        newIssue.setIssueTags(tags);
+        newIssue.setIssueDatetime(reminderDateTime);
+        newIssue.setIssueAssignee("Sabaoth87");
+        newIssue.setIssueOwner("Sabaoth87");
+        newIssue.setIssueMilestone("null milestone");
+        newIssue.setIssueProgress("null progress");
+        newIssue.setIssueProject("null project");
+        newIssue.setIssueStatus("null status");
+        newIssue.setIssueTicket("null ticket");
+        /*
+        @TODO - Issue Entry saveState
+        Need to finish populating the appropriate fields in the Issue
+         */
 
         if (RowId == null) {
-            long id = PHA_dbhelper.addReminderHandler(newRem);
+            long id = PHA_dbhelper.addIssue(newIssue);
             if (id > 0) {
                 RowId = id;
             }
@@ -284,8 +259,8 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
               Log.e("ReminderEntry", e.getMessage(), e);
             }
             */
-        } else if (incomingReminder) {
-            titleText.setText(newString);
+        } else if (incomingIssue) {
+            et_title.setText(newString);
             mCalendar.add(Calendar.MINUTE, newMinute);
             mCalendar.add(Calendar.HOUR, newHour);
             mCalendar.add(Calendar.DAY_OF_MONTH, newDay);
@@ -298,12 +273,10 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
             String defaultTitle = prefs.getString(defaultTitleKey, "");
             String defaultTime = prefs.getString(defaultTimeKey, "");
             if ("".equals(defaultTitle) == false)
-                titleText.setText(defaultTitle);
+                et_title.setText(defaultTitle);
             if ("".equals(defaultTime) == false)
                 mCalendar.add(Calendar.MINUTE, Integer.parseInt(defaultTime));
         }
-        updateDateButtonText();
-        updateTimeButtonText();
     }
 
     @Override
@@ -316,38 +289,44 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
          */
     }
 
-    public void beginEntry(Cursor reminder) {
+    public void beginEntry(Cursor issue) {
         //load the reminder information into the UI here
         if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Trying to load Editable reminder...");}
-        if (reminder==null) {
+        if (issue==null) {
             if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Cursor with the Editable reminder was found to be null!");}
-            titleText.setText(R.string.et_entry_null);
-            bodyText.setText(R.string.et_entry_null_body);
+            et_title.setText(R.string.et_entry_null);
+            et_body.setText(R.string.et_entry_null_body);
             beginEntrySet = false;
         }
         else {
             if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Cursor is valid! Populating UI");}
             //int entryIdId = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry._ID);
 
-            while(reminder.moveToNext()) {
+            while(issue.moveToNext()) {
                 int index;
 
-                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_TITLE);
-                String entryTitle = reminder.getString(index);
+                index = issue.getColumnIndexOrThrow(Contract_Issue.IssueEntry.COLUMN_TITLE);
+                String entryTitle = issue.getString(index);
 
-                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_BODY);
-                String entryBody = reminder.getString(index);
+                index = issue.getColumnIndexOrThrow(Contract_Issue.IssueEntry.COLUMN_BODY);
+                String entryBody = issue.getString(index);
 
-                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.COLUMN_DATE);
-                String entryDateTime = reminder.getString(index);
+                index = issue.getColumnIndexOrThrow(Contract_Issue.IssueEntry.COLUMN_DATETIME);
+                String entryDateTime = issue.getString(index);
+
+                index = issue.getColumnIndexOrThrow(Contract_Issue.IssueEntry.COLUMN_TAGS);
+                String entryTags = issue.getString(index);
+
                 String entryDateFormatted = formatDateTime(entryDateTime);
 
-                index = reminder.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry._ID);
-                long id = reminder.getLong(index);
+                index = issue.getColumnIndexOrThrow(Contract_Issue.IssueEntry._ID);
+                long id = issue.getLong(index);
 
                 Log.v(TAG, "Editable Reminder entry ID: " + id);
-                titleText.setText(entryTitle);
-                bodyText.setText(entryBody);
+                et_title.setText(entryTitle);
+                et_body.setText(entryBody);
+                et_tags.setText(entryTags);
+                tv_datetime.setText(entryDateFormatted);
                 beginEntrySet = true;
             }
 
@@ -358,20 +337,10 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
     @Override
     public void onClick(View arg0) {
         switch (arg0.getId()) {
-            case (R.id.remsDateBtn):
-                //showDialog(DATE_PICKER_DIALOG);
-                DialogFragment dateFragment = new PHA_Util_DatePicker();
-                dateFragment.show(getFragmentManager(), "datePicker");
-                break;
-            case (R.id.remsTimeBtn):
-                //showDialog(TIME_PICKER_DIALOG);
-                DialogFragment timeFragment = new PHA_Util_TimePicker();
-                timeFragment.show(getFragmentManager(), "timePicker");
-                break;
-            case (R.id.remsConfirmBtn):
+            case (R.id.btn_issue_add):
                 saveState();
                 setResult(RESULT_OK);
-                Toast.makeText(PHA_Reminder_Entry.this,
+                Toast.makeText(PHA_Issue_Entry.this,
                         getString(R.string.saveConfirm), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
@@ -380,7 +349,7 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
 
     public Cursor findEntryForEdit(String id){
         Context context = getApplicationContext();
-        DbHelper_Reminders dbHelper = new DbHelper_Reminders(context);
+        DbHelper_Issues dbHelper = new DbHelper_Issues(context);
 
         Cursor forEdit = dbHelper.findById(id);
         //forEdit.getColumnIndexOrThrow(Contract_Reminder.ReminderEntry.)

@@ -2,36 +2,22 @@
 <resources>
     <string name="app_name">PHALANXv2</string>
 
-    <string name="actTitle_PHA_Calc">PHA:LANX(Ca)</string>
-    <string name="actTitle_PHA_Test">PHA:LANX(Testing)</string>
-    <string name="actTitle_PHA_Sudoku">PHA:LANX(Su)</string>
-    <string name="actTitle_PHA_MM">PHA:LANX(MM)</string>
-    <string name="actTitle_PHA_Db_Handler">PHA:LANX(Db)</string>
-    <string name="actTitle_PHA_Db">PHA:LANX(Db)</string>
-    <string name="actTitle_PHA_Voice">PHA:LANX(Vo)</string>
-    <string name="actTitle_PHA_Db_Data">PHA:LANX(Db:Data)</string>
-    <string name="actTitle_PHA_Search">PHA:LANX(Se)</string>
-    <string name="actTitle_PHA_Search_Display">PHA:LANX(Se:Display)</string>
-    <string name="actTitle_PHA_Sudoku_About">PHA:LANX(Su:About)</string>
-    <string name="actTitle_Workbench">Workbench</string>
-    <string name="actTitle_PHA_Sudoku_Settings">PHA:LANX(Su:Settings)</string>
+    <string name="activity_title_pha_calc">PHA:LANX(Ca)</string>
+    <string name="activity_title_pha_test">PHA:LANX(Testing)</string>
+    <string name="activity_title_pha_sudoku">PHA:LANX(Su)</string>
+    <string name="activity_title_pha_mm">PHA:LANX(MM)</string>
+    <string name="activity_title_pha_db_interface">PHA:LANX(Db:Interface)</string>
+    <string name="activity_title_pha_db">PHA:LANX(Db)</string>
+    <string name="activity_title_pha_voice">PHA:LANX(Vo)</string>
+    <string name="activity_title_pha_db_data">PHA:LANX(Db:Data)</string>
+    <string name="activity_title_pha_search">PHA:LANX(Se)</string>
+    <string name="activity_title_pha_search_display">PHA:LANX(Se:Display)</string>
+    <string name="activity_title_pha_sudoku_about">PHA:LANX(Su:About)</string>
+    <string name="activity_title_pha_workbench">PHA:LANX(Wb)</string>
+    <string name="activity_title_pha_sudoku_settings">PHA:LANX(Su:Settings)</string>
+    <string name="activity_title_pha_converter">PHA_Converter</string>
+    <string name="activity_title_pha_reminders_lister">PHA_Reminder_List</string>
     <string name="mainScreenTitle">PHA:LANX</string>
-    <string name="title_activity_pha_sudoku_main">PHA:LANX(Su)</string>
-    <string name="title_activity_sudoku_about">PHA:LANX(Su) - About</string>
-    <string name="title_activity_phay_search_main">PHA:LANX(Se)</string>
-    <string name="title_activity_phay_search_display">PHA:LANX(Se)</string>
-    <string name="title_activity_pha_sudoku_settings">PHA_SudokuSettings</string>
-    <string name="title_activity_pha_sudoku_game">PHA:LANX(Su)</string>
-    <string name="title_activity_pha_tilt_test">PHA_TiltTest</string>
-    <string name="title_activity_pha_tilt_scroll_test">PHA_TiltScrollTest</string>
-    <string name="title_activity_pha_memo_main">PHA_MemoMain</string>
-    <string name="title_activity_pha_memo_entry_main">PHA_MemoEntryMain</string>
-    <string name="title_activity_pha_reminder">PHA_Reminder</string>
-    <string name="title_activity_pha_voice">PHA_Voice</string>
-    <string name="actTitle_PHA_Converter">PHA_Converter</string>
-    <string name="title_activity_pha_sensor_test">PHA_SensorTest</string>
-    <string name="title_activity_pha_map">PHA_Map</string>
-    <string name="actTitle_PHA_Reminder_List">PHA_Reminder_List</string>
 
     <string name="btn_lbl_LoadToolList">LOAD TOOLS</string>
     <string name="btn_lbl_AddTool">ADD</string>
@@ -48,6 +34,7 @@
     <string name="btn_mm_07_text">VOICE TEST</string>
     <string name="btn_mm_08_text">CONVERTER</string>
     <string name="btn_mm_09_text">WORKBENCH</string>
+    <string name="btn_mm_test">Issues</string>
     <string name="button10Text">TEST</string>
     <string name="button11Text">TEST</string>
     <string name="button12Text">TEST</string>
@@ -105,13 +92,19 @@
     <string name="menu_opt_5">Search</string>
     <string name="menu_opt_6">Search</string>
     <string name="menu_action_settings">SETTINGS</string>
-    <string name="menu_action_listTools">Show All</string>
-    <string name="menu_action_addTool">+Tool</string>
-    <string name="menu_action_searchTool">Search</string>
+    <string name="menu_workbench_list">Show All</string>
+    <string name="menu_workbench_add_tool">+Tool</string>
+    <string name="menu_workbench_search_tool">Search</string>
+    <string name="menu_issues_add">New Issue</string>
+    <string name="menu_issues_settings">Settings</string>
+    <string name="menu_issues_list">View All</string>
 
-
-    <string name="lp_menu_search">Search item</string>
-    <string name="lp_menu_delete">Delete item</string>
+    <string name="menu_lp_item_search">Search Item</string>
+    <string name="menu_lp_item_delete">Delete Item</string>
+    <string name="menu_lp_reminder_delete">Delete Reminder</string>
+    <string name="menu_lp_tool_delete">Delete Tool</string>
+    <string name="menu_lp_issue_delete">Delete Issue</string>
+    <string name="menu_lp_issue_edit">Edit Entry</string>
 
     <string name="action_settings">Settings</string>
 

@@ -23,5 +23,7 @@ public final class Contract_Issue {
         public static final String COLUMN_PROJECT = "project";
         public static final String COLUMN_MILESTONE = "milestone";
         public static final String COLUMN_PROGRESS = "progress";
+        public static final String COLUMN_TICKET = "ticket";
+        public static final String COLUMN_OWNER = "owner";
     }
 }

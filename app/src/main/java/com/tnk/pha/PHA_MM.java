@@ -98,22 +98,7 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         //button4=(Button) findViewById(R.id.button4);
         //button5=(Button) findViewById(R.id.button5);
         //button6=(Button) findViewById(R.id.button6);
-        /*
-         * set the onClickListener up for the menu
-         */
-        ((Button) findViewById(R.id.btn_mm_00)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_01)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_02)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_03)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_04)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_05)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_06)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_07)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_08)).setOnClickListener(this);
-        ((Button) findViewById(R.id.btn_mm_09)).setOnClickListener(this);
-        /*
-         * Initialize the scroller so the tilt will scroll the page
-         */
+
 
         Button MMBtn1 = (Button) findViewById(R.id.btn_mm_00);
         Button MMBtn2 = (Button) findViewById(R.id.btn_mm_01);
@@ -125,6 +110,24 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         Button MMBtn8 = (Button) findViewById(R.id.btn_mm_07);
         Button MMBtn9 = (Button) findViewById(R.id.btn_mm_08);
         Button MMBtn10 = (Button) findViewById(R.id.btn_mm_09);
+        Button MMBtnTest = (Button) findViewById(R.id.btn_mm_testing);
+        /*
+         * set the onClickListener up for the menu
+         */
+        findViewById(R.id.btn_mm_00).setOnClickListener(this);
+        findViewById(R.id.btn_mm_01).setOnClickListener(this);
+        findViewById(R.id.btn_mm_02).setOnClickListener(this);
+        findViewById(R.id.btn_mm_03).setOnClickListener(this);
+        findViewById(R.id.btn_mm_04).setOnClickListener(this);
+        findViewById(R.id.btn_mm_05).setOnClickListener(this);
+        findViewById(R.id.btn_mm_06).setOnClickListener(this);
+        findViewById(R.id.btn_mm_07).setOnClickListener(this);
+        findViewById(R.id.btn_mm_08).setOnClickListener(this);
+        findViewById(R.id.btn_mm_09).setOnClickListener(this);
+        findViewById(R.id.btn_mm_testing).setOnClickListener(this);
+        /*
+         * Initialize the scroller so the tilt will scroll the page
+         */
         //MMET1 = (EditText)findViewById(R.id.mainScreenTV1);
         //MMET2 = (EditText)findViewById(R.id.mainScreenTV2);
 
@@ -162,6 +165,7 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
         MMBtn8.startAnimation(rotateIn);
         MMBtn9.startAnimation(rotateIn);
         MMBtn10.startAnimation(rotateIn);
+        MMBtnTest.startAnimation(rotateIn);
     }
 
     @Override
@@ -251,6 +255,11 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
                 Intent wbIntent = new Intent(this, Workbench.class);
                 Log.v(TAG, "Launching the Workbench...");
                 startActivity(wbIntent);
+                break;
+            case R.id.btn_mm_testing:
+                Intent testingIntent = new Intent(this, PHA_Issue_List.class);
+                Log.v(TAG, "Launching Issues...");
+                startActivity(testingIntent);
                 break;
             // more butons go here later
         }

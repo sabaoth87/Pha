@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Calc"
-            android:label="@string/actTitle_PHA_Calc"
+            android:label="@string/activity_title_pha_calc"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -43,7 +43,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Sudoku"
-            android:label="@string/actTitle_PHA_Sudoku"
+            android:label="@string/activity_title_pha_sudoku"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,7 +51,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Db"
-            android:label="@string/actTitle_PHA_Db"
+            android:label="@string/activity_title_pha_db"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -59,7 +59,7 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_SensorTest"
-            android:label="@string/actTitle_PHA_Test"
+            android:label="@string/activity_title_pha_test"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -67,71 +67,78 @@
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Search"
-            android:label="@string/actTitle_PHA_Search"
+            android:label="@string/activity_title_pha_search"
             android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_SearchDisplay"
-            android:label="@string/actTitle_PHA_Search_Display"
+            android:label="@string/activity_title_pha_search_display"
             android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_DbHandler"
-            android:label="@string/actTitle_PHA_Db_Handler"
+            android:label="@string/activity_title_pha_db_interface"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Voice"
-            android:label="@string/actTitle_PHA_Voice"
+            android:label="@string/activity_title_pha_voice"
             android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_SudokuGame"
-            android:label="@string/actTitle_PHA_Sudoku"
+            android:label="@string/activity_title_pha_sudoku"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_TiltTest"
-            android:label="@string/actTitle_PHA_Test"
+            android:label="@string/activity_title_pha_test"
             android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_TiltScrollTest"
-            android:label="@string/actTitle_PHA_Test"
+            android:label="@string/activity_title_pha_test"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Reminder_List"
-            android:label="@string/actTitle_PHA_Reminder_List"
+            android:label="@string/activity_title_pha_reminders_lister"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_Reminder_Entry"
-            android:label="@string/actTitle_PHA_Test"
+            android:label="@string/activity_title_pha_test"
             android:screenOrientation="landscape"/>
         <activity
             android:name="com.tnk.pha.PHA_RemTaskPrefs"
-            android:label="@string/actTitle_PHA_Test"
+            android:label="@string/activity_title_pha_test"
             android:screenOrientation="landscape"/>
         <activity
             android:name="com.tnk.pha.PHA_Converter"
-            android:label="@string/actTitle_PHA_Converter"
+            android:label="@string/activity_title_pha_converter"
             android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.tnk.pha.Workbench"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="@string/actTitle_Workbench">
+            android:label="@string/activity_title_pha_workbench">
         </activity>
         <activity
             android:name="com.tnk.pha.PHA_SudokuSettings"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="@string/actTitle_PHA_Sudoku_Settings">
+            android:label="@string/activity_title_pha_sudoku_settings">
         </activity>
+        <activity android:name=".pha.PHA_Issue_List"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="PHA:LANX(Is)"/>
+        <activity android:name=".pha.PHA_Issue_Entry"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="PHA:LANX(Is:Edit)"/>
+
 
     </application>
 

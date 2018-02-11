@@ -14,20 +14,18 @@
         android:gravity="center_horizontal"
         android:text="@string/PHA_MM_Title"
         android:textStyle="bold"
-        android:typeface="monospace">
-
-    </TextView>
+        android:typeface="monospace"/>
 
     <LinearLayout
         android:id="@+id/mainScreenLLs"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/mainScreenTV"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/mainScreenLLL"
-            android:layout_width="250dip"
+            android:layout_width="350dip"
             android:layout_height="fill_parent"
             android:orientation="vertical">
 
@@ -38,6 +36,22 @@
                 android:gravity="center"
                 android:text="@string/tv_mm_00"/>
 
+            <TextView
+                android:id="@+id/tv_mm_testing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:text="IN PROGRESS"
+                android:textStyle="bold"
+                android:typeface="monospace"/>
+
+            <Button
+                android:id="@+id/btn_mm_testing"
+                style="@style/PHAY_MainMenuBtnWhite"
+                android:text="@string/btn_mm_test"
+                />
 
             <ListView
                 android:id="@+id/reminderListView"
@@ -46,13 +60,14 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:id="@+id/mainScreenLLR"
-            android:layout_width="fill_parent"
+            android:layout_width="350dp"
             android:layout_height="fill_parent"
-            android:layout_gravity="end"
-            android:gravity="end"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginHorizontal="65dp">
 
             <ScrollView
                 android:id="@+id/mainScreenScrollView"
@@ -164,4 +179,5 @@
                 android:gravity="center"
                 android:text="@string/PHA_MM_Title" />
         </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
