@@ -264,7 +264,10 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
     private void populateFields() {
         if (RowId != null) {
             /*
-            @FIX_ME
+            @FIX_ME 04 - Title oddly does not populate properly
+            For some reason, when the fields are populated, the
+            EditText for Reminder Title reverts to its hint
+            Possibly because of focus?
              */
             //Cursor reminder = PHA_dbhelper(RowId);
             //startManagingCursor(reminder);
@@ -388,7 +391,7 @@ public class PHA_Reminder_Entry extends FragmentActivity implements OnClickListe
     }
 
 
-    // @TRY_ME Date/Time Format
+    // @REMARK 00 - Date/Time Format
     // This is probably not required here
     // I should incorporate this into the entry values themselves
     // So just   <title>, <body>, <timeDate> are the variables for the object

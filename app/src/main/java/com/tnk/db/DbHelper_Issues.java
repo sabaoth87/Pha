@@ -86,7 +86,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
     }
 
     /*
-    @REMARK 00 - 'find' issues
+    @REMARK 01 - 'find' issues
     I think I should either condense the 'finds' to one method
     Have two, or more, variables passed to it, one being an
     intent - a CASE SELECT of the intent will then determine
@@ -190,47 +190,9 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
     public Cursor findAllIssues (){
         Log.v(TAG,"Searching the local Db for all Reminders");
         SQLiteDatabase db = this.getReadableDatabase();
-
-        //Define a projection that specifies which columns from the database
-        //you will actually use after this query
-        String[] projection = {
-                Contract_Issue.IssueEntry._ID,
-                Contract_Issue.IssueEntry.COLUMN_TITLE,
-                Contract_Issue.IssueEntry.COLUMN_BODY,
-                Contract_Issue.IssueEntry.COLUMN_DATETIME,
-                Contract_Issue.IssueEntry.COLUMN_STATUS,
-                Contract_Issue.IssueEntry.COLUMN_TAGS,
-                Contract_Issue.IssueEntry.COLUMN_ASSIGNEE,
-                Contract_Issue.IssueEntry.COLUMN_PROJECT,
-                Contract_Issue.IssueEntry.COLUMN_MILESTONE,
-                Contract_Issue.IssueEntry.COLUMN_PROGRESS,
-                Contract_Issue.IssueEntry.COLUMN_TICKET,
-                Contract_Issue.IssueEntry.COLUMN_OWNER
-        };
-
-        /*
-        @ATTEMPT 03 - SQL Query of ALL entries
-         */
-        //Find all entries that have an _ID
-        String selection = Contract_Issue.IssueEntry._ID + " =?";
-        String[] selectionArgs = {};
-
-        // How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                Contract_Issue.IssueEntry.COLUMN_TICKET + " DESC";
-
-        /*
-        Cursor cursor = db.query(
-                Contract_Reminder.ReminderEntry.TABLE_NAME,         // The table to query
-                projection,                                         // The columns to return
-                selection,                                          // The columns for the WHERE clause
-                selectionArgs,                                      // The values for the WHERE clause
-                null,                                               // Do not group the rows
-                null,                                                // Do not filter by row group
-                sortOrder                                           // The sort order
-        );*/
-        Cursor cursor = db.rawQuery("select * from " + Contract_Issue.IssueEntry.TABLE_NAME, null);
-
+        Cursor cursor = db.rawQuery("select * from " +
+                Contract_Issue.IssueEntry.TABLE_NAME,
+                null);
         return cursor;
     }
 

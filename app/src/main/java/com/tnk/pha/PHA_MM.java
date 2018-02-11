@@ -252,8 +252,8 @@ public class PHA_MM extends Activity implements OnClickListener, SensorEventList
                 startActivity(d);
                 break;
             case R.id.btn_mm_09:
-                Intent wbIntent = new Intent(this, Workbench.class);
-                Log.v(TAG, "Launching the Workbench...");
+                Intent wbIntent = new Intent(this, PHA_Workbench_Tool_List.class);
+                Log.v(TAG, "Launching the Tool List...");
                 startActivity(wbIntent);
                 break;
             case R.id.btn_mm_testing:

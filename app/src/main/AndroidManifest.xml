@@ -123,11 +123,6 @@
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.tnk.pha.Workbench"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="@string/activity_title_pha_workbench">
-        </activity>
-        <activity
             android:name="com.tnk.pha.PHA_SudokuSettings"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="@string/activity_title_pha_sudoku_settings">
@@ -136,8 +131,17 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="PHA:LANX(Is)"/>
         <activity android:name=".pha.PHA_Issue_Entry"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@android:style/Theme.Dialog"
             android:label="PHA:LANX(Is:Edit)"/>
+        <activity android:name=".pha.PHA_Workbench_Tool_List"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="PHA:LANX(Is)"/>
+        <activity android:name=".pha.PHA_Workbench_Tool_View"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="PHA:LANX(WB:View)"/>
+        <activity android:name=".pha.PHA_Workbench_Tool_Edit"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="PHA:LANX(WB:Edit)"/>
 
 
     </application>

@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="array_brands">
-        <item>DeWalt</item>
-        <item>Maximum</item>
-        <item>Craftsman</item>
-        <item>Ryobi</item>
-        <item>Other</item>
-    </string-array>
-
-    <string-array name="array_types">
-        <item>Drill, hand</item>
-        <item>Drill, pwr</item>
-        <item>Saw, circular</item>
-        <item>Saw, recip</item>
-        <item>Saw, jig</item>
-        <item>Clamp</item>
-        <item>Driver, multi</item>
-        <item>Driver, hex</item>
-        <item>Sander</item>
-    </string-array>
-
     <string-array name="PHAY_DbCategories">
         <item>C.K.</item>
         <item>Memo</item>
@@ -366,4 +346,56 @@
     <array name="vDbCommandsConfirm">
         <item>finish</item>
     </array>
+
+    <string-array name="tool_brands">
+        <item>DeWalt</item>
+        <item>Maximum</item>
+        <item>Craftsman</item>
+        <item>Ryobi</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="tool_types">
+        <item>Drill, hand</item>
+        <item>Drill, pwr</item>
+        <item>Saw, circular</item>
+        <item>Saw, recip</item>
+        <item>Saw, jig</item>
+        <item>Clamp</item>
+        <item>Driver, multi</item>
+        <item>Driver, hex</item>
+        <item>Sander</item>
+    </string-array>
+
+    <array name="tool_status">
+        <item>Usable</item>
+        <item>Dirty</item>
+        <item>Broken</item>
+    </array>
+
+    <array name="tool_location">
+        <item>Workbench</item>
+        <item>Garage</item>
+        <item>Basement</item>
+    </array>
+
+    <array name="tool_ammo">
+        <item>Nail</item>
+        <item>Staple</item>
+        <item>Bit</item>
+    </array>
+
+    <array name="tool_quality">
+        <item>2nd Hand</item>
+        <item>New</item>
+        <item>Old</item>
+    </array>
+
+    <array name="tool_size">
+        <item>1/8</item>
+        <item>1/4</item>
+        <item>1/2</item>
+    </array>
+
+
 </resources>

@@ -1,186 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.tnk.pha.Workbench"
     tools:showIn="@layout/activity_workbench">
 
-    <ListView
-        android:id="@+id/lv_Main"
+    <TextView
+        android:id="@+id/tv_workbench_main"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_horizontal"
+        android:text="mainTV" />
+
+    <Button
+        android:id="@+id/btn_load_tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_LoadToolList"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:text="@string/btn_lbl_LoadToolList" />
+
+    <ListView
+        android:id="@+id/lv_pha_workbench"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="2dp"
         tools:layout_editor_absoluteX="44dp"
         tools:layout_editor_absoluteY="279dp" />
 
-    <TextView
-        android:id="@+id/tv_Main"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentTop="true"
-        android:gravity="center_horizontal"
-        android:text="mainTV" />
-
-    <TextView
-        android:id="@+id/tv_ToolName"
+    <GridView
+        android:id="@+id/gv_pha_workbench"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="29dp"
-        android:gravity="bottom"
-        android:text="Name"
+        android:layout_height="wrap_content"
+        android:divider="@color/colorPrimaryDark"
+        android:dividerHeight="2dp"
         tools:layout_editor_absoluteX="44dp"
         tools:layout_editor_absoluteY="279dp" />
 
-    <TextView
-        android:id="@+id/tv_ToolType"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/tv_ToolName"
-        android:layout_below="@+id/tv_ToolName"
-        android:gravity="bottom"
-        android:text="Type" />
-
-    <TextView
-        android:id="@+id/tv_ToolBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/tv_ToolType"
-        android:layout_below="@+id/tv_ToolType"
-        android:gravity="bottom"
-        android:text="Brand" />
-
-    <TextView
-        android:id="@+id/tv_ToolSize"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/tv_ToolBrand"
-        android:layout_below="@+id/tv_ToolBrand"
-        android:gravity="bottom"
-        android:text="Size" />
-
-    <TextView
-        android:id="@+id/tv_ToolId"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/tv_ToolSize"
-        android:layout_below="@+id/tv_ToolSize"
-        android:gravity="bottom"
-        android:text="ID: " />
-
-
-    <Button
-        android:id="@+id/btn_LoadToolList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_UpdateTool"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:text="@string/btn_lbl_LoadToolList" />
-
-    <Button
-        android:id="@+id/btn_AddTool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_FindTool"
-        android:layout_alignBottom="@+id/btn_FindTool"
-        android:layout_toStartOf="@+id/btn_FindTool"
-        android:onClick="addTool"
-        android:text="@string/btn_lbl_AddTool"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <Button
-        android:id="@+id/btn_FindTool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_UpdateTool"
-        android:layout_alignBottom="@+id/btn_UpdateTool"
-        android:layout_toStartOf="@+id/btn_UpdateTool"
-        android:text="@string/btn_lbl_FindTool"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <Button
-        android:id="@+id/btn_DeleteTool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_UpdateTool"
-        android:layout_alignBottom="@+id/btn_UpdateTool"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="18dp"
-        android:text="@string/btn_lbl_DeleteTool"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="167dp" />
-
-    <Button
-        android:id="@+id/btn_UpdateTool"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_LoadToolList"
-        android:layout_below="@+id/tv_ToolType"
-        android:layout_marginTop="142dp"
-        android:text="@string/btn_lbl_UpdateTool" />
-
-    <EditText
-        android:id="@+id/et_ToolName"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_alignBaseline="@+id/tv_ToolName"
-        android:layout_alignBottom="@+id/tv_ToolName"
-        android:layout_marginStart="25dp"
-        android:layout_toEndOf="@+id/tv_ToolName"
-        android:hint=" name "
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp" />
-
-    <Spinner
-        android:id="@+id/sp_ToolType"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/tv_ToolType"
-        android:layout_alignLeft="@+id/et_ToolName"
-        android:layout_toEndOf="@+id/tv_ToolType"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp" />
-
-    <Spinner
-        android:id="@+id/sp_ToolBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/tv_ToolBrand"
-        android:layout_alignLeft="@+id/et_ToolName"
-        android:layout_toEndOf="@+id/tv_ToolBrand"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp" />
-
-    <EditText
-        android:id="@+id/et_ToolSize"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/tv_ToolSize"
-        android:layout_alignLeft="@+id/et_ToolName"
-        android:layout_toEndOf="@+id/tv_ToolSize"
-        android:hint=" size "
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp" />
-
-    <EditText
-        android:id="@+id/et_ToolID"
-        android:layout_width="75dp"
-        android:layout_height="30dp"
-        android:layout_alignBottom="@+id/tv_ToolId"
-        android:layout_alignLeft="@+id/et_ToolName"
-        android:layout_toEndOf="@+id/tv_ToolId"
-        android:hint=" id "
-        android:inputType="number"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="10sp" />
-</android.widget.RelativeLayout>
+</LinearLayout>

@@ -195,7 +195,7 @@ public class PHA_Issue_Entry extends FragmentActivity implements OnClickListener
         newIssue.setIssueStatus("null status");
         newIssue.setIssueTicket("null ticket");
         /*
-        @TODO - Issue Entry saveState
+        @TODO 11 - Issue Entry saveState
         Need to finish populating the appropriate fields in the Issue
          */
 
@@ -238,27 +238,6 @@ public class PHA_Issue_Entry extends FragmentActivity implements OnClickListener
 
     private void populateFields() {
         if (RowId != null) {
-            /*
-            @FIX_ME
-             */
-            //Cursor reminder = PHA_dbhelper(RowId);
-            //startManagingCursor(reminder);
-            //titleText.setText(reminder.getString(
-            //        reminder.getColumnIndexOrThrow(dbAdapter.REM_TITLE)));
-            //bodyText.setText(reminder.getString(
-            //        reminder.getColumnIndexOrThrow(dbAdapter.REM_BODY)));
-            SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
-            Date date = null;
-            /*
-            try {
-                String dateString = reminder.getString(reminder.getColumnIndexOrThrow(dbAdapter.REM_DATE_TIME));
-                date = dateTimeFormat.parse(dateString);
-                mCalendar.setTime(date);
-            }
-            catch () {
-              Log.e("ReminderEntry", e.getMessage(), e);
-            }
-            */
         } else if (incomingIssue) {
             et_title.setText(newString);
             mCalendar.add(Calendar.MINUTE, newMinute);
@@ -357,7 +336,7 @@ public class PHA_Issue_Entry extends FragmentActivity implements OnClickListener
     }
 
 
-    // @TRY_ME Date/Time Format
+    // @REMARK 00 - Date/Time Format
     // This is probably not required here
     // I should incorporate this into the entry values themselves
     // So just   <title>, <body>, <timeDate> are the variables for the object

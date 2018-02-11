@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <string name="string_null">    ¯\_(ツ)_/¯</string>
+
     <string name="app_name">PHALANXv2</string>
 
     <string name="activity_title_pha_calc">PHA:LANX(Ca)</string>
