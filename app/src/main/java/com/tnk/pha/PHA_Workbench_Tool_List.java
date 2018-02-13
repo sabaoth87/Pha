@@ -168,12 +168,13 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         DbHelper_Tools dbHandler = new DbHelper_Tools(context);
 
         Cursor queryResult = dbHandler.findAllTools();
-        while (queryResult.moveToNext()) {
-            int index;
-            int totalList = queryResult.getCount();
-            int count = 0;
+        int totalList = queryResult.getCount();
+        int count = 0;
+        lvIds = new String[queryResult.getCount()];
 
+        while (queryResult.moveToNext()) {
             Log.v(TAG, "Query Loop " + count + "/" + totalList);
+            int index;
             index = queryResult.getColumnIndexOrThrow(Contract_Tool.ToolEntry._ID);
             String entryId = queryResult.getString(index);
             lvIds[count] = entryId;
