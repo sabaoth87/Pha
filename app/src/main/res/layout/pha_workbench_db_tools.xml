@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:theme="@android:style/Theme.Dialog">
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:background="#bd599792"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/ibtn_WBDB_import"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Import Db Button"
+                android:src="@android:drawable/ic_menu_set_as" />
+
+            <TextView
+                android:id="@+id/tv_WBDB_import"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Import" />
+
+            <Spinner
+                android:id="@+id/sp_WBDB_import_path"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_WBDB_import_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Import Path"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibtn_WBDB_export"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Import Db Button"
+                android:src="@android:drawable/ic_menu_save" />
+
+            <TextView
+                android:id="@+id/tv_WBDB_export"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Import" />
+
+            <Spinner
+                android:id="@+id/sp_WBDB_export_path"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_WBDB_export_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Export Path"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

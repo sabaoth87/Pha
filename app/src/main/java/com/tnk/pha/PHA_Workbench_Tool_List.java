@@ -8,24 +8,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tnk.R;
-import com.tnk.db.Contract_Issue;
 import com.tnk.db.Contract_Tool;
 import com.tnk.db.DbHelper_Tools;
-import com.tnk.db.Item_Tool;
 import com.tnk.db.ToolCursorAdapter;
 
 //import android.support.design.widget.FloatingActionButton;
@@ -120,27 +113,26 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
-            case R.id.menuAction_settings:
+            case R.id.menu_item_wb_settings:
             //User chose the "Settings" item, show the app settings UI...
             return true;
 
-            case R.id.menuAction_addTool:
-                /*
-                @TODO 00 Add 'Add Tool' UI
-                 */
+            case R.id.menu_item_wb_add_tool:
                 Intent c = new Intent(this, PHA_Workbench_Tool_Edit.class);
                 Log.v(TAG, "Opening the Tool Edit UI...");
                 startActivity(c);
                 return true;
 
-            case R.id.menuAction_listTools:
+            case R.id.menu_item_wb_db:
                 /*
-                @TODO 01 Add 'List Tools' Method
+                @TODO ## - Add 'db operations' function(s)
                  */
-                //User has chosen to list all owned tools in the main display
+                Intent d = new Intent(this, PHA_Workbench_Db_Tools.class);
+                Log.v(TAG, "Opening the Db Edit UI...");
+                startActivity(d);
                 return true;
 
-            case R.id.meanAction_searchTool:
+            case R.id.menu_item_wb_search_tool:
                 //User would like to search for a tool
                 /*
                 @TODO 02 Add 'Search Tool' UI
@@ -168,12 +160,13 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         DbHelper_Tools dbHandler = new DbHelper_Tools(context);
 
         Cursor queryResult = dbHandler.findAllTools();
-        while (queryResult.moveToNext()) {
-            int index;
-            int totalList = queryResult.getCount();
-            int count = 0;
+        int totalList = queryResult.getCount();
+        int count = 0;
+        lvIds = new String[queryResult.getCount()];
 
+        while (queryResult.moveToNext()) {
             Log.v(TAG, "Query Loop " + count + "/" + totalList);
+            int index;
             index = queryResult.getColumnIndexOrThrow(Contract_Tool.ToolEntry._ID);
             String entryId = queryResult.getString(index);
             lvIds[count] = entryId;

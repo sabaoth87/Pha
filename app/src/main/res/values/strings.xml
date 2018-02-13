@@ -97,6 +97,7 @@
     <string name="menu_opt_6">Search</string>
     <string name="menu_action_settings">SETTINGS</string>
     <string name="menu_workbench_list">Show All</string>
+    <string name="menu_workbench_db">Database</string>
     <string name="menu_workbench_add_tool">+Tool</string>
     <string name="menu_workbench_search_tool">Search</string>
     <string name="menu_issues_add">New Issue</string>

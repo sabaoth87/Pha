@@ -5,16 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tnk.pha.Workbench">
+    tools:context="com.tnk.pha.PHA_Workbench_Tool_View">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:id="@+id/tb_workbench_tool_list"
-        android:background="@color/colorAccent"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        />
     <include layout="@layout/pha_workbench_tool_entry" />
 
 </LinearLayout>

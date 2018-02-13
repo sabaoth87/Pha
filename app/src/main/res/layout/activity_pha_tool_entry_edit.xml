@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tnk.pha.Workbench">
+    tools:context="com.tnk.pha.PHA_Workbench_Tool_Edit">
 
     <include layout="@layout/pha_workbench_tool_entry_edit" />
 

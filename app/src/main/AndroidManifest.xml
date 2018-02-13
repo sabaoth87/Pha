@@ -142,6 +142,9 @@
         <activity android:name=".pha.PHA_Workbench_Tool_Edit"
             android:theme="@android:style/Theme.Dialog"
             android:label="PHA:LANX(WB:Edit)"/>
+        <activity android:name=".pha.PHA_Workbench_Db_Tools"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="PHA:LANX(WBDB)"/>
 
 
     </application>

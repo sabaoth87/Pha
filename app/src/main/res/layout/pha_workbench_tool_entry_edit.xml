@@ -18,13 +18,14 @@
             android:layout_height="wrap_content"
             android:text="NickName"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:labelFor="@+id/et_edit_tool_name"/>
         <EditText
             android:id="@+id/et_edit_tool_name"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 'Give it a nickname?' "/>
+            android:hint=" 'Give it a nickname?' "/>
         <LinearLayout
             android:id="@+id/ll_edit_tool_name"
             android:layout_width="match_parent"
@@ -79,7 +80,8 @@
             android:id="@+id/tv_edit_tool_quantity_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Qty.#:"/>
+            android:text="Qty.#:"
+            android:labelFor="@+id/et_edit_tool_quantity"/>
         <EditText
             android:id="@+id/et_edit_tool_quantity"
             android:layout_width="65dp"

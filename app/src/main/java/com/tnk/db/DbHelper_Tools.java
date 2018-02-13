@@ -7,6 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.tnk.pha.PHA_Util_File;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -38,6 +44,9 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
                     Contract_Tool.ToolEntry.COLUMN_NAME_STATUS + " TEXT)";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + Contract_Tool.ToolEntry.TABLE_NAME;
+
+    public static String DB_FILEPATH = "/data/data/com.tnk.pha/databases/WorkBenchTools.db";
+
 
 
     public DbHelper_Tools(Context context){
@@ -228,6 +237,44 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         } else {
             return FALSE;
         }
+    }
+
+    /**
+     * Copies the database file at the specified location over the current
+     * internal application database.
+     */
+    public boolean importDatabase(String dbPath) throws IOException {
+
+        // Close the SQLiteOpenHelper so it will commit the created empty
+        // database to internal storage
+        close();
+        File newDb = new File(dbPath);
+        File oldDb = new File(DB_FILEPATH);
+        if (newDb.exists()) {
+            PHA_Util_File.copyFile(new FileInputStream(newDb), new FileInputStream(oldDb));
+            // Access the copied database so SQLiteHelper will cache it and mark
+            // it as created.
+            getWritableDatabase().close();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean exportDatabase(String exportPath) throws IOException {
+
+        // Close the SQLiteOpenHelper so it will commit the created empty
+        // database to internal storage
+        close();
+        File destination = new File(exportPath);
+        File dbPath = new File(DB_FILEPATH);
+        if (dbPath.exists()) {
+            PHA_Util_File.copyFile(new FileInputStream(destination), new FileInputStream(dbPath));
+            // Access the copied database so SQLiteHelper will cache it and mark
+            // it as created.
+            getWritableDatabase().close();
+            return true;
+        }
+        return false;
     }
 
 

@@ -2,9 +2,9 @@ package com.tnk.pha;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,8 +21,6 @@ import com.tnk.R;
 import com.tnk.db.DbHelper_Tools;
 import com.tnk.db.Item_Tool;
 
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.design.widget.Snackbar;
 
 
 public class PHA_Workbench_Tool_Edit extends FragmentActivity {
@@ -39,9 +37,6 @@ public class PHA_Workbench_Tool_Edit extends FragmentActivity {
 
     private Button btn_WB_add;
     private Button btn_WB_clear;
-    private Button dbUpdate;
-    private TextView tv_WB_main;
-    private TextView tv_WB_id;
 
     /*
     TODO xx - Complete editable tool fields
@@ -84,8 +79,6 @@ public class PHA_Workbench_Tool_Edit extends FragmentActivity {
          */
         btn_WB_add = findViewById(R.id.btn_tool_add);
         btn_WB_clear = findViewById(R.id.btn_tool_clear_fields);
-
-        //tv_WB_main = findViewById(R.id.)
 
         et_WB_name = findViewById(R.id.et_edit_tool_name);
         et_WB_quantity = findViewById(R.id.et_edit_tool_quantity);
@@ -170,30 +163,19 @@ public class PHA_Workbench_Tool_Edit extends FragmentActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
-            case R.id.menuAction_settings:
+            case R.id.menu_item_wb_settings:
             //User chose the "Settings" item, show the app settings UI...
             return true;
 
-            case R.id.menuAction_addTool:
-                /*
-                @TODO 00 Add 'Add Tool' UI
-                 */
-                //User chose the "Add Tool" item, show the "Add Tool" UI...
+            case R.id.menu_item_wb_add_tool:
                 addTool();
                 return true;
 
-            case R.id.menuAction_listTools:
-                /*
-                @TODO 01 Add 'List Tools' Method
-                 */
+            case R.id.menu_item_wb_search_tool:
                 //User has chosen to list all owned tools in the main display
-                return true;
-
-            case R.id.meanAction_searchTool:
-                //User would like to search for a tool
-                /*
-                @TODO 02 Add 'Search Tool' UI
-                 */
+                Context context = getApplicationContext();
+                Intent editIntent = new Intent(context, PHA_Workbench_Tool_List.class);
+                startActivityForResult(editIntent, 0);
                 return true;
 
             default:

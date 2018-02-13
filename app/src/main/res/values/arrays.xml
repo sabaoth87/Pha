@@ -397,5 +397,19 @@
         <item>1/2</item>
     </array>
 
+    <string-array name="db_import_paths">
+        <item>/storage/ImportDb0</item>
+        <item>/storage/ImportDb1</item>
+        <item>/storage/ImportDb2</item>
+        <item>/storage/ImportDb3</item>
+    </string-array>
+
+    <string-array name="db_export_paths">
+        <item>/storage/</item>
+        <item>/storage/OutputDb1.db</item>
+        <item>/storage/OutputDb2.db</item>
+        <item>/storage/OutputDb3.db</item>
+    </string-array>
+
 
 </resources>

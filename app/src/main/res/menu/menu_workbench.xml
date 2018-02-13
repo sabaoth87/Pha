@@ -2,24 +2,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.tnk.myworkshop.Workbench">
+
     <item
-        android:id="@+id/meanAction_searchTool"
+        android:id="@+id/menu_item_wb_add_tool"
         android:orderInCategory="100"
-        android:title="@string/menu_workbench_search_tool"
-        android:icon="@drawable/phaclcbttn"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/menuAction_addTool"
-        android:orderInCategory="100"
+        android:icon="@android:drawable/ic_input_add"
         android:title="@string/menu_workbench_add_tool"
-        app:showAsAction="never" />
+        app:showAsAction="withText" />
+
     <item
-        android:id="@+id/menuAction_listTools"
+        android:id="@+id/menu_item_wb_search_tool"
         android:orderInCategory="100"
-        android:title="@string/menu_workbench_list"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="never"
+        android:title="@string/menu_workbench_search_tool"/>
+
+    <item
+        android:id="@+id/menu_item_wb_db"
+        android:orderInCategory="100"
+        android:icon="@android:drawable/ic_input_get"
+        android:title="@string/menu_workbench_db"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menuAction_settings"
+        android:id="@+id/menu_item_wb_settings"
         android:orderInCategory="100"
         android:title="@string/menu_action_settings"
         app:showAsAction="never" />

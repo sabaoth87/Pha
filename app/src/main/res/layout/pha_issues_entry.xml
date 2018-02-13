@@ -27,6 +27,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="id"/>
+        <TextView
+            android:id="@+id/tv_issue_title_header"
+            android:layout_below="@+id/tv_issue_datetime"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/et_issue_title"
+            android:text="Title"/>
 
         <EditText
             android:id="@+id/et_issue_title"
@@ -37,7 +45,8 @@
             android:layout_marginStart="3dp"
             android:layout_marginBottom="3dp"
             android:background="@color/darkslategray"
-            android:textColor="#809396"/>
+            android:textColor="#809396"
+            android:hint="Title"/>
 
         <EditText
             android:id="@+id/et_issue_body"
@@ -70,7 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@id/et_issue_tags"
-            android:src="@drawable/selector_edit_button"/>
+            android:src="@drawable/selector_edit_button"
+            android:contentDescription="Edit Issue Button"/>
 
         <Button
             android:id="@+id/btn_issue_add"

@@ -6,29 +6,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tnk.R;
-import com.tnk.db.Contract_Issue;
 import com.tnk.db.Contract_Tool;
 import com.tnk.db.DbHelper_Tools;
 import com.tnk.db.Item_Tool;
-import com.tnk.db.ToolCursorAdapter;
 
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
@@ -152,11 +141,11 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
-            case R.id.menuAction_settings:
+            case R.id.menu_item_wb_settings:
             //User chose the "Settings" item, show the app settings UI...
             return true;
 
-            case R.id.menuAction_addTool:
+            case R.id.menu_item_wb_add_tool:
                 /*
                 @TODO 00 Add 'Add Tool' UI
                  */
@@ -164,14 +153,7 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
                 addTool();
                 return true;
 
-            case R.id.menuAction_listTools:
-                /*
-                @TODO 01 Add 'List Tools' Method
-                 */
-                //User has chosen to list all owned tools in the main display
-                return true;
-
-            case R.id.meanAction_searchTool:
+            case R.id.menu_item_wb_search_tool:
                 //User would like to search for a tool
                 /*
                 @TODO 02 Add 'Search Tool' UI
