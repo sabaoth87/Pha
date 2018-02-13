@@ -60,6 +60,7 @@ public class PHA_PuzzleView extends View {
                 (int) (event.getY() / height));
         game.showKeypadOrError(selX, selY);
         Log.d(TAG, "onTouchEvent: x " + selX + ", y " + selY);
+        performClick();
         return true;
     }
 

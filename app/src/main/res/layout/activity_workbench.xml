@@ -12,9 +12,24 @@
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/tb_Workbench"
         android:background="@color/colorAccent"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        />
+
+    <!-- Android Studio Lint flagged this chunk because
+        android:elevation=""
+        is not used before API 21, minimum is targeting 19 at this point
+        <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/tb_Workbench"
+        android:background="@color/colorAccent"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         />
+
+        @NOTEME 00 - Remove References IDT
+        If it is good after a period of time, remove reference
+    -->
 
     <include layout="@layout/content_workbench" />
 
