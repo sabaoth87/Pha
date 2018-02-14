@@ -19,6 +19,8 @@ import com.tnk.db.Contract_Tool;
 import com.tnk.db.DbHelper_Tools;
 import com.tnk.db.Item_Tool;
 
+import org.w3c.dom.Text;
+
 //import android.support.design.widget.FloatingActionButton;
 //import android.support.design.widget.Snackbar;
 
@@ -45,9 +47,9 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
 
     private TextView tv_WB_main;
     private TextView tv_WB_id;
+    private TextView tv_WB_name;
     private TextView tv_WB_cat;
     private TextView tv_WB_uses;
-    private TextView tv_WB_name;
     private TextView tv_WB_quantity;
     private TextView tv_WB_brand;
     private TextView tv_WB_quality;
@@ -69,7 +71,7 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pha_workbench_tool_entry_edit);
+        setContentView(R.layout.pha_workbench_tool_entry);
 
         /*
          * START
@@ -84,7 +86,7 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
         iv_WB_tool_image = findViewById(R.id.iv_tool_image);
 
         tv_WB_id = findViewById(R.id.tv_tool_id);
-        tv_WB_name = findViewById(R.id.tv_tool_name);
+        tv_WB_name = findViewById(R.id.tv_tool_nickname);
         tv_WB_brand = findViewById(R.id.tv_tool_brand);
         tv_WB_type = findViewById(R.id.tv_tool_type);
         tv_WB_quality = findViewById(R.id.tv_tool_quality);
@@ -95,6 +97,8 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
         tv_WB_cat = findViewById(R.id.tv_tool_cat);
         tv_WB_uses = findViewById(R.id.tv_tool_uses);
         tv_WB_location = findViewById(R.id.tv_tool_location);
+
+        tv_WB_name.setText("Loading");
 
         if (savedInstanceState == null) {
             extras = getIntent().getExtras();
@@ -202,6 +206,7 @@ public class PHA_Workbench_Tool_View extends AppCompatActivity {
         if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Trying to load Editable reminder...");}
         if (iTool==null) {
             if (PHA_Util_Vars.mode_debug){Log.v(TAG,"Cursor with the Editable reminder was found to be null!");}
+
             tv_WB_name.setText(R.string.string_null);
         }
         else {

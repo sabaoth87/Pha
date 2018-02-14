@@ -4,6 +4,6 @@ import android.provider.BaseColumns;
 
 public interface PHA_Util_Vars extends BaseColumns {
 	
-	boolean mode_debug = false;
+	boolean mode_debug = true;
 
 }

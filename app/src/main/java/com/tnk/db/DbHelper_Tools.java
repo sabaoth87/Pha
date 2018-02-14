@@ -23,7 +23,8 @@ import static java.lang.Boolean.TRUE;
 public class DbHelper_Tools extends SQLiteOpenHelper {
     public static final String TAG = "DbHelper_Tools";
     //If you change the database scheme, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
+    // Ver 02 :: Feb 14, 2018
+    public static final int DATABASE_VERSION = 02;
     public static final String DATABASE_NAME = "WorkBenchTools.db";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + Contract_Tool.ToolEntry.TABLE_NAME + " (" +
@@ -58,7 +59,12 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVerseion, int newVersion){
         // This database is only a cache for online data, so its upgrade policy is
         // to simply discard the data and start over
-        db.execSQL(SQL_CREATE_ENTRIES);
+        Log.v(TAG, ":: Attempting to upgrade the Db");
+
+        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>>");
+        db.execSQL(SQL_DELETE_ENTRIES);
+        Log.v(TAG, "<<>> Creating a NEW DB at version '" + DATABASE_VERSION + "' <<>>");
+        //db.execSQL(SQL_CREATE_ENTRIES);
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){

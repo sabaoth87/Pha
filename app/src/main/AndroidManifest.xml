@@ -131,19 +131,19 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="PHA:LANX(Is)"/>
         <activity android:name=".pha.PHA_Issue_Entry"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:label="PHA:LANX(Is:Edit)"/>
         <activity android:name=".pha.PHA_Workbench_Tool_List"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="PHA:LANX(Is)"/>
         <activity android:name=".pha.PHA_Workbench_Tool_View"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:label="PHA:LANX(WB:View)"/>
         <activity android:name=".pha.PHA_Workbench_Tool_Edit"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:label="PHA:LANX(WB:Edit)"/>
         <activity android:name=".pha.PHA_Workbench_Db_Tools"
-            android:theme="@android:style/Theme.Dialog"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:label="PHA:LANX(WBDB)"/>
 
 

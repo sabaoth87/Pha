@@ -16,7 +16,7 @@
         <item name="android:layout_gravity">right</item>
         <item name="android:layout_width">325dp</item>
         <item name="android:layout_height">72dp</item>
-        <item name="android:background">@drawable/phamenubtnslctr</item>
+        <item name="android:background">@xml/phamenubtnslctr</item>
         <item name="android:textColor">@color/darkturquoise</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginLeft">1dp</item>
@@ -33,7 +33,7 @@
     </style>
 
     <style name="PHA_ClcBtn" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/phaclcbtn</item>
+        <item name="android:background">@mipmap/protobtnteal</item>
         <item name="android:textColor">#ffcacaca</item>
         <item name="android:textSize">35sp</item>
         <item name="android:layout_height">fill_parent</item>
