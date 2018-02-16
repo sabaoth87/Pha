@@ -19,7 +19,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
 
     //information of database
     private static final int DATABASE_VERSION = 3;
-    private static final String DATABASE_NAME = "phalanx.db";
+    private static final String DATABASE_NAME = "PHA.db";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + Contract_Issue.IssueEntry.TABLE_NAME + " (" +
                     Contract_Issue.IssueEntry._ID + " INTEGER PRIMARY KEY," +
@@ -40,6 +40,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
     public DbHelper_Issues(Context context){ super(context, DATABASE_NAME, null, DATABASE_VERSION);}
     public void onCreate(SQLiteDatabase db){
 
+        Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Issue.IssueEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVerseion, int newVersion){
@@ -47,7 +48,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
         // to simply discard the data and start over
         Log.v(TAG, ":: Attempting to upgrade the Db");
 
-        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>>");
+        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>> " + DATABASE_NAME + " " + Contract_Issue.IssueEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_DELETE_ENTRIES);
         Log.v(TAG, "<<>> Creating a NEW DB at version '" + DATABASE_VERSION + "' <<>>");
         //db.execSQL(SQL_CREATE_ENTRIES);
@@ -212,7 +213,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
 
         if (cursor!=null) {
             if (cursor.getCount() > 0) {
-                Log.v(TAG, "Table was not found" + R.string.et_entry_null);
+                Log.v(TAG, "Table was not found null ¯_(ツ)_¯");
                 cursor.close();
                 return true;
             }

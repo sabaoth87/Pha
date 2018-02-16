@@ -1,6 +1,7 @@
 package com.tnk.pha;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.tnk.R;
 import com.tnk.db.Contract_Reminder;
+import com.tnk.db.DbHelper_Issues;
 import com.tnk.db.DbHelper_Reminders;
 import com.tnk.db.ReminderCursorAdapter;
 
@@ -46,6 +48,13 @@ public class PHA_Reminder_List extends AppCompatActivity {
         registerForContextMenu(lvReminders);
 
         lvReminders.setOnItemClickListener(mMessageClickHandler);
+
+        // Try to 'make' the db and table
+        Context context = getApplicationContext();
+        DbHelper_Reminders dbHelper_reminders = new DbHelper_Reminders(context);
+        SQLiteDatabase db = dbHelper_reminders.getWritableDatabase();
+        dbHelper_reminders.onCreate(db);
+
         //call fill data after the LV and other objects have
         //been instantiated
         fillData();

@@ -44,9 +44,11 @@ public class PHA_Issue_List extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.tb_pha_issues);
 
+        // Try to 'make' the db and table
         Context context = getApplicationContext();
         DbHelper_Issues dbHelper_issues = new DbHelper_Issues(context);
         SQLiteDatabase db = dbHelper_issues.getWritableDatabase();
+        dbHelper_issues.close();
 
         boolean table_ready = dbHelper_issues.checkTable(db);
 
@@ -60,6 +62,8 @@ public class PHA_Issue_List extends AppCompatActivity {
         registerForContextMenu(lvIssues);
 
         lvIssues.setOnItemClickListener(mMessageClickHandler);
+
+
         //call fill data after the LV and other objects have
         //been instantiated
         fillData();

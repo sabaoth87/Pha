@@ -13,7 +13,7 @@ public final class Contract_Reminder {
 
     /* Inner Class that defines the table contents */
     public static class ReminderEntry implements BaseColumns {
-        public static final String TABLE_NAME = "PHA_Reminders";
+        public static final String TABLE_NAME = "reminders";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_BODY = "body";
         public static final String COLUMN_DATE = "date";

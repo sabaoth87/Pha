@@ -4,6 +4,7 @@ package com.tnk.pha;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.tnk.R;
 import com.tnk.db.Contract_Tool;
+import com.tnk.db.DbHelper_Reminders;
 import com.tnk.db.DbHelper_Tools;
 import com.tnk.db.ToolCursorAdapter;
 
@@ -71,11 +73,18 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         lv_WB_main = findViewById(R.id.lv_pha_workbench);
 
 
+        // Try to 'make' the db and table
+        Context context = getApplicationContext();
+        DbHelper_Tools dbHelper_tools = new DbHelper_Tools(context);
+        SQLiteDatabase db = dbHelper_tools.getWritableDatabase();
+        dbHelper_tools.close();
+
+
         btn_WB_load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 Log.v(TAG, "ATTEMPT: Loading all tools");
-                luAllTools(view);
+                luAllTools();
             }
         });
         lv_WB_main.setOnItemClickListener(mMessageClickHandler);
@@ -86,6 +95,7 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
          * #DBH
          * END
          */
+        luAllTools();
     }
 
     private AdapterView.OnItemClickListener mMessageClickHandler = new AdapterView.OnItemClickListener() {
@@ -155,7 +165,7 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
      * START
      */
 
-    public void luAllTools(View view){
+    public void luAllTools(){
         Context context = getApplicationContext();
         DbHelper_Tools dbHandler = new DbHelper_Tools(context);
 

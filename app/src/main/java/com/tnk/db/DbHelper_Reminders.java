@@ -16,8 +16,8 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
     public static final String TAG = "DbHelper_Reminders";
 
     //information of database
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "phalanx.db";
+    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_NAME = "PHA.db";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + Contract_Reminder.ReminderEntry.TABLE_NAME + " (" +
                     Contract_Reminder.ReminderEntry._ID + " INTEGER PRIMARY KEY," +
@@ -30,12 +30,19 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
 
     public DbHelper_Reminders(Context context){ super(context, DATABASE_NAME, null, DATABASE_VERSION);}
     public void onCreate(SQLiteDatabase db){
+
+        Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Reminder.ReminderEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVerseion, int newVersion){
         // This database is only a cache for online data, so its upgrade policy is
         // to simply discard the data and start over
-        db.execSQL(SQL_CREATE_ENTRIES);
+        Log.v(TAG, ":: Attempting to upgrade the Db");
+
+        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>> " + DATABASE_NAME + " " + Contract_Reminder.ReminderEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
+        db.execSQL(SQL_DELETE_ENTRIES);
+        Log.v(TAG, "<<>> Creating a NEW DB at version '" + DATABASE_VERSION + "' <<>>");
+        //db.execSQL(SQL_CREATE_ENTRIES);
         onCreate(db);
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){

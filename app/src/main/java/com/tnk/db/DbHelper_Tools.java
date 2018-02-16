@@ -22,10 +22,10 @@ import static java.lang.Boolean.TRUE;
 
 public class DbHelper_Tools extends SQLiteOpenHelper {
     public static final String TAG = "DbHelper_Tools";
-    //If you change the database scheme, you must increment the database version.
+    // If you change the database scheme, you must increment the database version.
     // Ver 02 :: Feb 14, 2018
-    public static final int DATABASE_VERSION = 02;
-    public static final String DATABASE_NAME = "WorkBenchTools.db";
+    public static final int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "PHA.db";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + Contract_Tool.ToolEntry.TABLE_NAME + " (" +
                     Contract_Tool.ToolEntry._ID + " INTEGER PRIMARY KEY," +
@@ -54,6 +54,8 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db){
+
+        Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Tool.ToolEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVerseion, int newVersion){
@@ -61,7 +63,7 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         // to simply discard the data and start over
         Log.v(TAG, ":: Attempting to upgrade the Db");
 
-        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>>");
+        Log.v(TAG, "<<>> DELETING THE CURRENT DB <<>> " + DATABASE_NAME + " " + Contract_Tool.ToolEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_DELETE_ENTRIES);
         Log.v(TAG, "<<>> Creating a NEW DB at version '" + DATABASE_VERSION + "' <<>>");
         //db.execSQL(SQL_CREATE_ENTRIES);

@@ -13,7 +13,7 @@ public final class Contract_Issue {
 
     /* Inner Class that defines the table contents */
     public static class IssueEntry implements BaseColumns {
-        public static final String TABLE_NAME = "pha_issues";
+        public static final String TABLE_NAME = "issues";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_BODY = "body";
         public static final String COLUMN_DATETIME = "datetime";
