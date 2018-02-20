@@ -31,6 +31,8 @@ public class PHA_Reminder_List extends AppCompatActivity {
     private static final String TAG = "PHA:RemList";
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
+    private boolean TABLE_CREATED;
+    private boolean TABLE_FOUND;
     public String[] lvIds = {};
     public ListView lvReminders;
     public TextView tvReminders;
@@ -53,7 +55,25 @@ public class PHA_Reminder_List extends AppCompatActivity {
         Context context = getApplicationContext();
         DbHelper_Reminders dbHelper_reminders = new DbHelper_Reminders(context);
         SQLiteDatabase db = dbHelper_reminders.getWritableDatabase();
-        dbHelper_reminders.onCreate(db);
+        dbHelper_reminders.close();
+
+        TABLE_FOUND = dbHelper_reminders.checkReminderTable(db);
+
+        if (!TABLE_FOUND){
+            TABLE_CREATED = dbHelper_reminders.createReminderTable(context);
+            tvReminders.setText("Fresh Table Created");
+        }
+
+        //call fill data after the LV and other objects have
+        //been instantiated
+        if (TABLE_CREATED | TABLE_FOUND){
+            tvReminders.setText("Local Data Found :");
+            fillData();
+        }
+        else{
+            if (PHA_Util_Vars.mode_debug) {Log.v(TAG, "No table has been found, error creating");}
+            tvReminders.setText("Database Issue");
+        }
 
         //call fill data after the LV and other objects have
         //been instantiated
@@ -128,7 +148,7 @@ public class PHA_Reminder_List extends AppCompatActivity {
         ReminderCursorAdapter reminderAdapter = new ReminderCursorAdapter(this, queryResult);
         //Attach Cursor adapter to the ListView
         lvReminders.setAdapter(reminderAdapter);
-        tvReminders.setText("Count =" + queryResult.getCount() + " " + lvIds.toString());
+        tvReminders.append("\n Count =" + queryResult.getCount() + " Reminder Entries");
         dbHelper.close();
     }
 

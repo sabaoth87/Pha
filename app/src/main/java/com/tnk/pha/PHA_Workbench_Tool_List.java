@@ -33,25 +33,13 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
 
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
+    private boolean TABLE_CREATED;
+    private boolean TABLE_FOUND;
     public String[] lvIds = {};
     private String TAG="PHA:WB(List)";
-    /**
-     * START
-     * #DatabaseHandler
-     * #DB
-     * #DBH
-     * START
-     */
     private Button btn_WB_load;
     private TextView tv_WB_main;
     private ListView lv_WB_main;
-    /**
-     * END
-     * #DatabaseHandler
-     * #DB
-     * #DBH
-     * END
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,25 +48,9 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.tb_Workbench);
         setSupportActionBar(toolbar);
 
-        /*
-         * START
-         *  #DatabaseHandler
-         *  #DB
-         *  #DBH
-         *  START
-         */
-
         btn_WB_load = findViewById(R.id.btn_load_tools);
         tv_WB_main = findViewById(R.id.tv_workbench_main);
         lv_WB_main = findViewById(R.id.lv_pha_workbench);
-
-
-        // Try to 'make' the db and table
-        Context context = getApplicationContext();
-        DbHelper_Tools dbHelper_tools = new DbHelper_Tools(context);
-        SQLiteDatabase db = dbHelper_tools.getWritableDatabase();
-        dbHelper_tools.close();
-
 
         btn_WB_load.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,14 +60,30 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
             }
         });
         lv_WB_main.setOnItemClickListener(mMessageClickHandler);
-        /*
-         * END
-         * #DatabaseHandler
-         * #DB
-         * #DBH
-         * END
-         */
-        luAllTools();
+
+        // Try to 'make' the db and table
+        Context context = getApplicationContext();
+        DbHelper_Tools dbHelperTools = new DbHelper_Tools(context);
+        SQLiteDatabase db = dbHelperTools.getWritableDatabase();
+        dbHelperTools.close();
+
+        TABLE_FOUND = dbHelperTools.checkToolsTable(db);
+
+        if (!TABLE_FOUND){
+            TABLE_CREATED = dbHelperTools.createToolsTable(context);
+            tv_WB_main.setText("Fresh Table Created");
+        }
+
+        //call fill data after the LV and other objects have
+        //been instantiated
+        if (TABLE_CREATED | TABLE_FOUND){
+            tv_WB_main.setText("Local Data Found :");
+            luAllTools();
+        }
+        else{
+            if (PHA_Util_Vars.mode_debug) {Log.v(TAG, "No table has been found, error creating");}
+            tv_WB_main.setText("Database Issue");
+        }
     }
 
     private AdapterView.OnItemClickListener mMessageClickHandler = new AdapterView.OnItemClickListener() {
@@ -189,7 +177,7 @@ public class PHA_Workbench_Tool_List extends AppCompatActivity {
         //Attach cursor adapter to the ListView
         lv_WB_main.setAdapter(toolAdapter);
 
-        tv_WB_main.setText(queryResult.toString());
+        tv_WB_main.append(" \n Count =" + queryResult.getCount() + " Tool Entries");
         //queryResult.close();
     }
 

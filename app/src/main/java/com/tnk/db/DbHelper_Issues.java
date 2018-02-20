@@ -39,7 +39,6 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
 
     public DbHelper_Issues(Context context){ super(context, DATABASE_NAME, null, DATABASE_VERSION);}
     public void onCreate(SQLiteDatabase db){
-
         Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Issue.IssueEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
@@ -197,7 +196,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean checkTable (SQLiteDatabase db){
+    public boolean checkIssuesTable(SQLiteDatabase db){
 
         if(db == null || !db.isOpen()){
             db = getReadableDatabase();
@@ -223,7 +222,7 @@ public class DbHelper_Issues extends SQLiteOpenHelper {
             return false;
     }
 
-    public boolean create_table (Context context) {
+    public boolean createIssuesTable(Context context) {
         DbHelper_Issues dbHelper_issues = new DbHelper_Issues(context);
         SQLiteDatabase db = dbHelper_issues.getWritableDatabase();
         db.execSQL("CREATE TABLE " + Contract_Issue.IssueEntry.TABLE_NAME + " (" +

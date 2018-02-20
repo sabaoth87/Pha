@@ -30,7 +30,6 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
 
     public DbHelper_Reminders(Context context){ super(context, DATABASE_NAME, null, DATABASE_VERSION);}
     public void onCreate(SQLiteDatabase db){
-
         Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Reminder.ReminderEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
@@ -60,7 +59,7 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
         values.put(Contract_Reminder.ReminderEntry.COLUMN_DATE, reminder.getRem_date());
         values.put(Contract_Reminder.ReminderEntry.COLUMN_TIME, reminder.getRem_time());
 
-        Log.v(TAG,"Adding reminder tot he Db...");
+        Log.v(TAG,"Adding reminder to the Db...");
         long newRowId = db.insert(
                 Contract_Reminder.ReminderEntry.TABLE_NAME,
                 null, 
@@ -153,6 +152,47 @@ public class DbHelper_Reminders extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from " + Contract_Reminder.ReminderEntry.TABLE_NAME, null);
 
         return cursor;
+    }
+
+    public boolean checkReminderTable (SQLiteDatabase db){
+
+        if(db == null || !db.isOpen()){
+            db = getReadableDatabase();
+        }
+
+        if(!db.isReadOnly()) {
+            db.close();
+            db = getReadableDatabase();
+        }
+
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" +
+                Contract_Reminder.ReminderEntry.TABLE_NAME + "'", null);
+
+        if (cursor!=null) {
+            if (cursor.getCount() > 0) {
+                Log.v(TAG, "Table was not found null ¯_(ツ)_¯");
+                cursor.close();
+                return true;
+            }
+            Log.v(TAG, Contract_Reminder.ReminderEntry.TABLE_NAME + " - table was found!");
+            cursor.close();
+        }
+        return false;
+    }
+
+    public boolean createReminderTable (Context context) {
+        /*
+        @TODO ## - createIssuesTable
+         */
+        DbHelper_Reminders dbHelper_reminders = new DbHelper_Reminders(context);
+        SQLiteDatabase db = dbHelper_reminders.getWritableDatabase();
+        db.execSQL("CREATE TABLE " + Contract_Reminder.ReminderEntry.TABLE_NAME + " (" +
+                Contract_Reminder.ReminderEntry._ID + " INTEGER PRIMARY KEY," +
+                Contract_Reminder.ReminderEntry.COLUMN_TITLE + " TEXT," +
+                Contract_Reminder.ReminderEntry.COLUMN_BODY + " TEXT," +
+                Contract_Reminder.ReminderEntry.COLUMN_DATE + " TEXT," +
+                Contract_Reminder.ReminderEntry.COLUMN_TIME + " TEXT)");
+        return true;
     }
 
 }

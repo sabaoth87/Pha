@@ -54,7 +54,6 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     public void onCreate(SQLiteDatabase db){
-
         Log.v(TAG, "<<>> CREATING DB <<>> " + DATABASE_NAME + " " + Contract_Tool.ToolEntry.TABLE_NAME + " v- " + DATABASE_VERSION);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
@@ -285,5 +284,56 @@ public class DbHelper_Tools extends SQLiteOpenHelper {
         return false;
     }
 
+    public boolean checkToolsTable (SQLiteDatabase db){
+        /*
+        @TRY_ME ## - checkToolsTable
+         */
+        if(db == null || !db.isOpen()){
+            db = getReadableDatabase();
+        }
 
+        if(!db.isReadOnly()) {
+            db.close();
+            db = getReadableDatabase();
+        }
+
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" +
+                Contract_Tool.ToolEntry.TABLE_NAME + "'", null);
+
+        if (cursor!=null) {
+            if (cursor.getCount() > 0) {
+                Log.v(TAG, "Table was not found null ¯_(ツ)_¯");
+                cursor.close();
+                return true;
+            }
+            Log.v(TAG, Contract_Tool.ToolEntry.TABLE_NAME + " - table was found!");
+            cursor.close();
+        }
+        return false;
+    }
+
+    public boolean createToolsTable (Context context) {
+        /*
+        @TRY_ME ## - createToolsTable
+         */
+        DbHelper_Tools dbHelperTools = new DbHelper_Tools(context);
+        SQLiteDatabase db = dbHelperTools.getWritableDatabase();
+        db.execSQL("CREATE TABLE " + Contract_Tool.ToolEntry.TABLE_NAME + " (" +
+                Contract_Tool.ToolEntry._ID + " INTEGER PRIMARY KEY," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_TYPE + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_NAME + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_BRAND + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_QUANTITY + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_QUALITY + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_LOCATION + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_NOTE + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_LINK + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_PIC + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_SIZE + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_USES + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_AMMO + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_CATEGORY + " TEXT," +
+                Contract_Tool.ToolEntry.COLUMN_NAME_STATUS + " TEXT)");
+        return true;
+    }
 }
